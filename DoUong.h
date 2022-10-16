@@ -15,15 +15,15 @@ private:
 public:
 	DoUong();
 	DoUong(const int&maDoUong,const string&tenDoUong,const float&gia,const int& soLuong,const string&loaiDoUong);
-	int getMaDoUong();
+	int getMaDoUong() const;
 	void setMaDoUong(const int&);
-	string getName();
+	string getName() const;
 	void setName(const string&);
-	float getGia();
+	float getGia() const;
 	void setGia(const float&);
-	int getSoLuong();
+	int getSoLuong() const;
 	void setSoLuong(const int&);
-	string getLoaiDoUong();
+	string getLoaiDoUong() const;
 	void setLoaiDoUong(const string&);
 	void nhapThongTinDoUong();
 	void xuatThongTinDoUong(ostream&);

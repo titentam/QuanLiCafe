@@ -30,6 +30,13 @@ void NhanVienQuanLi::xemDsNV(DuLieu& data) {
 }
 void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
+	for (int i = 0; i < nvpv.size(); i++) {
+		if (nv.getMaNv() == nvpv[i].getMaNv()) {
+			cout << "Nhap khong thanh cong!" << endl;
+			system("pause");
+			return;
+		}
+	}
 	nvpv.push_back(nv);
 }
 void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
@@ -47,60 +54,81 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 }
 void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 	Vector<NhanVienPhucVu>& nvPhucVu = data.getNvPhucVu();
+	bool check = true;
+	int pos = 0;
 	for (int i = 0; i < nvPhucVu.size(); i++)
 	{
-		if (nvPhucVu[i].getMaNv() == maNv)
-		{
-			while (true)
-			{
-				int choise;
-				system("cls");
-				cout << "===============================CHINH SUA THONG TIN NHAN VIEN==============================";
-				cout << "Moi nhap lua chon: " << endl;
-				cout << "1. Chinh sua ho ten" << endl;
-				cout << "2. Chinh sua sdt" << endl;
-				cout << "3. Chinh sua he so luong" << endl;
-				cout << "0.Thoat" << endl;
-				cout << "=========================================//===============================================";
-				cin >> choise;
-				if (choise == 1) {
-
-					string tenMoi;
-					cout << "moi nhap ten moi: ";
-					getline(cin, tenMoi);
-
-					nvPhucVu[i].setName(tenMoi);
-				}
-				else if (choise == 2) {
-					string sdtMoi;
-					cout << "moi nhap sdt moi: ";
-					getline(cin, sdtMoi);
-
-					nvPhucVu[i].setSdt(sdtMoi);
-				}
-				else if (choise == 3) {
-					string	hslMoi;
-					cout << "moi nhap he so luong moi: ";
-					getline(cin, hslMoi);
-
-					nvPhucVu[i].setSdt(hslMoi);
-				}
-				else break;
-			}
-		}
-		else {
-			cout << "ma nhan vien khong dung, moi ban nhap lai";
-			system("pause");
+		if (nvPhucVu[i].getMaNv() == maNv) {
+			check = false;
+			pos = i;
 			break;
 		}
+	}
+	if (check) {
+		cout << "Khong tim thay nhan vien phuc vu co maNv: " << maNv << endl;
+	}
+	else{
+		while (true){
+			int choise;
+			system("cls");
+			cout << "===============================CHINH SUA THONG TIN NHAN VIEN==============================";
+			cout << "Moi nhap lua chon: " << endl;
+			cout << "1. Chinh sua ho ten" << endl;
+			cout << "2. Chinh sua sdt" << endl;
+			cout << "3. Chinh sua he so luong" << endl;
+			cout << "0.Thoat" << endl;
+			cout << "=========================================//===============================================";
+			cin >> choise;
+			cin.ignore();
+			if (choise == 1) {
 
+				string tenMoi;
+				cout << "Moi nhap ten moi: ";
+				getline(cin, tenMoi);
+
+				nvPhucVu[pos].setName(tenMoi);
+			}
+			else if (choise == 2) {
+				string sdtMoi;
+				cout << "Moi nhap sdt moi: ";
+				getline(cin, sdtMoi);
+
+				nvPhucVu[pos].setSdt(sdtMoi);
+			}
+			else if (choise == 3) {
+				float hslMoi;
+				cout << "Moi nhap he so luong moi: ";
+				cin >> hslMoi;
+				nvPhucVu[pos].setHsl(hslMoi);
+			}
+			else break;
+		}
 	}
 }
 // quan li menu
+void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
+	Vector<DoUong>& douong = data.getDoUong();
+	cout << "DANH SACH DO UONG!" << endl;
+	for (int i = 0; i < douong.size(); i++) {
+		cout << i << ". ";
+		cout << douong[i].getName() << " ";
+		cout << douong[i].getLoaiDoUong() << " ";
+		cout << douong[i].getGia() << " ";
+		cout << douong[i].getSoLuong();
+		cout << endl;
+	}
+}
 
-void NhanVienQuanLi::themMon(DuLieu& data, const DoUong& douong) {
+void NhanVienQuanLi::themMon(DuLieu& data, const DoUong& mon) {
 	Vector<DoUong>& doUong = data.getDoUong();
-	doUong.push_back(douong);
+	for (int i = 0; i < doUong.size(); i++) {
+		if (mon.getMaDoUong() == doUong[i].getMaDoUong()) {
+			cout << "Them mon khong thanh cong!" << endl;
+			system("pause");
+			return;
+		}
+	}
+	doUong.push_back(mon);
 }
 void NhanVienQuanLi::xoaMon(DuLieu& data, const int& maDoUong) {
 	Vector<DoUong>& doUong = data.getDoUong();
@@ -171,7 +199,7 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 		else if (luachon == 5) {
 			DoUong a;
 			a.nhapThongTinDoUong();
-			themMon(data, a);
+			//themMon(data, a);
 		}
 		else if (luachon == 6) {
 			string mamon;

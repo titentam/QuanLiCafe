@@ -21,20 +21,20 @@ public:
 		const string& TK,
 		const string& MK,
 		const float& hsl);
-	string getName();
+	string getName() const;
 	void setName(const string&);
-	string getMaNv();
+	string getMaNv() const;
 	void setMaNv(const string&);
-	string getSdt();
+	string getSdt() const;
 	void setSdt(const string&);
-	string getTK();
+	string getTK() const;
 	void setTK(const string&);
-	string getMK();
+	string getMK() const;
 	void setMK(const string&);
-	float getHsl();
+	float getHsl() const;
 	void setHsl(const float&);
 	virtual void nhapThongTin();
-	virtual void xuatThongTin();
+	virtual void xuatThongTin() const;
 };
 
 

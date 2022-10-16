@@ -1,6 +1,5 @@
 #include "KhachHang.h"
 
-
 int KhachHang::datMon() {
 	int maDoUong;
 	cin >> maDoUong;

@@ -97,6 +97,11 @@ Vector<NhanVienPhucVu>& DuLieu::getNvPhucVu() {
 	return nvpv;
 }
 
+Vector<NhanVienQuanLi>& DuLieu::getNvQuanLi()
+{
+	return this->nvql;
+}
+
 void DuLieu::xuatFileDsNhanvien(ostream& out) {
 	for (int i = 0; i < nvql.size(); i++) {
 		out << nvql[i].getMaNv() << "," << nvql[i].getName() << "," << nvql[i].getSdt() << "," << nvql[i].getTK() << "," << nvql[i].getMK() << "," << nvql[i].getHsl() << endl;
