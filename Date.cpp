@@ -1,5 +1,8 @@
 #include "Date.h"
 
+/// <summary>
+/// sua date
+/// </summary>
 Date::Date() {
 	ngay = thang = nam = 0;
 }
