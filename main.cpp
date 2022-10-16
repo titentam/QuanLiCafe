@@ -7,6 +7,7 @@
 using namespace std;
 
 int main() {
+	// hahahaha
 	DuLieu data;
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
