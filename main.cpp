@@ -14,6 +14,7 @@ int main() {
 
 	data.xuatFileDsDoUong(cout);
 	cout << endl;
+	cout << "tamngu";
 	data.xuatFileDsNhanvien(cout);
 	return 0;
 }

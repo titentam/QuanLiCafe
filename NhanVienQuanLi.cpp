@@ -134,6 +134,7 @@ void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& 
 	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
 }
 void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
+	
 	while (true) {
 		system("cls");
 		cout << "===================================== MENU ===== QUAN ===== LI================================ \n";
