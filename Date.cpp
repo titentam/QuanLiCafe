@@ -1,7 +1,7 @@
 #include "Date.h"
 
 /// <summary>
-/// sua date aaaaa
+/// sua date
 /// </summary>
 Date::Date() {
 	ngay = thang = nam = 0;

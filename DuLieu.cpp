@@ -1,5 +1,5 @@
 #include "DuLieu.h"
-
+#include<iomanip>
 
 /*
 	string maNv;
@@ -110,7 +110,7 @@ void DuLieu::xuatFileDsNhanvien(ostream& out) {
 		out << nvpv[i].getMaNv() << "," << nvpv[i].getName() << "," << nvpv[i].getSdt() << "," << nvpv[i].getTK() << "," << nvpv[i].getMK() << "," << nvpv[i].getHsl() << endl;
 	}
 }
-void DuLieu::xuatFileDsDoUong(ostream& out){
+void DuLieu::xuatFileDsDoUong(ostream& out) {
 	for (int i = 0; i < douong.size(); i++) {
 		DoUong tmp = douong[i];
 		out << tmp.getMaDoUong() << ",";

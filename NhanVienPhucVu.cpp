@@ -45,22 +45,22 @@ void NhanVienPhucVu::lamDoUong(DuLieu &data,const int& maDoUong,const int& soluo
 		cout << "Do uong khong co trong danh sach, hoac khong du !!!" << endl;
 	}
 }
-void NhanVienPhucVu::xuatBill(ostream& out){
+void NhanVienPhucVu::xuatBill(ostream& outw){
 
 	time_t now = time(0);
 	string tg = ctime(&now);
-	out << "HOA DON THANH TOAN" << endl;
-	out <<"Thoi gian "<< tg << endl;// ma ten gia
-	out << "id" << setw(20) << "Ten " << setw(5) << "SL " << setw(6) << "DG " << setw(10) << "T.Tien" << endl;
+	outw << "HOA DON THANH TOAN" << endl;
+	outw <<"Thoi gian "<< tg << endl;// ma ten gia
+	outw << "id" << setw(20) << "Ten " << setw(5) << "SL " << setw(6) << "DG " << setw(10) << "T.Tien" << endl;
 	float tongtien = 0;
 	int soluong = 0;
 	for (int i = 0; i < dsDoUong.size(); i++) {
-		dsDoUong[i].xuatThongTinDoUong(out);
-		out<< setw(5) << sl[i] << setw(6) << dsDoUong[i].getGia() << setw(10) << dsDoUong[i].getGia()*sl[i] << endl;
+		dsDoUong[i].xuatThongTinDoUong(outw);
+		outw<< setw(5) << sl[i] << setw(6) << dsDoUong[i].getGia() << setw(10) << dsDoUong[i].getGia()*sl[i] << endl;
 		tongtien += dsDoUong[i].getGia() * sl[i];
 		soluong += sl[i];
 	}
-	out << "T.Cong" << setw(25) << soluong << setw(16) << tongtien << endl;
+	outw << "T.Cong" << setw(25) << soluong << setw(16) << tongtien << endl;
 }
 float NhanVienPhucVu::getLuong(const int& soGioLam) {
 	return soGioLam * hsl* LUONG;

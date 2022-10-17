@@ -25,9 +25,7 @@ int main() {
 	DoUong ncdua(1, "Nuoc dua", 10000, 100, "Nuoc trai cay");
 	nvql.themMon(data, ncdua);
 	cout << endl;
-	nvql.xemDsDoUong(data);
-
-
-
+	cout << "tamngu";
+	data.xuatFileDsNhanvien(cout);
 	return 0;
 }
