@@ -27,6 +27,17 @@ Vector<T>::Vector() {
 }
 
 template<typename T>
+Vector<T>::Vector(const Vector<T>& another)
+{
+	this->SIZE = another.size();
+	this->capacity = another.cap();
+	this->arr = new T[SIZE];
+	for (int i = 0; i < SIZE; i++) {
+		this->arr[i] = another[i];	
+	}
+}
+
+template<typename T>
 Vector<T>::Vector(int initCapacity) {
 	this->SIZE = initCapacity;
 	this->capacity = initCapacity;
@@ -41,6 +52,12 @@ Vector<T>::~Vector() {
 template<typename T>
 int Vector<T>::size() const {
 	return SIZE;
+}
+
+template<typename T>
+int Vector<T>::cap() const
+{
+	return this->capacity;
 }
 
 template<typename T>
@@ -76,7 +93,7 @@ void Vector<T>::insert(int pos, const T& newElement) {
 
 template<typename T>
 void Vector<T>::erase(int pos) {
-	for (int i = pos; i < SIZE; i++) {
+	for (int i = pos; i < SIZE - 1; i++) {
 		arr[i] = arr[i + 1];
 	}
 	SIZE--;
@@ -88,9 +105,9 @@ void Vector<T>::clearn() {
 }
 
 template<typename T>
-Vector<T>& Vector<T>::operator=(const Vector<T>& rhs) {
+const Vector<T>& Vector<T>::operator=(const Vector<T>& rhs) {
 	if (this != &rhs) {
-		delete[] arr;
+		delete[] this->arr;
 		this->SIZE = rhs.SIZE;
 		this->capacity = rhs.capacity;
 		this->arr = new T[capacity];
