@@ -22,10 +22,13 @@ int main() {
 	nvql.xemDsNV(data);
 	
 	nvql.xemDsDoUong(data);
-	DoUong ncdua(1, "Nuoc dua", 10000, 100, "Nuoc trai cay");
+	DoUong ncdua(19, "Nuoc dua", 10000, 100, "Nuoc trai cay");
 	nvql.themMon(data, ncdua);
 	cout << endl;
-	cout << "tamngu";
-	data.xuatFileDsNhanvien(cout);
+	nvql.xemDsDoUong(data);
+
+	nvql.xoaMon(data, 19);
+	cout << endl;
+	nvql.xemDsDoUong(data);
 	return 0;
 }
