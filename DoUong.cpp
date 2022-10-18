@@ -17,31 +17,31 @@ DoUong::DoUong(const int& maDoUong, const string& tenDoUong, const float& gia, c
 	this->soLuong = soLuong;
 	this->loaiDoUong = loaiDoUong;
 }
-int DoUong::getMaDoUong() {
+int DoUong::getMaDoUong() const {
 	return maDoUong;
 }
 void DoUong::setMaDoUong(const int& maDoUong) {
 	this->maDoUong = maDoUong;
 }
-string DoUong::getName() {
+string DoUong::getName() const {
 	return tenDoUong;
 }
 void DoUong::setName(const string& tenDoUong) {
 	this->tenDoUong = tenDoUong;
 }
-float DoUong::getGia() {
+float DoUong::getGia() const {
 	return gia;
 }
 void DoUong::setGia(const float& gia) {
 	this->gia = gia;
 }
-int DoUong::getSoLuong() {
+int DoUong::getSoLuong() const {
 	return soLuong;
 }
 void DoUong::setSoLuong(const int& soLuong) {
 	this->soLuong = soLuong;
 }
-string DoUong::getLoaiDoUong() {
+string DoUong::getLoaiDoUong() const {
 	return loaiDoUong;
 }
 void DoUong::setLoaiDoUong(const string& loaiDoUong) {

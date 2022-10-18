@@ -97,21 +97,26 @@ Vector<NhanVienPhucVu>& DuLieu::getNvPhucVu() {
 	return nvpv;
 }
 
+Vector<NhanVienQuanLi>& DuLieu::getNvQuanLi()
+{
+	return this->nvql;
+}
+
 void DuLieu::xuatFileDsNhanvien(ostream& out) {
 	for (int i = 0; i < nvql.size(); i++) {
-		out << setw(9) << left << nvql[i].getMaNv()  << "   |   " << setw(20) << left << nvql[i].getName() << setw(10) << left << "   |   " << nvql[i].getSdt() << "   |   " << setw(13) << left << nvql[i].getTK()  << "   |   " << setw(13) << left << nvql[i].getMK()  << "   |   "<< setw(10) << left << nvql[i].getHsl() << endl;
+		out << nvql[i].getMaNv() << "," << nvql[i].getName() << "," << nvql[i].getSdt() << "," << nvql[i].getTK() << "," << nvql[i].getMK() << "," << nvql[i].getHsl() << endl;
 	}
 	for (int i = 0; i < nvpv.size(); i++) {
-		out << setw(10) << left << nvpv[i].getMaNv()  << "  |   " << setw(20) << left << nvpv[i].getName() << setw(10) << left << "   |   " << nvpv[i].getSdt()  << "   |   " <<   setw(13) << left<< nvpv[i].getTK() <<"   |   " <<   setw(13) << left << nvpv[i].getMK() <<  "   |   " << setw(10) << left << nvpv[i].getHsl()  << endl;
+		out << nvpv[i].getMaNv() << "," << nvpv[i].getName() << "," << nvpv[i].getSdt() << "," << nvpv[i].getTK() << "," << nvpv[i].getMK() << "," << nvpv[i].getHsl() << endl;
 	}
 }
-void DuLieu::xuatFileDsDoUong(ostream& out){
+void DuLieu::xuatFileDsDoUong(ostream& out) {
 	for (int i = 0; i < douong.size(); i++) {
 		DoUong tmp = douong[i];
-		out << setw(5) << left << tmp.getMaDoUong() << "  |  ";
-		out << setw(25) << left << tmp.getName() << "  |  ";
-		out << setw(10) << left << tmp.getLoaiDoUong() << "  |  ";
-		out << setw(10) << left << tmp.getGia() << "  |  ";
-		out << setw(5) << left << tmp.getSoLuong() <<"  |  "<< endl;
+		out << tmp.getMaDoUong() << ",";
+		out << tmp.getName() << ",";
+		out << tmp.getLoaiDoUong() << ",";
+		out << tmp.getGia() << ",";
+		out << tmp.getSoLuong() << endl;
 	}
 }

@@ -23,6 +23,5 @@ public:
 	void lamDoUong(DuLieu &data,const int&,const int&);
 	void xuatBill(ostream& out);
 	float getLuong(const int&);
-	void xuatThongTin();
 };
 

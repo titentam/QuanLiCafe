@@ -65,7 +65,4 @@ void NhanVienPhucVu::xuatBill(ostream& outw){
 float NhanVienPhucVu::getLuong(const int& soGioLam) {
 	return soGioLam * hsl* LUONG;
 }
-void NhanVienPhucVu::xuatThongTin() {
-	NhanVien::xuatThongTin();
-}
 

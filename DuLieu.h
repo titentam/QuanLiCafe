@@ -28,6 +28,7 @@ public:
 	void docFileDsDoUong();
 	Vector<DoUong>& getDoUong();
 	Vector<NhanVienPhucVu>& getNvPhucVu();
+	Vector<NhanVienQuanLi>& getNvQuanLi();
 	void xuatFileDsNhanvien(ostream& out);
 	void xuatFileDsDoUong(ostream& out);
 	

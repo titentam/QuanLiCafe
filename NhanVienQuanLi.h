@@ -18,7 +18,9 @@ public:
     void xoaNV(DuLieu& data, const string& maNv);
 	void chinhSuaThongTinNv(DuLieu& data, const string& maNv);
 	// quan li menu
-	void themMon(DuLieu& data, const DoUong& douong);
+	void xemDsDoUong(DuLieu& data);
+
+	void themMon(DuLieu& data, const DoUong& mon);
 	void xoaMon(DuLieu& data, const int& maDoUong);
 	void Edit_Gia(DuLieu& data, const int& MaDouong, const float& gia);
 	void themSLDoUong(DuLieu& data, const int& MaDouong, const int& newsl);
