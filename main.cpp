@@ -38,6 +38,6 @@ int main() {
 	cout << endl;
 	nvql.xemDsDoUong(data);
 	cout << "hahaha";
-
+	
 	return 0;
 }

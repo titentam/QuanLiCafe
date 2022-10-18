@@ -33,7 +33,7 @@ Vector<T>::Vector(const Vector<T>& another)
 	this->capacity = another.cap();
 	this->arr = new T[SIZE];
 	for (int i = 0; i < SIZE; i++) {
-		this->arr[i] = another[i];	
+		this->arr[i] = another[i];
 	}
 }
 
