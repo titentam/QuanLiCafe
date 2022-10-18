@@ -13,9 +13,10 @@ int main() {
 	
 
 	NhanVienQuanLi nvql;
-	nvql = (data.getNvQuanLi())[0];
-
-	nvql.xemDsNV(data);
+	//nvql = (data.getNvQuanLi())[0];
+	nvql.menuQuanLi(data);
+	cout << "done";
+	/*nvql.xemDsNV(data);
 	
 	nvql.themNV(data, { "01asdad","Tam Ten Toi","8123712738127","tamcute","12312h",2 });
 	cout << endl;
@@ -29,6 +30,6 @@ int main() {
 
 	nvql.xoaMon(data, 19);
 	cout << endl;
-	nvql.xemDsDoUong(data);
+	nvql.xemDsDoUong(data);*/
 	return 0;
 }

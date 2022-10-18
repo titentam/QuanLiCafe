@@ -50,7 +50,8 @@ void DoUong::setLoaiDoUong(const string& loaiDoUong) {
 
 void DoUong::nhapThongTinDoUong() {
 	cout << "Nhap ma do uong: "; cin >> maDoUong;
-	cout << "Nhap ten do uong: "; cin >> tenDoUong;
+	cin.ignore();
+	cout << "Nhap ten do uong: "; getline(cin, tenDoUong);
 	cout << "Nhap gia do uong: "; cin >> gia;
 	cout << "Nhap so luong do uong: "; cin >> soLuong;
 	cout << "Nhap loai do uong: "; cin >> loaiDoUong;
