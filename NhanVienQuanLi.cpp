@@ -110,7 +110,7 @@ void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
 	Vector<DoUong>& douong = data.getDoUong();
 	cout << "DANH SACH DO UONG!" << endl;
 	for (int i = 0; i < douong.size(); i++) {
-		cout << i << ". ";
+		cout << douong[i].getMaDoUong() << " ";
 		cout << douong[i].getName() << " ";
 		cout << douong[i].getLoaiDoUong() << " ";
 		cout << douong[i].getGia() << " ";
