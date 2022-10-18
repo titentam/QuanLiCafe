@@ -57,6 +57,7 @@ void NhanVien::setHsl(const float& hsl) {
 }
 
 void NhanVien::nhapThongTin() {
+	cin.ignore();
 	cout << "Nhap ho ten: "; getline(cin, hoTen);
 	cout << "Nhap sdt: "; getline(cin, sdt);
 	cout << "Nhap ma nhan vien: "; cin >> maNv;
