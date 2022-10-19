@@ -1,5 +1,6 @@
 #include<iostream>
 #include"NhanVienQuanLi.h"
+#include"menu.h"
 using namespace std;
 
 NhanVienQuanLi::NhanVienQuanLi(const string& maNv, const string& hoTen, const string& sdt,
@@ -40,6 +41,11 @@ void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 	nvpv.push_back(nv);
 
 	
+	data.xuatFileDsNhanvien(cout);
+	ofstream f;
+	f.open("tam.csv", ios::out);
+	data.xuatFileDsNhanvien(f);
+	f.close();
 }
 void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
@@ -57,6 +63,34 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 		system("pause");
 	}
 
+}
+	data.xuatFileDsNhanvien(cout);
+	ofstream f;
+	f.open("tam.csv", ios::out);
+	data.xuatFileDsNhanvien(f);
+	f.close();
+}void NhanVienQuanLi::xoaMon(DuLieu& data, const int& maDoUong) {
+	Vector<DoUong>& doUong = data.getDoUong();
+	bool check = true;
+	for (int i = 0; i < doUong.size(); i++) {
+		if (doUong[i].getMaDoUong() == maDoUong) {
+			check = false;
+			doUong.erase(i);
+			cout << "Da xoa do uong nay khoi MENU" << endl;
+			system("pause");
+			
+		}
+	}
+	if (check) {
+	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
+	system("pause");
+	}
+
+	data.xuatFileDsDoUong(cout);
+	ofstream f;
+	f.open("douong2.csv", ios::out);
+	data.xuatFileDsDoUong(f);
+	f.close();
 }
 void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 	Vector<NhanVienPhucVu>& nvPhucVu = data.getNvPhucVu();
@@ -111,6 +145,11 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 			else break;
 		}
 	}
+	data.xuatFileDsNhanvien(cout);
+	ofstream f;
+	f.open("tam.csv", ios::out);
+	data.xuatFileDsNhanvien(f);
+	f.close();
 }
 // quan li menu
 void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
@@ -136,18 +175,13 @@ void NhanVienQuanLi::themMon(DuLieu& data, const DoUong& mon) {
 		}
 	}
 	doUong.push_back(mon);
+	data.xuatFileDsDoUong(cout);
+	ofstream f;
+	f.open("douong2.csv", ios::out);
+	data.xuatFileDsDoUong(f);
+	f.close();
 }
-void NhanVienQuanLi::xoaMon(DuLieu& data, const int& maDoUong) {
-	Vector<DoUong>& doUong = data.getDoUong();
-	for (int i = 0; i < doUong.size(); i++) {
-		if (doUong[i].getMaDoUong() == maDoUong) {
-			doUong.erase(i);
-			cout << "Da xoa do uong nay khoi MENU" << endl;
-			return;
-		}
-	}
-	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
-}
+
 void NhanVienQuanLi::Edit_Gia(DuLieu& data, const int& MaDouong, const float& gia) {
 	Vector<DoUong>& doUong = data.getDoUong();
 	for (int i = 0; i < doUong.size(); i++) {
@@ -157,6 +191,11 @@ void NhanVienQuanLi::Edit_Gia(DuLieu& data, const int& MaDouong, const float& gi
 		}
 	}
 	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
+	data.xuatFileDsDoUong(cout);
+	ofstream f;
+	f.open("douong2.csv", ios::out);
+	data.xuatFileDsDoUong(f);
+	f.close();
 }
 void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& newsl) {
 	Vector<DoUong>& doUong = data.getDoUong();
@@ -168,24 +207,17 @@ void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& 
 	}
 	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
 	system("pause");
+	data.xuatFileDsDoUong(cout);
+	ofstream f;
+	f.open("douong2.csv", ios::out);
+	data.xuatFileDsDoUong(f);
+	f.close();
 }
 void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 	
 	while (true) {
-		system("cls");
-		cout << "===================================== MENU ===== QUAN ===== LI================================ \n";
-		cout << "1.xem danh sach nhan vien phuc vu\n";
-		cout << "2.them nhan vien phuc vu \n";
-		cout << "3.xoa nhan vien phuc vu\n";
-		cout << "4.chinh sua thong tin nhan vien phuc vu\n";
-		cout << "5.them mon\n";
-		cout << "6.xoa mon\n";
-		cout << "7.chinh sua gia mon\n";
-		cout << "8.cap nhat so luong con trong kho cua 1 mon \n";
-		cout << "9.xem danh sach do uong\n";
-		cout << "0.Thoat\n";
-		cout << "============================================================================================== \n";
-		cout << "moi nhap lua chon: ";
+		menu a;
+		a.menu_quanli();
 		int luachon;
 		cin >> luachon;
 		if (luachon == 1) {

@@ -10,44 +10,6 @@
 using namespace std;
 
 
-void br(int line) {
-	for (int i = 0; i < line; i++) {
-		cout << "\n";
-	}
-}
-void pre(int tab) {
-	for (int i = 0; i < tab; i++) {
-		cout << "\t";
-	}
-}
-void span(int space) {
-	for (int i = 0; i < space; i++) {
-		cout << " ";
-	}
-}
-void loadingbar() {
-
-	for (int i = 15; i <= 100; i += 5) {
-
-		system("cls");
-
-		cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t";
-		cout << i << " %% Loading...\n\n\t\t";
-		Sleep(60);
-		if (i == 90 || i == 50 || i == 96 || i == 83) {
-			Sleep(100);
-		}
-
-	}
-}
-void wellcome() {
-	string s1 = "PHAN MEM QUAN LI";
-	string s2 = "QUAN CAFE";
-	cout << "\n\n\n\t\t\t\t\t\t";
-	for (int i = 0; i < s1.size(); i++) {
-		cout << s1[i];
-		Sleep(50);
-	}
 
 	cout << "\n\n\t\t\t\t\t\t   ";
 	for (int i = 0; i < s2.size(); i++) {
@@ -119,6 +81,7 @@ string nhapmk() {
 	return res;
 }
 int main() {
+	\
 	DuLieu data;
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
