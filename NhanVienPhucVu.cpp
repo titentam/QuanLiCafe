@@ -49,16 +49,31 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	string tg = ctime(&now);
 	outw << "HOA DON THANH TOAN" << endl;
 	outw <<"Thoi gian "<< tg << endl;// ma ten gia
-	outw <<setw(10)<<left<< "id" << setw(20) <<left<< "Ten " << setw(5) <<left<< "SL " << setw(6) <<left<< "DG " << setw(10) << left<<"T.Tien" << endl;
-	float tongtien = 0;
+	outw << setw(7) << left << "ID";
+	outw << setw(25) << left << "Ten ";
+	outw << setw(5) << left << "SL ";
+	outw << setw(15) << left << "DG ";
+	outw << setw(10) << left << "T.Tien" << endl;
+	float total = 0;
 	int soluong = 0;
 	for (int i = 0; i < dsDoUong.size(); i++) {
-		dsDoUong[i].xuatThongTinDoUong(outw);
-		outw<< setw(5) <<left<< sl[i] << setw(6) << left << dsDoUong[i].getGia() << setw(10) << left << dsDoUong[i].getGia()*sl[i] << endl;
-		tongtien += dsDoUong[i].getGia() * sl[i];
+		
+		outw << setw(7) << left << dsDoUong[i].getMaDoUong();
+		outw << setw(25) << left << dsDoUong[i].getName();
+		outw << setw(5) << left << sl[i];
+		outw << setw(15) << left << dsDoUong[i].getGia();
+		float sum = dsDoUong[i].getGia() * sl[i];
+		outw << setw(10) << left << sum << endl;
+		total += sum;
 		soluong += sl[i];
 	}
-	outw << "T.Cong" << setw(25) << soluong << setw(16) << tongtien << endl;
+	for (int i = 1; i <= 62; i++) outw << "-";
+	outw << endl;
+	outw << setw(7) << left << "T.Cong";
+	outw << setw(25) << " ";
+	outw << setw(5) <<left<< soluong;
+	outw << setw(15) << " ";
+	outw << setw(10) <<left<< total << endl;
 }
 float NhanVienPhucVu::getLuong(const int& soGioLam) {
 	return soGioLam * hsl* LUONG;
