@@ -6,9 +6,8 @@
 #include<Windows.h>
 
 
+
 using namespace std;
-
-
 
 int main() {
 	
@@ -22,6 +21,6 @@ int main() {
 	//nvql.menuQuanLi(data);
 	nvpv.menuPhucvu(data);
 	
-	
+
 	return 0;
 }

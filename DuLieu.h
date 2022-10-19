@@ -20,12 +20,13 @@ private:
 	Vector<NhanVienQuanLi> nvql;
 	Vector<NhanVienPhucVu> nvpv;
 	Vector<DoUong> douong;
-	Vector<Vector<Vector<int>>> doanhThu; // nam/thang/ngay
+
 public:
 	DuLieu();
 
 	void docFileDsNhanVien();
 	void docFileDsDoUong();
+	void thongKe();
 	Vector<DoUong>& getDoUong();
 	Vector<NhanVienPhucVu>& getNvPhucVu();
 	Vector<NhanVienQuanLi>& getNvQuanLi();

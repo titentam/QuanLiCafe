@@ -89,7 +89,9 @@ void DuLieu::docFileDsDoUong() {
 	}
 	f.close();
 }
-
+void DuLieu::thongKe() {
+	cout << "tam";
+}
 Vector<DoUong>& DuLieu::getDoUong() {
 	return douong;
 }

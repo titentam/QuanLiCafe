@@ -30,9 +30,6 @@
     <ClCompile Include="DoUong.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="KhachHang.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DoUong.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="KhachHang.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">

@@ -60,4 +60,5 @@ void DoUong::nhapThongTinDoUong() {
 void DoUong::xuatThongTinDoUong(ostream& out) {
 	out <<setw(10)<<left<< maDoUong << " ";
 	out <<setw(20)<<left<< tenDoUong << " ";
+	out << soLuong << endl;
 }

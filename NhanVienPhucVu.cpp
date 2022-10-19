@@ -130,22 +130,22 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	time_t now = time(0);
 	string tg = ctime(&now);
 	outw << "HOA DON THANH TOAN" << endl;
-	outw <<"Thoi gian "<< tg << endl;// ma ten gia
+	outw <<"Thoi gian: "<< tg << endl;
 	outw << setw(7) << left << "ID";
 	outw << setw(25) << left << "Ten ";
 	outw << setw(5) << left << "SL ";
 	outw << setw(15) << left << "DG ";
-	outw << setw(10) << left << "T.Tien" << endl;
-	float total = 0;
+	outw << setw(20) << left << "T.Tien" << endl;
+	long double total = 0;
 	int soluong = 0;
 	for (int i = 0; i < dsDoUong.size(); i++) {
 		
 		outw << setw(7) << left << dsDoUong[i].getMaDoUong();
 		outw << setw(25) << left << dsDoUong[i].getName();
 		outw << setw(5) << left << sl[i];
-		outw << setw(15) << left << dsDoUong[i].getGia();
+		outw << setw(15) << left << setprecision(20) << dsDoUong[i].getGia();
 		float sum = dsDoUong[i].getGia() * sl[i];
-		outw << setw(10) << left << sum << endl;
+		outw << setw(10) << left << setprecision(20) << sum << endl;
 		total += sum;
 		soluong += sl[i];
 	}
@@ -155,8 +155,18 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	outw << setw(25) << " ";
 	outw << setw(5) <<left<< soluong;
 	outw << setw(15) << " ";
-	outw << setw(10) <<left<< total << endl;
+	outw << setw(20) <<left<< setprecision(20) << total << endl;
+
+	ofstream f;
+	int s = tg.size() - 5;
+	string thongke = "ThongKe\\";
+	thongke += tg.substr(s, 4) + ".txt";
+	f.open(thongke, ios::app);
+	tg = tg.substr(0, tg.size() - 1);
+	f << tg << "," << setprecision(20) << total << endl;
+	f.close();
 }
+
 float NhanVienPhucVu::getLuong(const int& soGioLam) {
 	return soGioLam * hsl* LUONG;
 }
