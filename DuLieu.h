@@ -20,7 +20,7 @@ private:
 	Vector<NhanVienQuanLi> nvql;
 	Vector<NhanVienPhucVu> nvpv;
 	Vector<DoUong> douong;
-	long long*** thongKe;
+
 public:
 	DuLieu();
 

@@ -39,8 +39,6 @@ void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 		}
 	}
 	nvpv.push_back(nv);
-
-	
 	data.xuatFileDsNhanvien(cout);
 	ofstream f;
 	f.open("tam.csv", ios::out);
@@ -62,8 +60,6 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 		cout << "Khong tim thay nhan vien phuc vu co maNv: " << maNv << endl;
 		system("pause");
 	}
-
-}
 	data.xuatFileDsNhanvien(cout);
 	ofstream f;
 	f.open("tam.csv", ios::out);
@@ -78,12 +74,12 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 			doUong.erase(i);
 			cout << "Da xoa do uong nay khoi MENU" << endl;
 			system("pause");
-			
+
 		}
 	}
 	if (check) {
-	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
-	system("pause");
+		cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
+		system("pause");
 	}
 
 	data.xuatFileDsDoUong(cout);
@@ -108,8 +104,8 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 		cout << "Khong tim thay nhan vien phuc vu co maNv: " << maNv << endl;
 		system("pause");
 	}
-	else{
-		while (true){
+	else {
+		while (true) {
 			int choise;
 			system("cls");
 			cout << "===============================CHINH SUA THONG TIN NHAN VIEN==============================";
@@ -214,7 +210,7 @@ void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& 
 	f.close();
 }
 void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
-	
+
 	while (true) {
 		menu a;
 		a.menu_quanli();
@@ -227,13 +223,13 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 		else if (luachon == 2) {
 			NhanVienPhucVu a;
 			a.nhapThongTin();
-			themNV(data,a);
+			themNV(data, a);
 		}
 		else if (luachon == 4) {
 			string manv;
 			cout << "nhap ma nhan vien: ";
 			cin >> manv;
-			chinhSuaThongTinNv(data,manv);
+			chinhSuaThongTinNv(data, manv);
 
 		}
 		else if (luachon == 3) {
@@ -266,7 +262,7 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 			int madouong;
 			cout << "nhap ma do uong: ";
 			cin >> madouong;
-			int soluong;
+			float soluong;
 			cout << "so luong con lai: ";
 			cin >> soluong;
 			themSLDoUong(data, madouong, soluong);
@@ -284,7 +280,4 @@ void NhanVienQuanLi::nhapThongTin() {
 void NhanVienQuanLi::xuatThongTin() {
 	NhanVien::xuatThongTin();
 }
-
-
-
 

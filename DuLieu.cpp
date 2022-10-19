@@ -10,17 +10,6 @@
 	float hsl;
 */
 DuLieu::DuLieu() {
-	const int NAM = 11;
-	thongKe = new long long**[NAM];
-	for (int i = 1; i <= NAM - 1; i++) {
-		thongKe[i] = new long long* [13];// nam new ra thang
-		for (int j = 1; j <= 12; j++) {
-			thongKe[i][j] = new long long[32];// thang new ra ngay
-			for (int k = 1; k <= 31; k++) {
-				thongKe[i][j][k] = 0; // init
-			}
-		}
-	}
 }
 void DuLieu::docFileDsNhanVien() {
 	ifstream f;
@@ -101,7 +90,7 @@ void DuLieu::docFileDsDoUong() {
 	f.close();
 }
 void DuLieu::thongKe() {
-	
+	cout << "tam";
 }
 Vector<DoUong>& DuLieu::getDoUong() {
 	return douong;
