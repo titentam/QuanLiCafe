@@ -10,7 +10,6 @@
 using namespace std;
 
 int main() {
-	\
 	DuLieu data;
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
