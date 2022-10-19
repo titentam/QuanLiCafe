@@ -37,14 +37,14 @@ void DuLieu::docFileDsNhanVien() {
 		{
 			NhanVienQuanLi nv(maNv, hoTen, sdt, TK, MK, hsl);
 			nvql.push_back(nv);
-			cout << "Nhap nhan vien thanh cong!" << endl;
+			//cout << "Nhap nhan vien thanh cong!" << endl;
 			break;
 		}
 		case 1:
 		{
 			NhanVienPhucVu nv(maNv, hoTen, sdt, TK, MK, hsl);
 			nvpv.push_back(nv);
-			cout << "Nhap nhan vien thanh cong!" << endl;
+			//cout << "Nhap nhan vien thanh cong!" << endl;
 			break;
 		}
 		default:

@@ -10,8 +10,6 @@ class DuLieu;
 class DoUong;
 class NhanVienPhucVu: public NhanVien
 {
-	Vector<DoUong> dsDoUong;
-	Vector<int> sl;
 public:
 	NhanVienPhucVu();
 	NhanVienPhucVu(const string& maNv,
@@ -20,8 +18,8 @@ public:
 		const string& TK,
 		const string& MK,
 		const float& hsl);
-	void lamDoUong(DuLieu &data,const int&,const int&);
-	void xuatBill(ostream& out);
+	void lamDoUong(DuLieu &data,const Vector<DoUong>& dsDoUong,const Vector<int>& sl);
+	void xuatBill(ostream& out, const Vector<DoUong>& dsDoUong, const Vector<int>& sl);
 	float getLuong(const int&);
 };
 

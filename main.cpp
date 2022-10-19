@@ -121,10 +121,23 @@ int main() {
 	DuLieu data;
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
-
+	Vector<DoUong> menu = data.getDoUong();
+	
 	NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
 	nvpv.xuatThongTin();
+	cout << endl;
+	Vector<DoUong> dsDoUong;
+	Vector<int> sl;
+	dsDoUong.push_back(menu[0]);
+	dsDoUong.push_back(menu[2]);
+	dsDoUong.push_back(menu[8]);
+	sl.push_back(10);
+	sl.push_back(2);
+	sl.push_back(5);
 
+	nvpv.lamDoUong(data, dsDoUong, sl);
+	nvpv.xuatBill(cout, dsDoUong, sl);
+	
 	
 	return 0;
 }

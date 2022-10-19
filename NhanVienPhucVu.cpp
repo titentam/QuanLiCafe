@@ -24,39 +24,37 @@ NhanVienPhucVu::NhanVienPhucVu() {
 	this->MK = "";
 	this->hsl = 0;
 }
-void NhanVienPhucVu::lamDoUong(DuLieu &data,const int& maDoUong,const int& soluong) {
+void NhanVienPhucVu::lamDoUong(DuLieu& data, const Vector<DoUong>& dsDoUong, const Vector<int>& sl){
 	Vector<DoUong> &menu = data.getDoUong();
-	bool check = true;
-	for (int i = 0; i < menu.size(); i++) {
-		// ktra co do uong trong ds hay k
-		if (maDoUong == menu[i].getMaDoUong()) {
-			int soLuongcon = menu[i].getSoLuong();
-			// ktra thu con so luong hay  k
-			if (soLuongcon <soluong) break;
-			
-			check = false;
-			menu[i].setSoLuong(soLuongcon - soluong);
-			dsDoUong.push_back(menu[i]);
-			sl.push_back(soluong);
-			break;
+	for (int i = 0; i < dsDoUong.size(); i++) {
+		int maDoUong = dsDoUong[i].getMaDoUong();
+		for (int j = 0; j < menu.size(); j++) {
+			if (menu[i].getMaDoUong() == maDoUong) {
+				int soLuongcon = menu[i].getSoLuong();
+				// ktra thu con so luong hay  k
+				if (soLuongcon < sl[i]) {
+					cout << "Do uong co ma: " << maDoUong << " con lai khong du!" << endl;
+				}
+				else {
+					menu[i].setSoLuong(soLuongcon - sl[i]);
+				}	
+				break;
+			}
 		}
 	}
-	if (check) {
-		cout << "Do uong khong co trong danh sach, hoac khong du !!!" << endl;
-	}
 }
-void NhanVienPhucVu::xuatBill(ostream& outw){
+void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, const Vector<int>& sl){
 
 	time_t now = time(0);
 	string tg = ctime(&now);
 	outw << "HOA DON THANH TOAN" << endl;
 	outw <<"Thoi gian "<< tg << endl;// ma ten gia
-	outw << "id" << setw(20) << "Ten " << setw(5) << "SL " << setw(6) << "DG " << setw(10) << "T.Tien" << endl;
+	outw <<setw(10)<<left<< "id" << setw(20) <<left<< "Ten " << setw(5) <<left<< "SL " << setw(6) <<left<< "DG " << setw(10) << left<<"T.Tien" << endl;
 	float tongtien = 0;
 	int soluong = 0;
 	for (int i = 0; i < dsDoUong.size(); i++) {
 		dsDoUong[i].xuatThongTinDoUong(outw);
-		outw<< setw(5) << sl[i] << setw(6) << dsDoUong[i].getGia() << setw(10) << dsDoUong[i].getGia()*sl[i] << endl;
+		outw<< setw(5) <<left<< sl[i] << setw(6) << left << dsDoUong[i].getGia() << setw(10) << left << dsDoUong[i].getGia()*sl[i] << endl;
 		tongtien += dsDoUong[i].getGia() * sl[i];
 		soluong += sl[i];
 	}
