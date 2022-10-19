@@ -19,7 +19,8 @@ int main() {
 	
 	NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
 	NhanVienQuanLi nvql = (data.getNvQuanLi())[0];
-	nvql.menuQuanLi(data);
+	//nvql.menuQuanLi(data);
+	nvpv.menuPhucvu(data);
 	
 	
 	return 0;

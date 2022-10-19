@@ -81,7 +81,8 @@ class menu
 		int sleep = 180;
 		pre(TAB);
 		printf(" 1. Xem danh sach do uong \n\n"); Sleep(sleep); pre(TAB);
-		printf(" 2. Xuat hoa don \n\n"); Sleep(sleep); pre(TAB);
+		printf(" 2. Lam do uong \n\n"); Sleep(sleep); pre(TAB);
+		
 		printf(" 0. Main Menu \n\n");
 		printf("Enter Your From 1-0: ");
 		Sleep(250);

@@ -2,10 +2,91 @@
 #include<iostream>
 #include<string>
 #include<iomanip>
+#include"menu.h"
+#include<string>
+
 
 using namespace std;
 #define LUONG 15000
+void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
+	bool check = true;
+	while (check) {
+		menu a;
+		a.menu_phucvu();
+		int choise;
+		cin >> choise;
+		 
+		
+		switch (choise)
+		{
+			
+	case(1):
+		{
+			xemDsDoUong(data);
+			system("pause");
+			break;
+		}
+	case(2):
+		{	xemDsDoUong(data);
+		//system("pause");
+		cout << "Nhap so loai do uong: ";
+		int n;
+		cin >> n;
+		Vector<DoUong> menu = data.getDoUong();
+		Vector<DoUong> dsDoUong;
 
+		Vector<int> sl;
+		for (int  i = 0; i < n; i++)
+		{
+		cout << "Nhap ma do uong: ";
+		int  ma;
+		cin >> ma;
+		cout << "Nhap so luong: ";
+		int so;
+		cin >> so;
+		
+		dsDoUong.push_back(menu[ma]);
+		sl.push_back(so);
+
+		}
+		lamDoUong(data, dsDoUong, sl);
+		ofstream f,c;
+		c.open("hoadon.csv", ios::out);
+		f.open("douong2.csv", ios::out);
+		data.xuatFileDsDoUong(f);
+		xuatBill(c, dsDoUong, sl);
+		c.close();
+		f.close();
+		xuatBill(cout, dsDoUong, sl);
+		system("pause");
+		break;
+}
+	
+	case(0):
+	{	cout << "Da tat menu phuc vu\n";
+		check = false;
+		break;
+		
+	}
+		
+		
+	}
+		
+			
+	}
+}
+void NhanVienPhucVu::xemDsDoUong(DuLieu& data) {
+	Vector<DoUong>& douong = data.getDoUong();
+	cout << "DANH SACH DO UONG!" << endl;
+	for (int i = 0; i < douong.size(); i++) {
+		cout << douong[i].getMaDoUong() << " ";
+		cout << douong[i].getName() << " ";
+		cout << douong[i].getLoaiDoUong() << " ";
+		cout << douong[i].getGia() << " ";
+		cout << douong[i].getSoLuong();
+		cout << endl;
+	}
+}
 NhanVienPhucVu::NhanVienPhucVu(const string& maNv,const string& hoTen,const string& sdt,
 	const string& TK,const string& MK,const float& hsl) {
 
@@ -24,20 +105,21 @@ NhanVienPhucVu::NhanVienPhucVu() {
 	this->MK = "";
 	this->hsl = 0;
 }
-void NhanVienPhucVu::lamDoUong(DuLieu& data, const Vector<DoUong>& dsDoUong, const Vector<int>& sl){
-	Vector<DoUong> &menu = data.getDoUong();
+void NhanVienPhucVu::lamDoUong(DuLieu& data, const Vector<DoUong>& dsDoUong, const Vector<int>& sl) {
+	Vector<DoUong>& menu = data.getDoUong();
 	for (int i = 0; i < dsDoUong.size(); i++) {
 		int maDoUong = dsDoUong[i].getMaDoUong();
+
 		for (int j = 0; j < menu.size(); j++) {
-			if (menu[i].getMaDoUong() == maDoUong) {
-				int soLuongcon = menu[i].getSoLuong();
+			if (menu[j].getMaDoUong() == maDoUong) {
+				int soLuongcon = menu[j].getSoLuong();
 				// ktra thu con so luong hay  k
 				if (soLuongcon < sl[i]) {
 					cout << "Do uong co ma: " << maDoUong << " con lai khong du!" << endl;
 				}
 				else {
-					menu[i].setSoLuong(soLuongcon - sl[i]);
-				}	
+					menu[j].setSoLuong(soLuongcon - sl[i]);
+				}
 				break;
 			}
 		}

@@ -82,7 +82,7 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 	system("pause");
 	}
 
-	data.xuatFileDsDoUong(cout);
+	//data.xuatFileDsDoUong(cout);
 	ofstream f;
 	f.open("douong2.csv", ios::out);
 	data.xuatFileDsDoUong(f);
