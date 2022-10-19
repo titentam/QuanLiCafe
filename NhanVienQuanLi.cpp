@@ -38,6 +38,8 @@ void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 		}
 	}
 	nvpv.push_back(nv);
+
+	
 }
 void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
@@ -54,6 +56,7 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 		cout << "Khong tim thay nhan vien phuc vu co maNv: " << maNv << endl;
 		system("pause");
 	}
+
 }
 void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 	Vector<NhanVienPhucVu>& nvPhucVu = data.getNvPhucVu();
@@ -231,7 +234,7 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 			int madouong;
 			cout << "nhap ma do uong: ";
 			cin >> madouong;
-			float soluong;
+			int soluong;
 			cout << "so luong con lai: ";
 			cin >> soluong;
 			themSLDoUong(data, madouong, soluong);
