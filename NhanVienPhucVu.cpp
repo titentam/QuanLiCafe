@@ -11,7 +11,7 @@ using namespace std;
 void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 	bool check = true;
 	while (check) {
-		menu a;
+		Menu a;
 		a.menu_phucvu();
 		int choise;
 		cin >> choise;

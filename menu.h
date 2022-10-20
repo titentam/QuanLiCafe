@@ -5,7 +5,8 @@
 #include"DuLieu.h"
 #include<Windows.h>
 using namespace std;
-class menu
+
+class Menu
 {public:
 	void br(int line) {
 		for (int i = 0; i < line; i++) {
@@ -70,7 +71,7 @@ class menu
 		cout << "7.Chinh sua gia mon\n"; Sleep(sleep); pre(TAB);
 		cout << "8.Cap nhat so luong con trong kho cua 1 mon \n"; Sleep(sleep); pre(TAB);
 		cout << "9.Xem danh sach do uong\n"; Sleep(sleep); pre(TAB);
-		cout << "0.Thoat\n"; Sleep(sleep); pre(TAB);
+		cout << "0.Main Menu\n"; Sleep(sleep); pre(TAB);
 		br(3); pre(2); cout << "============================================================================================== \n";
 		cout << "Moi nhap lua chon: "; Sleep(sleep); 
 		Sleep(250);
@@ -88,19 +89,89 @@ class menu
 		Sleep(250);
 	}
 	void main_menu() {
+		bool check = true;
+		while (check) {
+			system("cls");
+			br(5); pre(6); cout << "    >>  DANG NHAP  <<"; Sleep(400);
+			br(2); pre(6); cout << ">> 1. Nhan vien quan li"; Sleep(400);
+			br(2); pre(6); cout << ">> 2. Nhan vien phuc vu"; Sleep(400);
+			br(2); pre(6); cout << ">> 3. Thoat";  Sleep(400);
+			int choise;
+			br(2); pre(6); cout << ">>Nhap lua chon: "; cin >> choise;
+			switch (choise)
+			{
+			case(1): {
+				DuLieu data;
+				//data.docFileDsDoUong();
+				data.docFileDsNhanVien();
+				cout << "Nhap ma nhan vien: ";
+				string manv;
+				cin.ignore();
+				getline(cin, manv);
 
-		system("cls");
-		br(5); pre(6); cout << "    >>  DANG NHAP  <<"; Sleep(400);
-		br(2); pre(6); cout << ">> 1. Nhan vien quan li"; Sleep(400);
-		br(2); pre(6); cout << ">> 2. Nhan vien phuc vu"; Sleep(400);
-		br(2); pre(6); cout << ">> 3. Thoat";  Sleep(400);
-		//   br(2); pre(3); echo("=> 4. Admin Panel");  Sleep(400);
+				//nhapmk();
+				NhanVienQuanLi nvql = (data.getNvQuanLi())[0];
+				if (manv.compare(nvql.getMaNv()) != 0) {
+					cout << "Sai tai khoan moi thu lai!!!";
+					system("pause");
+					break;
+				}
 
-		br(1);
+				else if (manv.compare(nvql.getMaNv()) == 0 && nhapmk().compare(nvql.getMK()) == 0) {
+					nvql.menuQuanLi(data);
+					break;
+				}
+				else {
+					cout << "Sai tai khoan hoac mk, moi thu lai!!!";
+					system("pause");
+					break;
+				}
+			}
+			case(2): {
+				DuLieu data;
+				data.docFileDsDoUong();
+				data.docFileDsNhanVien();
+				cout << "Nhap ma nhan vien: ";
+				string manv;
+				cin.ignore();
+				getline(cin, manv);
 
+				//nhapmk();
+				NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
+				if (manv.compare(nvpv.getMaNv()) != 0) {
+					cout << "Sai tai khoan moi thu lai!!!";
+					system("pause");
+					break;
+				}
+
+				else if (manv.compare(nvpv.getMaNv()) == 0 && nhapmk().compare(nvpv.getMK()) == 0) {
+					//NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
+					nvpv.menuPhucvu(data);
+					break;
+					
+				}
+				else {
+					cout << "Sai tai khoan hoac mk, moi thu lai!!!";
+					system("pause");
+					break;
+				}
+			}
+			case(3):
+			{
+			check = false;
+			break;
+
+			}
+			}
+
+			//   br(2); pre(3); echo("=> 4. Admin Panel");  Sleep(400);
+
+
+
+		}
 	}
 
-	void nhapmk() {
+	string nhapmk() {
 		char c;
 		string res = "";
 		cout << "Enter password: " << endl;
@@ -118,7 +189,8 @@ class menu
 				res += c;
 			}
 		} while (c != 13);
-		cout << endl << res;
+		return res;
 	}
 };
+
 

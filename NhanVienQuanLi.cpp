@@ -210,9 +210,9 @@ void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& 
 	f.close();
 }
 void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
-
-	while (true) {
-		menu a;
+	bool check = true;
+	while (check) {
+		Menu a;
 		a.menu_quanli();
 		int luachon;
 		cin >> luachon;
@@ -271,7 +271,10 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 			xemDsDoUong(data);
 			system("pause");
 		}
-		else if (luachon == 0) { break; }
+		else if (luachon == 0) {
+			break;
+			check = false;
+		}
 	}
 }
 void NhanVienQuanLi::nhapThongTin() {
