@@ -90,7 +90,124 @@ void DuLieu::docFileDsDoUong() {
 	f.close();
 }
 void DuLieu::thongKe() {
-	cout << "tam";
+	
+	Date d;
+		long long res = 0;
+		cout << "1. Thong ke theo ngay" << endl;
+		cout << "2. Thong ke theo thang" << endl;
+		cout << "3. Thong ke theo nam" << endl;
+		cout << "0. Tro ve" << endl << endl;
+
+		cout << "Nhap lua chon: ";
+		int choice;
+		cin >> choice;
+
+		switch (choice)
+		{
+		case 1: {
+			d.nhap();
+			string month=d.convert();
+			ifstream f;
+			string tke = "ThongKe\\" + d.getNam() + ".csv";
+			f.open(tke, ios::in);
+			if (f.is_open()) {
+				while (!f.eof()) {
+					string tg;
+					long long total;
+					getline(f, tg, ',');
+					f >> total;
+					f.ignore(1);
+					size_t found1 = (tg.substr(8, 2)).find(d.getNgay());
+					size_t found2 = tg.find(month);
+					size_t found3 = tg.find(d.getNam());
+
+					if (found1 != string::npos && found2 != string::npos && found3 != string::npos) {
+						res += total;
+					}
+				}
+				cout << "Doanh thu la: " << res << endl;
+				f.close();
+			}
+			else {
+				cout << "Khong co du lieu!" << endl;
+				system("pause");
+			}
+			break;
+		}
+		case 2: {
+			string tmp;
+			cout << "Moi ban nhap thang: ";
+			cin >> tmp;
+			d.setThang(tmp);
+
+			cout << "Moi ban nhap nam: ";
+			cin >> tmp;
+			d.setNam(tmp);
+			string month=d.convert();
+			ifstream f;
+			string tke = "ThongKe\\" + d.getNam() + ".csv";
+			f.open(tke, ios::in);
+			if (f.is_open()) {
+				while (!f.eof()) {
+					string tg;
+					long long total;
+					getline(f, tg, ',');
+					f >> total;
+					f.ignore(1);
+					cout << tg << "," << total << endl;
+					size_t found2 = tg.find(month);
+					size_t found3 = tg.find(d.getNam());
+
+					if (found2 != string::npos && found3 != string::npos) {
+						res += total;
+					}
+				}
+				cout << "Doanh thu la: " << res << endl;
+				f.close();
+			}
+			else {
+				cout << "Khong co du lieu!" << endl;
+				system("pause");
+			}
+			break;
+		}
+		case 3: {
+			string tmp;
+			cout << "Moi ban nhap nam: ";
+			cin >> tmp;
+
+			d.setNam(tmp);
+
+			ifstream f;
+			string tke = "ThongKe\\" + d.getNam() + ".csv";
+			f.open(tke, ios::in);
+			if (f.is_open()) {
+				while (!f.eof()) {
+					string tg;
+					long long total;
+					getline(f, tg, ',');
+					f >> total;
+					f.ignore(1);
+					size_t found3 = tg.find(d.getNam());
+
+					if (found3 != string::npos) {
+						res += total;
+					}
+				}
+				cout << "Doanh thu la: " << res << endl;
+				f.close();
+			}
+			else {
+				cout << "Khong co du lieu!" << endl;
+				system("pause");
+			}
+			break;
+		}
+		default:
+			cout << "Khong co lua chon nay trong menu!" << endl;
+			system("pause");
+			break;
+		}
 }
 Vector<DoUong>& DuLieu::getDoUong() {
 	return douong;

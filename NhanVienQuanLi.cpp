@@ -262,7 +262,7 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 			int madouong;
 			cout << "nhap ma do uong: ";
 			cin >> madouong;
-			float soluong;
+			int soluong;
 			cout << "so luong con lai: ";
 			cin >> soluong;
 			themSLDoUong(data, madouong, soluong);

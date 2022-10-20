@@ -15,20 +15,8 @@ int main() {
 	DuLieu data;
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
-	Menu a;
-	//a.loadingbar();
-	a.main_menu();
-	//a.nhapmk();
-	//NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
-	//NhanVienQuanLi nvql = (data.getNvQuanLi())[0];
-	//Vector<DoUong> menu = data.getDoUong();
-	//
-	//
-	//
-	//
-	////nvql.menuQuanLi(data);
-	//nvpv.menuPhucvu(data);
-	//
+	Menu m;
+	m.main_menu(data);
 
 	return 0;
 }

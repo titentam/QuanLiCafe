@@ -15,18 +15,18 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 		a.menu_phucvu();
 		int choise;
 		cin >> choise;
-		 
-		
+
+
 		switch (choise)
 		{
-			
-	case(1):
+
+		case(1):
 		{
 			xemDsDoUong(data);
 			system("pause");
 			break;
 		}
-	case(2):
+		case(2):
 		{	xemDsDoUong(data);
 		//system("pause");
 		cout << "Nhap so loai do uong: ";
@@ -36,21 +36,21 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 		Vector<DoUong> dsDoUong;
 
 		Vector<int> sl;
-		for (int  i = 0; i < n; i++)
+		for (int i = 0; i < n; i++)
 		{
-		cout << "Nhap ma do uong: ";
-		int  ma;
-		cin >> ma;
-		cout << "Nhap so luong: ";
-		int so;
-		cin >> so;
-		
-		dsDoUong.push_back(menu[ma]);
-		sl.push_back(so);
+			cout << "Nhap ma do uong: ";
+			int  ma;
+			cin >> ma;
+			cout << "Nhap so luong: ";
+			int so;
+			cin >> so;
+
+			dsDoUong.push_back(menu[ma]);
+			sl.push_back(so);
 
 		}
 		lamDoUong(data, dsDoUong, sl);
-		ofstream f,c;
+		ofstream f, c;
 		c.open("hoadon.csv", ios::out);
 		f.open("douong2.csv", ios::out);
 		data.xuatFileDsDoUong(f);
@@ -60,20 +60,18 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 		xuatBill(cout, dsDoUong, sl);
 		system("pause");
 		break;
-}
-	
-	case(0):
-	{	cout << "Da tat menu phuc vu\n";
+		}
+
+		case(0):
+		{	cout << "Da tat menu phuc vu\n";
 		check = false;
 		break;
-		
+
+		}
+		}
 	}
 		
-		
-	}
-		
-			
-	}
+
 }
 void NhanVienPhucVu::xemDsDoUong(DuLieu& data) {
 	Vector<DoUong>& douong = data.getDoUong();
@@ -158,7 +156,7 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	outw << setw(20) <<left<< setprecision(20) << total << endl;
 
 	ofstream f;
-	int s = tg.size() - 5;
+	int s = (int)tg.size() - 5;
 	string thongke = "ThongKe\\";
 	thongke += tg.substr(s, 4) + ".txt";
 	f.open(thongke, ios::app);

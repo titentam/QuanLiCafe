@@ -5,6 +5,7 @@
 #include"DoUong.h"
 #include<iostream>
 #include<string>
+#include"Date.h"
 
 #include<fstream>
 
