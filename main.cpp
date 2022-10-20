@@ -18,5 +18,6 @@ int main() {
 	Menu m;
 	m.main_menu(data);
 
+	//data.thongKe();
 	return 0;
 }
