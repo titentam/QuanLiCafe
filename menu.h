@@ -122,7 +122,7 @@ class Menu
 					break;
 				}
 				else {
-					cout << "Sai tai khoan hoac mk, moi thu lai!!!";
+					cout << "!!!Sai tai khoan hoac mk, moi thu lai!!!";
 					system("pause");
 					break;
 				}
@@ -135,26 +135,43 @@ class Menu
 				string manv;
 				cin.ignore();
 				getline(cin, manv);
+				Vector<NhanVienPhucVu> cc = data.getNvPhucVu();
+				int test = 0;
+				for (int i = 0; i < cc.size(); i++) {
 
+					if (cc[i].getMaNv() == manv) {
+						string mk = nhapmk();
+						test = 1;
+						if (cc[i].getMK() == mk) {
+							cc[i].menuPhucvu(data);
+							
+						}
+
+						else cout << "\nSai mk, moi thu lai!!!\n";
+					}
+
+				}
+				if (test == 0) cout << "Sai TK, moi thu lai!!!\n";
 				//nhapmk();
-				NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
-				if (manv.compare(nvpv.getMaNv()) != 0) {
-					cout << "Sai tai khoan moi thu lai!!!";
-					system("pause");
-					break;
-				}
+				break;
+				//NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
+				//if (manv.compare(nvpv.getMaNv()) != 0) {
+				//	cout << "Sai tai khoan moi thu lai!!!";
+				//	system("pause");
+				//	break;
+				//}
 
-				else if (manv.compare(nvpv.getMaNv()) == 0 && nhapmk().compare(nvpv.getMK()) == 0) {
-					//NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
-					nvpv.menuPhucvu(data);
-					break;
-					
-				}
-				else {
-					cout << "Sai tai khoan hoac mk, moi thu lai!!!";
-					system("pause");
-					break;
-				}
+				//else if (manv.compare(nvpv.getMaNv()) == 0 && nhapmk().compare(nvpv.getMK()) == 0) {
+				//	//NhanVienPhucVu nvpv = (data.getNvPhucVu())[0];
+				//	nvpv.menuPhucvu(data);
+				//	break;
+				//	
+				//}
+				//else {
+				//	cout << "Sai tai khoan hoac mk, moi thu lai!!!";
+				//	system("pause");
+				//	break;
+				//}
 			}
 			case(3):
 			{
