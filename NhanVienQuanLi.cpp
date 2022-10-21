@@ -523,6 +523,9 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 			//system("pause");
 			break;
 		}
+		case 12: {
+			data.thongKe();
+		}
 		case 0: {
 			check = false;
 			break;
