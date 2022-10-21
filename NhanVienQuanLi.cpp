@@ -32,7 +32,12 @@ NhanVienQuanLi::NhanVienQuanLi() {
 }
 void NhanVienQuanLi::xemDsNV(DuLieu& data) {
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
-	cout << "DANH SACH NHAN VIEN PHUC VU!" << endl;
+	cout << "\nDANH SACH NHAN VIEN PHUC VU!" << endl;
+	cout << setw(10) << left << "MANV";
+	cout << setw(30) << left << "TEN";
+	cout << setw(15) << left << "SDT";
+	cout << setw(5) << left << "HSL";
+	cout << endl;
 	for (int i = 0; i < nvpv.size(); i++) {
 		nvpv[i].xuatThongTin2();
 	}
@@ -67,7 +72,7 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 				system("pause");
 			}
 			else {
-				cout << "DANH SACH NHAN VIEN CAN TIM: " << endl;
+				cout << "\nDANH SACH NHAN VIEN CAN TIM: " << endl;
 				cout << endl;
 				cout << setw(10) << left << "MANV";
 				cout << setw(30) << left << "TEN";
@@ -99,7 +104,7 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 				system("pause");
 			}
 			else {
-				cout << "DANH SACH NHAN VIEN CAN TIM: " << endl;
+				cout << "\nDANH SACH NHAN VIEN CAN TIM: " << endl;
 				cout << endl;
 				cout << setw(10) << left << "MANV";
 				cout << setw(30) << left << "TEN";
