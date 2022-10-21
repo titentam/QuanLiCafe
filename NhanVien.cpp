@@ -85,8 +85,8 @@ void NhanVien::xuatThongTin2() const
 {
 	/*cout << setw(10) << left << "ID";
 	cout << setw(30) << left << "TEN";
-	cout << setw(15) << left << "LOAI";
-	cout << setw(5) << left << "DG";*/
+	cout << setw(15) << left << "sdt";
+	cout << setw(5) << left << "hsl";*/
 
 	cout << setw(10) << left << maNv;
 	cout << setw(30) << left << hoTen;
