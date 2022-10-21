@@ -62,3 +62,26 @@ void DoUong::xuatThongTinDoUong(ostream& out) {
 	out <<setw(20)<<left<< tenDoUong << " ";
 	out << soLuong << endl;
 }
+
+void DoUong::xuatThongTinDoUong2(ostream& outw)
+{
+	/*outw << setw(7) << left << "ID";
+	outw << setw(25) << left << "TEN";
+	outw << setw(25) << left << "LOAI";
+	outw << setw(15) << left << "DG";*/
+	outw << setw(7) << left << maDoUong;
+	outw << setw(25) << left << tenDoUong;
+	outw << setw(25) << left << loaiDoUong;
+	outw << setw(15) << left << gia;
+	outw << endl;
+}
+
+void DoUong::xuatThongTinDoUong3(ostream& outw)
+{
+	outw << setw(7) << left << maDoUong;
+	outw << setw(25) << left << tenDoUong;
+	outw << setw(25) << left << loaiDoUong;
+	outw << setw(15) << left << gia;
+	outw << setw(10) << left << soLuong;
+	outw << endl;
+}

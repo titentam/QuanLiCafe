@@ -27,5 +27,7 @@ public:
 	void setLoaiDoUong(const string&);
 	void nhapThongTinDoUong();
 	void xuatThongTinDoUong(ostream&);
+	void xuatThongTinDoUong2(ostream&);
+	void xuatThongTinDoUong3(ostream&);
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include<iostream>
+#include<iomanip>
 
 using namespace std;
 
@@ -21,6 +22,11 @@ public:
 		const string& TK,
 		const string& MK,
 		const float& hsl);
+	NhanVien(const string& maNv,
+		const string& hoTen,
+		const string& sdt,
+		const string& MK,
+		const float& hsl);
 	string getName() const;
 	void setName(const string&);
 	string getMaNv() const;
@@ -35,6 +41,7 @@ public:
 	void setHsl(const float&);
 	virtual void nhapThongTin();
 	virtual void xuatThongTin() const;
+	virtual void xuatThongTin2() const;
 };
 
 

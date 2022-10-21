@@ -92,6 +92,14 @@ NhanVienPhucVu::NhanVienPhucVu(const string& maNv,const string& hoTen,const stri
 	this->MK = MK;
 	this->hsl = hsl;
 }
+NhanVienPhucVu::NhanVienPhucVu(const string& maNv, const string& hoTen, const string& sdt, const string& MK, const float& hsl)
+{
+	this->maNv = maNv;
+	this->hoTen = hoTen;
+	this->sdt = sdt;
+	this->MK = MK;
+	this->hsl = hsl;
+}
 NhanVienPhucVu::NhanVienPhucVu() {
 	this->maNv = "";
 	this->hoTen = "";

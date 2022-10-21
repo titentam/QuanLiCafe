@@ -11,6 +11,14 @@ NhanVien::NhanVien(const string& maNv,
 	const string& MK,
 	const float& hsl)
 	:maNv(maNv), hoTen(hoTen), sdt(sdt), TK(TK), MK(MK), hsl(hsl) {}
+NhanVien::NhanVien(const string& maNv, const string& hoTen, const string& sdt, const string& MK, const float& hsl)
+{
+	this->maNv = maNv;
+	this->hoTen = hoTen;
+	this->sdt = sdt;
+	this->MK = MK;
+	this->hsl = hsl;
+}
 NhanVien::NhanVien() :maNv(""), hoTen(""), sdt(""), TK(""), MK(""), hsl(0) {
 }
 string NhanVien::getName() const
@@ -58,18 +66,31 @@ void NhanVien::setHsl(const float& hsl) {
 
 void NhanVien::nhapThongTin() {
 	cin.ignore();
-	cout << "Nhap ho ten: "; getline(cin, hoTen);
-	cout << "Nhap sdt: "; getline(cin, sdt);
 	cout << "Nhap ma nhan vien: "; cin >> maNv;
+	cin.ignore();
+	cout << "Nhap ho ten: "; getline(cin, hoTen);
+	cout << "Nhap sdt: "; getline(cin, sdt);	
+	cout << "Nhap mat khau: "; cin >> MK;
 	cout << "Nhap he so luong: "; cin >> hsl;
-	cout << "Nhap tai khoan: "; cin >> TK;
-	cout << "Nhap mat khau"; cin >> MK;
-	
+	cin.ignore();
 }
 void NhanVien::xuatThongTin()const {
 	cout << maNv << " ";
 	cout <<  hoTen << " ";
 	cout <<  sdt << " ";
-	cout <<  hsl << " ";
-	cout <<  TK << endl;
+	cout <<  hsl <<endl;
+}
+
+void NhanVien::xuatThongTin2() const
+{
+	/*cout << setw(10) << left << "ID";
+	cout << setw(30) << left << "TEN";
+	cout << setw(15) << left << "LOAI";
+	cout << setw(5) << left << "DG";*/
+
+	cout << setw(10) << left << maNv;
+	cout << setw(30) << left << hoTen;
+	cout << setw(15) << left << sdt;
+	cout << setw(5) << left << hsl;
+	cout << endl;
 }

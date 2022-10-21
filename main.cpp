@@ -19,5 +19,7 @@ int main() {
 	m.main_menu(data);
 
 	//data.thongKe();
+	/*NhanVienQuanLi a = (data.getNvQuanLi())[0];
+	a.timKiemNV(data);*/
 	return 0;
 }
