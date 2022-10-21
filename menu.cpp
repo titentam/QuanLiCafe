@@ -50,7 +50,25 @@ void Menu::wellcome() {
 //trong file nhanvienquanli.cpp co menu quan li roi
 void Menu::menu_quanli() {
 	system("cls");
-	br(3); pre(2); cout << "===================================== MENU ===== QUAN ===== LI================================ \n";
+	const int SLEEP = 60;
+	const int TAB = 5;
+	br(4); pre(TAB); cout << "    >>  MENU QUAN LI  <<"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 1.  Xem danh sach nhan vien phuc vu"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 2.  Tim kiem nhan vien phuc vu"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 3.  Them nhan vien phuc vu"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 4.  Xoa nhan vien phuc vu"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 5.  Chinh sua thong tin nhan vien phuc vu"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 6.  Xem danh sach do uong"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 7.  Tim kiem do uong"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 8.  Them mon"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 9.  Xoa mon"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 10. Chinh sua gia mon"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 11. Cap nhat so luong con trong kho cua 1 mon"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
+	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
+
+
+	/*br(3); pre(2); cout << "===================================== MENU ===== QUAN ===== LI================================ \n";
 	int TAB = 5;
 	int sleep = 180;
 	pre(TAB);
@@ -66,8 +84,9 @@ void Menu::menu_quanli() {
 	cout << "0.Main Menu\n"; Sleep(sleep); pre(TAB);
 	br(3); pre(2); cout << "============================================================================================== \n";
 	cout << "Moi nhap lua chon: "; Sleep(sleep);
-	Sleep(250);
+	Sleep(250);*/
 }
+
 void Menu::menu_phucvu() {
 	system("cls");  br(3); pre(4); cout << ">>>> Nhan vien phuc vu <<<<   \n\n";
 	int TAB = 5;

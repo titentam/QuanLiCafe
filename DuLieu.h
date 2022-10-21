@@ -32,6 +32,8 @@ public:
 	Vector<NhanVienPhucVu>& getNvPhucVu();
 	Vector<NhanVienQuanLi>& getNvQuanLi();
 	void xuatFileDsNhanvien(ostream& out);
+	void xuatFileDsNhanvien2(ostream& out);
+
 	void xuatFileDsDoUong(ostream& out);
 	
 };
