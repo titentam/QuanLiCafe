@@ -16,11 +16,14 @@ public:
 	void loadingbar();
 	void wellcome();
 	void menu_quanli();
+	void menu_quanliNV();
+	void menu_quanliDoUong();
 	void menu_phucvu();
 	string nhapmk();
 	void danhNhap(string& tk, string& mk);
 	int checkTK(DuLieu& data, const string& tk, const string& mk, const int& opt);
 	void main_menu(DuLieu& data);
 	void menu_thongke();
+
 };
 

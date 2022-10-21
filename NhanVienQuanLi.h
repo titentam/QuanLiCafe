@@ -28,6 +28,8 @@ public:
 	void Edit_Gia(DuLieu& data, const int& MaDouong, const float& gia);
 	void themSLDoUong(DuLieu& data, const int& MaDouong, const int& newsl);
 	void menuQuanLi(DuLieu& data);
+	void menuQuanLiNV(DuLieu& data);
+	void menuQuanLiDoUong(DuLieu& data);
 	void nhapThongTin();
 	void xuatThongTin();
 };

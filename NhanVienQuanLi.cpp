@@ -411,11 +411,12 @@ void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& 
 	data.xuatFileDsDoUong(f);
 	f.close();
 }
-void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
+
+void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 	bool check = true;
 	while (check) {
 		Menu a;
-		a.menu_quanli();
+		a.menu_quanliNV();
 		int choice;
 		cin >> choice;
 		switch (choice)
@@ -430,25 +431,25 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 			break;
 		}
 		case 3: {
-				NhanVienPhucVu nvpv;
-				cout << endl;
-				nvpv.nhapThongTin();
-				// ktra co hop le hay khong
-				Vector<NhanVienPhucVu> dsNvPV = data.getNvPhucVu();
-				for (int i = 0; i < dsNvPV.size(); i++) {
+			NhanVienPhucVu nvpv;
+			cout << endl;
+			nvpv.nhapThongTin();
+			// ktra co hop le hay khong
+			Vector<NhanVienPhucVu> dsNvPV = data.getNvPhucVu();
+			for (int i = 0; i < dsNvPV.size(); i++) {
 
-					while (nvpv.getMaNv() == dsNvPV[i].getMaNv()) {
-						cout << "Ma nhan vien phuc vu nay da ton tai!" << endl;
-						cout << "Vui long nhap lai(Ma nv): ";
-						string id;
-						cin >> id;
-						nvpv.setMaNv(id);
-						cout << endl;
-					}
+				while (nvpv.getMaNv() == dsNvPV[i].getMaNv()) {
+					cout << "Ma nhan vien phuc vu nay da ton tai!" << endl;
+					cout << "Vui long nhap lai(Ma nv): ";
+					string id;
+					cin >> id;
+					nvpv.setMaNv(id);
+					cout << endl;
 				}
-				themNV(data, nvpv);
-				//system("pause");
-				break;
+			}
+			themNV(data, nvpv);
+			//system("pause");
+			break;
 		}
 		case 4: {
 			string manv;
@@ -466,69 +467,114 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 			//system("pause");
 			break;
 		}
-		case 6: {
+		case 0: {
+			check = false;
+			break;
+		}
+		default:
+			break;
+		}
+	}
+}
+void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
+	bool check = true;
+	while (check) {
+		Menu a;
+		a.menu_quanliDoUong();
+		int choice;
+		cin >> choice;
+		switch (choice){
+			case 1: {
 			xemDsDoUong(data);
 			system("pause");
 			break;
 		}
-		case 7: {
-			timKiemDoUong(data);
-			//system("pause");
-			break;
-			
-		}
-		case 8: {
-			DoUong douong;
-			cout << endl;
-			douong.nhapThongTinDoUong();
-			// ktra co hop le hay khong
-			Vector<DoUong> dsDoUong = data.getDoUong();
-			for (int i = 0; i < dsDoUong.size(); i++) {
+			case 2: {
+				timKiemDoUong(data);
+				//system("pause");
+				break;
 
-				while (douong.getMaDoUong() == dsDoUong[i].getMaDoUong()) {
-					cout << "Ma do uong nay da ton tai!" << endl;
-					cout << "Vui long nhap lai(Ma do uong): ";
-					int id;
-					cin >> id;
-					douong.setMaDoUong(id);
-					cout << endl;
-				}
 			}
-			themMon(data, douong);
-			//system("pause");
+			case 3: {
+				DoUong douong;
+				cout << endl;
+				douong.nhapThongTinDoUong();
+				// ktra co hop le hay khong
+				Vector<DoUong> dsDoUong = data.getDoUong();
+				for (int i = 0; i < dsDoUong.size(); i++) {
+
+					while (douong.getMaDoUong() == dsDoUong[i].getMaDoUong()) {
+						cout << "Ma do uong nay da ton tai!" << endl;
+						cout << "Vui long nhap lai(Ma do uong): ";
+						int id;
+						cin >> id;
+						douong.setMaDoUong(id);
+						cout << endl;
+					}
+				}
+				themMon(data, douong);
+				//system("pause");
+				break;
+			}
+			case 4: {
+				int mamon;
+				cout << "Nhap ma do uong can xoa: ";
+				cin >> mamon;
+				xoaMon(data, mamon);
+				//system("pause");
+				break;
+			}
+			case 5: {
+				int maDoUong;
+				cout << "Nhap ma do uong: ";
+				cin >> maDoUong;
+				float gia;
+				cout << "Gia moi: ";
+				cin >> gia;
+				Edit_Gia(data, maDoUong, gia);
+				//system("pause");
+				break;
+			}
+			case 6: {
+				int maDoUong;
+				cout << "Nhap ma do uong: ";
+				cin >> maDoUong;
+				int sl;
+				cout << "So luong: ";
+				cin >> sl;
+				themSLDoUong(data, maDoUong, sl);
+				//system("pause");
+				break;
+			}
+			case 0: {
+				check = false;
+				break;
+			}
+			default:
+				break;
+	}
+	}
+}
+
+void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
+	bool check = true;
+	while (check) {
+		Menu a;
+		a.menu_quanli();
+		int choice;
+		cin >> choice;
+		switch (choice)
+		{
+		case 1: {
+			menuQuanLiNV(data);
 			break;
 		}
-		case 9: {
-			int mamon;
-			cout << "Nhap ma do uong can xoa: ";
-			cin >> mamon;
-			xoaMon(data, mamon);
-			//system("pause");
+		case 2: {
+			menuQuanLiDoUong(data);
 			break;
 		}
-		case 10: {
-			int maDoUong;
-			cout << "Nhap ma do uong: ";
-			cin >> maDoUong;
-			float gia;
-			cout << "Gia moi: ";
-			cin >> gia;
-			Edit_Gia(data, maDoUong, gia);
-			//system("pause");
-			break;
-		}
-		case 11: {
-			int maDoUong;
-			cout << "Nhap ma do uong: ";
-			cin >> maDoUong;
-			int sl;
-			cout << "So luong: ";
-			cin >> sl;
-			themSLDoUong(data, maDoUong, sl);
-			//system("pause");
-			break;
-		}
-		case 12: {
+		
+		case 3: {
 			data.thongKe();
 		}
 		case 0: {
