@@ -114,6 +114,7 @@ string Date::convert()
 		res = "Dec";
 		break;
 	default:
+		res = "ERROR";
 		break;
 	}
 	return res;

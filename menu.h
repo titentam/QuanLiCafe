@@ -20,5 +20,6 @@ public:
 	void danhNhap(string& tk, string& mk);
 	int checkTK(DuLieu& data, const string& tk, const string& mk, const int& opt);
 	void main_menu(DuLieu& data);
+	void menu_thongke();
 };
 

@@ -64,6 +64,7 @@ void Menu::menu_quanli() {
 	br(2); pre(TAB); cout << ">> 9.  Xoa mon"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 10. Chinh sua gia mon"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 11. Cap nhat so luong con trong kho cua 1 mon"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 12. Thong ke"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
 	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
 
@@ -201,4 +202,15 @@ void Menu::main_menu(DuLieu& data) {
 			break;
 		}
 	}
+}
+
+void Menu::menu_thongke()
+{
+	system("cls");
+	cout << "\t\t THONG KE" << endl;
+	cout << "1. Thong ke theo ngay" << endl;
+	cout << "2. Thong ke theo thang" << endl;
+	cout << "3. Thong ke theo nam" << endl;
+	cout << "0. Tro ve" << endl << endl;
+	cout << "Nhap lua chon: ";
 }

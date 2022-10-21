@@ -1,5 +1,6 @@
 #include "DuLieu.h"
 #include<iomanip>
+#include"menu.h"
 
 /*
 	string maNv;
@@ -92,15 +93,12 @@ void DuLieu::docFileDsDoUong() {
 	f.close();
 }
 void DuLieu::thongKe() {
-	
-	Date d;
+	Menu m;
+	bool check = true;
+	while (check) {
+		Date d;
 		long long res = 0;
-		cout << "1. Thong ke theo ngay" << endl;
-		cout << "2. Thong ke theo thang" << endl;
-		cout << "3. Thong ke theo nam" << endl;
-		cout << "0. Tro ve" << endl << endl;
-
-		cout << "Nhap lua chon: ";
+		m.menu_thongke();
 		int choice;
 		cin >> choice;
 
@@ -108,7 +106,7 @@ void DuLieu::thongKe() {
 		{
 		case 1: {
 			d.nhap();
-			string month=d.convert();
+			string month = d.convert();
 			ifstream f;
 			string tke = "ThongKe\\" + d.getNam() + ".csv";
 			f.open(tke, ios::in);
@@ -128,6 +126,7 @@ void DuLieu::thongKe() {
 					}
 				}
 				cout << "Doanh thu la: " << res << endl;
+				system("pause");
 				f.close();
 			}
 			else {
@@ -138,14 +137,14 @@ void DuLieu::thongKe() {
 		}
 		case 2: {
 			string tmp;
-			cout << "Moi ban nhap thang: ";
+			cout << "Moi ban nhap thang(mm): ";
 			cin >> tmp;
 			d.setThang(tmp);
 
-			cout << "Moi ban nhap nam: ";
+			cout << "Moi ban nhap nam(yyyy): ";
 			cin >> tmp;
 			d.setNam(tmp);
-			string month=d.convert();
+			string month = d.convert();
 			ifstream f;
 			string tke = "ThongKe\\" + d.getNam() + ".csv";
 			f.open(tke, ios::in);
@@ -156,7 +155,7 @@ void DuLieu::thongKe() {
 					getline(f, tg, ',');
 					f >> total;
 					f.ignore(1);
-					cout << tg << "," << total << endl;
+					//cout << tg << "," << total << endl;
 					size_t found2 = tg.find(month);
 					size_t found3 = tg.find(d.getNam());
 
@@ -165,6 +164,7 @@ void DuLieu::thongKe() {
 					}
 				}
 				cout << "Doanh thu la: " << res << endl;
+				system("pause");
 				f.close();
 			}
 			else {
@@ -197,6 +197,7 @@ void DuLieu::thongKe() {
 					}
 				}
 				cout << "Doanh thu la: " << res << endl;
+				system("pause");
 				f.close();
 			}
 			else {
@@ -205,11 +206,17 @@ void DuLieu::thongKe() {
 			}
 			break;
 		}
+		case 0: {
+			check = false;
+			break;
+		}
 		default:
-			cout << "Khong co lua chon nay trong menu!" << endl;
+			cout << "KHONG CO LUA CHON NAY TRONG MENU!" << endl;
+			cout << "VUI LONG NHAP LAI!" << endl;
 			system("pause");
 			break;
 		}
+	}
 }
 Vector<DoUong>& DuLieu::getDoUong() {
 	return douong;
