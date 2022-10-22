@@ -188,8 +188,9 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	string thongke = "ThongKe\\";
 	thongke += tg.substr(s, 4) + ".csv";
 	f.open(thongke, ios::app);
+	f << endl;
 	tg = tg.substr(0, tg.size() - 1);
-	f << tg << "," << setprecision(20) << total << endl;
+	f << tg << "," << setprecision(20)<<total;
 	f.close();
 }
 

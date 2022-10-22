@@ -106,9 +106,11 @@ void DuLieu::thongKe() {
 		{
 		case 1: {
 			d.nhap();
+			string day = to_string(d.getNgay());
 			string month = d.convert();
+			string year = to_string(d.getNam());
 			ifstream f;
-			string tke = "ThongKe\\" + d.getNam() + ".csv";
+			string tke = "ThongKe\\" + year + ".csv";
 			f.open(tke, ios::in);
 			if (f.is_open()) {
 				while (!f.eof()) {
@@ -117,9 +119,9 @@ void DuLieu::thongKe() {
 					getline(f, tg, ',');
 					f >> total;
 					f.ignore(1);
-					size_t found1 = (tg.substr(8, 2)).find(d.getNgay());
+					size_t found1 = (tg.substr(8, 2)).find(day);
 					size_t found2 = tg.find(month);
-					size_t found3 = tg.find(d.getNam());
+					size_t found3 = tg.find(year);
 
 					if (found1 != string::npos && found2 != string::npos && found3 != string::npos) {
 						res += total;
@@ -136,17 +138,18 @@ void DuLieu::thongKe() {
 			break;
 		}
 		case 2: {
-			string tmp;
-			cout << "Moi ban nhap thang(mm): ";
+			int tmp;
+			cout << "Moi ban nhap thang: ";
 			cin >> tmp;
 			d.setThang(tmp);
 
-			cout << "Moi ban nhap nam(yyyy): ";
+			cout << "Moi ban nhap nam: ";
 			cin >> tmp;
 			d.setNam(tmp);
 			string month = d.convert();
+			string year = to_string(d.getNam());
 			ifstream f;
-			string tke = "ThongKe\\" + d.getNam() + ".csv";
+			string tke = "ThongKe\\" + year + ".csv";
 			f.open(tke, ios::in);
 			if (f.is_open()) {
 				while (!f.eof()) {
@@ -157,7 +160,7 @@ void DuLieu::thongKe() {
 					f.ignore(1);
 					//cout << tg << "," << total << endl;
 					size_t found2 = tg.find(month);
-					size_t found3 = tg.find(d.getNam());
+					size_t found3 = tg.find(year);
 
 					if (found2 != string::npos && found3 != string::npos) {
 						res += total;
@@ -174,14 +177,14 @@ void DuLieu::thongKe() {
 			break;
 		}
 		case 3: {
-			string tmp;
+			int nam;
 			cout << "Moi ban nhap nam: ";
-			cin >> tmp;
+			cin >> nam;
 
-			d.setNam(tmp);
+			string year = to_string(nam);
 
 			ifstream f;
-			string tke = "ThongKe\\" + d.getNam() + ".csv";
+			string tke = "ThongKe\\" + year + ".csv";
 			f.open(tke, ios::in);
 			if (f.is_open()) {
 				while (!f.eof()) {
@@ -190,7 +193,7 @@ void DuLieu::thongKe() {
 					getline(f, tg, ',');
 					f >> total;
 					f.ignore(1);
-					size_t found3 = tg.find(d.getNam());
+					size_t found3 = tg.find(year);
 
 					if (found3 != string::npos) {
 						res += total;

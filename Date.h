@@ -5,23 +5,23 @@ using namespace std;
 class Date
 {
 private:
-	string ngay;
-	string thang;
-	string nam;
+	int ngay;
+	int thang;
+	int nam;
 public:
 	Date();
 	~Date();
-	bool check(const string&, const string&, const string&);
+	bool check(const int&, const int&, const int&);
 	void nhap();
 	void xuat();
 
-	string getNgay() const;
-	string getThang() const;
-	string getNam() const;
+	int getNgay() const;
+	int getThang() const;
+	int getNam() const;
 
-	void setNgay(const string&);
-	void setThang(const string&);
-	void setNam(const string&);
+	void setNgay(const int&);
+	void setThang(const int&);
+	void setNam(const int&);
 
 	string convert();
 
