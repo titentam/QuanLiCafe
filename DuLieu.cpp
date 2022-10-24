@@ -14,7 +14,7 @@ DuLieu::DuLieu() {
 }
 void DuLieu::docFileDsNhanVien() {
 	ifstream f;
-	f.open("NhanVien2.csv", ios::in);
+	f.open("NhanVien.csv", ios::in);
 	while (!f.eof()) {
 		string maNv;
 		string hoTen;
@@ -232,16 +232,7 @@ Vector<NhanVienQuanLi>& DuLieu::getNvQuanLi()
 {
 	return this->nvql;
 }
-
-void DuLieu::xuatFileDsNhanvien(ostream& out) {
-	for (int i = 0; i < nvql.size(); i++) {
-		out << nvql[i].getMaNv() << "," << nvql[i].getName() << "," << nvql[i].getSdt() << "," << nvql[i].getTK() << "," << nvql[i].getMK() << "," << nvql[i].getHsl() << endl;
-	}
-	for (int i = 0; i < nvpv.size(); i++) {
-		out << nvpv[i].getMaNv() << "," << nvpv[i].getName() << "," << nvpv[i].getSdt() << "," << nvpv[i].getTK() << "," << nvpv[i].getMK() << "," << nvpv[i].getHsl() << endl;
-	}
-}
-void DuLieu::xuatFileDsNhanvien2(ostream& out)
+void DuLieu::xuatFileDsNhanvien(ostream& out)
 {
 	for (int i = 0; i < nvql.size(); i++) {
 		out << nvql[i].getMaNv() << "," << nvql[i].getName() << "," << nvql[i].getSdt() << "," << nvql[i].getMK() << "," << nvql[i].getHsl() << endl;
@@ -249,6 +240,7 @@ void DuLieu::xuatFileDsNhanvien2(ostream& out)
 	for (int i = 0; i < nvpv.size(); i++) {
 		out << nvpv[i].getMaNv() << "," << nvpv[i].getName() << "," << nvpv[i].getSdt() << "," << nvpv[i].getMK() << "," << nvpv[i].getHsl() << endl;
 	}
+	out << "\b";
 }
 void DuLieu::xuatFileDsDoUong(ostream& out) {
 	for (int i = 0; i < douong.size(); i++) {

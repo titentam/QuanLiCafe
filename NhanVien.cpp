@@ -4,13 +4,6 @@
 
 using namespace std;
 
-NhanVien::NhanVien(const string& maNv,
-	const string& hoTen,
-	const string& sdt,
-	const string& TK,
-	const string& MK,
-	const float& hsl)
-	:maNv(maNv), hoTen(hoTen), sdt(sdt), TK(TK), MK(MK), hsl(hsl) {}
 NhanVien::NhanVien(const string& maNv, const string& hoTen, const string& sdt, const string& MK, const float& hsl)
 {
 	this->maNv = maNv;
@@ -19,7 +12,7 @@ NhanVien::NhanVien(const string& maNv, const string& hoTen, const string& sdt, c
 	this->MK = MK;
 	this->hsl = hsl;
 }
-NhanVien::NhanVien() :maNv(""), hoTen(""), sdt(""), TK(""), MK(""), hsl(0) {
+NhanVien::NhanVien() :maNv(""), hoTen(""), sdt(""), MK(""), hsl(0) {
 }
 string NhanVien::getName() const
 {
@@ -44,12 +37,6 @@ string NhanVien::getSdt()const
 void NhanVien::setSdt(const string &sdt)
 {
 	this->sdt = sdt;
-}
-string NhanVien::getTK()const {
-	return this->TK;
-}
-void NhanVien::setTK(const string &TK) {
-	this->TK = TK;
 }
 string NhanVien::getMK() const {
 	return this->MK;

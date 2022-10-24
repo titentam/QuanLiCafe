@@ -4,16 +4,6 @@
 #include<iomanip>
 using namespace std;
 
-NhanVienQuanLi::NhanVienQuanLi(const string& maNv, const string& hoTen, const string& sdt,
-	const string& TK, const string& MK, const float& hsl) {
-
-	this->maNv = maNv;
-	this->hoTen = hoTen;
-	this->sdt = sdt;
-	this->TK = TK;
-	this->MK = MK;
-	this->hsl = hsl;
-}
 NhanVienQuanLi::NhanVienQuanLi(const string& maNv, const string& hoTen, const string& sdt, const string& MK, const float& hsl)
 {
 	this->maNv = maNv;
@@ -26,7 +16,6 @@ NhanVienQuanLi::NhanVienQuanLi() {
 	this->maNv = "";
 	this->hoTen = "";
 	this->sdt = "";
-	this->TK = "";
 	this->MK = "";
 	this->hsl = 0;
 }
@@ -133,7 +122,7 @@ void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
 	for (int i = 0; i < nvpv.size(); i++) {
 		if (nv.getMaNv() == nvpv[i].getMaNv()) {
-			cout << "Nhap khong thanh cong, nhan vien nay da ton tai!" << endl;
+			cout << "Nhap khong thanh cong, ma nhan vien nay da ton tai!" << endl;
 			system("pause");
 			return;
 		}
@@ -143,7 +132,7 @@ void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 	nvpv.push_back(nv);
 	data.xuatFileDsNhanvien(cout);
 	ofstream f;
-	f.open("tam.csv", ios::out);
+	f.open("NhanVien.csv", ios::out);
 	data.xuatFileDsNhanvien(f);
 	f.close();
 }
@@ -162,12 +151,15 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 		cout << "Khong tim thay nhan vien phuc vu co maNv: " << maNv << endl;
 		system("pause");
 	}
-	data.xuatFileDsNhanvien(cout);
-	ofstream f;
-	f.open("tam.csv", ios::out);
-	data.xuatFileDsNhanvien(f);
-	f.close();
-}void NhanVienQuanLi::xoaMon(DuLieu& data, const int& maDoUong) {
+	else {
+		data.xuatFileDsNhanvien(cout);
+		ofstream f;
+		f.open("NhanVien.csv", ios::out);
+		data.xuatFileDsNhanvien(f);
+		f.close();
+	}
+}
+void NhanVienQuanLi::xoaMon(DuLieu& data, const int& maDoUong) {
 	Vector<DoUong>& doUong = data.getDoUong();
 	bool check = true;
 	for (int i = 0; i < doUong.size(); i++) {
@@ -183,12 +175,12 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 		cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
 		system("pause");
 	}
-
-	//data.xuatFileDsDoUong(cout);
-	ofstream f;
-	f.open("douong2.csv", ios::out);
-	data.xuatFileDsDoUong(f);
-	f.close();
+	else {
+		ofstream f;
+		f.open("Menu.csv", ios::out);
+		data.xuatFileDsDoUong(f);
+		f.close();
+	}
 }
 void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 	Vector<NhanVienPhucVu>& nvPhucVu = data.getNvPhucVu();
@@ -228,6 +220,10 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 				getline(cin, tenMoi);
 				nvPhucVu[pos].setName(tenMoi);
 				cout << "SUA THANH CONG!" << endl;
+				ofstream f;
+				f.open("NhanVien.csv", ios::out);
+				data.xuatFileDsNhanvien(f);
+				f.close();
 				system("pause");
 				break;
 			}
@@ -237,6 +233,10 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 				getline(cin, sdtMoi);
 				nvPhucVu[pos].setSdt(sdtMoi);
 				cout << "SUA THANH CONG!" << endl;
+				ofstream f;
+				f.open("NhanVien.csv", ios::out);
+				data.xuatFileDsNhanvien(f);
+				f.close();
 				system("pause");
 				break;
 			}
@@ -246,6 +246,10 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 				cin >> hslMoi;
 				nvPhucVu[pos].setHsl(hslMoi);
 				cout << "SUA THANH CONG!" << endl;
+				ofstream f;
+				f.open("NhanVien.csv", ios::out);
+				data.xuatFileDsNhanvien(f);
+				f.close();
 				system("pause");
 				break;
 			}
@@ -260,10 +264,6 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 			
 		}
 	}
-	ofstream f;
-	f.open("tam.csv", ios::out);
-	data.xuatFileDsNhanvien(f);
-	f.close();
 }
 // quan li menu
 void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
@@ -336,9 +336,10 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 				cout << setw(25) << left << "TEN";
 				cout << setw(25) << left << "LOAI";
 				cout << setw(15) << left << "DG";
+				cout << setw(15) << left << "SL";
 				cout << endl;
 				for (int i = 0; i < res.size(); i++) {
-					res[i].xuatThongTinDoUong2(cout);
+					res[i].xuatThongTinDoUong3(cout);
 				}
 			}
 			system("pause");
@@ -369,9 +370,8 @@ void NhanVienQuanLi::themMon(DuLieu& data, const DoUong& mon) {
 	cout << "Them thanh cong!" << endl;
 	system("pause");
 	doUong.push_back(mon);
-	//data.xuatFileDsDoUong(cout);
 	ofstream f;
-	f.open("douong2.csv", ios::out);
+	f.open("Menu.csv", ios::out);
 	data.xuatFileDsDoUong(f);
 	f.close();
 }
@@ -382,17 +382,16 @@ void NhanVienQuanLi::Edit_Gia(DuLieu& data, const int& MaDouong, const float& gi
 		if (doUong[i].getMaDoUong() == MaDouong) {
 			doUong[i].setGia(gia);
 			cout << "Sua thanh cong!" << endl;
+			ofstream f;
+			f.open("Menu.csv", ios::out);
+			data.xuatFileDsDoUong(f);
+			f.close();
 			system("pause");
 			return;
 		}
 	}
 	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
 	system("pause");
-	//data.xuatFileDsDoUong(cout);
-	ofstream f;
-	f.open("douong2.csv", ios::out);
-	data.xuatFileDsDoUong(f);
-	f.close();
 }
 void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& newsl) {
 	Vector<DoUong>& doUong = data.getDoUong();
@@ -400,17 +399,16 @@ void NhanVienQuanLi::themSLDoUong(DuLieu& data, const int& MaDouong, const int& 
 		if (doUong[i].getMaDoUong() == MaDouong) {
 			doUong[i].setSoLuong(newsl);
 			cout << "Them thanh cong!" << endl;
+			ofstream f;
+			f.open("Menu.csv", ios::out);
+			data.xuatFileDsDoUong(f);
+			f.close();
 			system("pause");
 			return;
 		}
 	}
 	cout << "KHONG CO DO UONG NAY TRONG DANH SACH" << endl;
 	system("pause");
-	data.xuatFileDsDoUong(cout);
-	ofstream f;
-	f.open("douong2.csv", ios::out);
-	data.xuatFileDsDoUong(f);
-	f.close();
 }
 
 void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {

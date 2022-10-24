@@ -11,17 +11,10 @@ protected:
 	string maNv;
 	string hoTen;
 	string sdt;
-	string TK;
 	string MK;
 	float hsl;
 public:
 	NhanVien();
-	NhanVien(const string& maNv,
-		const string& hoTen,
-		const string& sdt,
-		const string& TK,
-		const string& MK,
-		const float& hsl);
 	NhanVien(const string& maNv,
 		const string& hoTen,
 		const string& sdt,
@@ -33,8 +26,6 @@ public:
 	void setMaNv(const string&);
 	string getSdt() const;
 	void setSdt(const string&);
-	string getTK() const;
-	void setTK(const string&);
 	string getMK() const;
 	void setMK(const string&);
 	float getHsl() const;

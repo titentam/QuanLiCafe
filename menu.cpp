@@ -69,7 +69,7 @@ void Menu::menu_quanliDoUong() {
 	br(2); pre(TAB); cout << ">> 2. Tim kiem do uong"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 3. Them mon"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 4. Xoa mon"; Sleep(SLEEP);
-	br(2); pre(TAB); cout << ">> 5.	 Chinh sua gia mon"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 5. Chinh sua gia mon"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 6. Cap nhat so luong con trong kho cua 1 mon"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 0. Tro ve";  Sleep(SLEEP);
 	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
@@ -93,16 +93,15 @@ void Menu::menu_quanliNV() {
 }
 
 void Menu::menu_phucvu() {
-	system("cls");  br(3); pre(4); cout << ">>>> Nhan vien phuc vu <<<<   \n\n";
-	int TAB = 5;
-	int sleep = 180;
-	pre(TAB);
-	printf(" 1. Xem danh sach do uong \n\n"); Sleep(sleep); pre(TAB);
-	printf(" 2. Lam do uong \n\n"); Sleep(sleep); pre(TAB);
 
-	printf(" 0. Main Menu \n\n");
-	printf("Enter Your From 1-0: ");
-	Sleep(250);
+	system("cls");
+	const int SLEEP = 60;
+	const int TAB = 5;
+	br(4); pre(TAB); cout << "    >>  MENU NHAN VIEN PHUC VU <<"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 1.  Xem danh sach do uong"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 2.  Lam do uong"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
+	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
 }
 string Menu::nhapmk() {
 	char c;

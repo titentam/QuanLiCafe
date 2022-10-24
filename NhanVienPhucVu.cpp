@@ -15,56 +15,67 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 		a.menu_phucvu();
 		int choise;
 		cin >> choise;
-
-
 		switch (choise)
 		{
 
-		case(1):
+		case 1:
 		{
+			system("cls");
 			xemDsDoUong(data);
 			system("pause");
 			break;
 		}
-		case(2):
-		{	xemDsDoUong(data);
-		//system("pause");
-		cout << "Nhap so loai do uong: ";
-		int n;
-		cin >> n;
-		Vector<DoUong> menu = data.getDoUong();
-		Vector<DoUong> dsDoUong;
+		case 2:
+		{	
+			system("cls");
+			xemDsDoUong(data);
+			cout << "Nhap so do uong: ";
+			int n;
+			cin >> n;
+			Vector<DoUong> menu = data.getDoUong();
+			Vector<DoUong> dsDoUong;
 
-		Vector<int> sl;
-		for (int i = 0; i < n; i++)
-		{
-			cout << "Nhap ma do uong: ";
-			int  ma;
-			cin >> ma;
-			cout << "Nhap so luong: ";
-			int so;
-			cin >> so;
-
-			dsDoUong.push_back(menu[ma]);
-			sl.push_back(so);
+			Vector<int> sl;
+			for (int i = 0; i < n; i++)
+			{
+				cout << "Nhap ma do uong thu " << i + 1 << ": ";
+				int  ma;
+				cin >> ma;
+				cout << "Nhap so luong: ";
+				int so;
+				cin >> so;
+				bool error = true;
+				for (int i = 0; i < menu.size(); i++) {
+					if (menu[i].getMaDoUong() == ma) {
+						dsDoUong.push_back(menu[i]);
+						sl.push_back(so);
+						error = false;
+					}
+				}
+				if (error) {
+					cout << "MA DO UONG NAY KHONG CO TRONG MENU!" << endl;
+					cout << "VUI LONG NHAP LAI!" << endl;
+					system("pause");
+					i--;
+					cout << endl;
+				}	
+			}
+		    lamDoUong(data, dsDoUong, sl);
+		    xuatBill(cout, dsDoUong, sl);
+		    system("pause");
+		    break;
+		}
+		case 0:
+		{	
+		    check = false;
+		    break;
 
 		}
-		lamDoUong(data, dsDoUong, sl);
-		ofstream f;
-	
-		f.open("douong2.csv", ios::out);
-		data.xuatFileDsDoUong(f);
-		f.close();
-		xuatBill(cout, dsDoUong, sl);
-		system("pause");
-		break;
-		}
-		case(0):
-		{	cout << "Da tat menu phuc vu\n";
-		check = false;
-		break;
-
-		}
+		default:
+			cout << "LUA CHON KHONG CO TRONG MENU!" << endl;
+			cout << "VUI LONG NHAP LAI!" << endl;
+			system("pause");
+			system("cls");
 		}
 	}
 		
@@ -73,24 +84,15 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 void NhanVienPhucVu::xemDsDoUong(DuLieu& data) {
 	Vector<DoUong>& douong = data.getDoUong();
 	cout << "DANH SACH DO UONG!" << endl;
+	cout << setw(7) << left << "ID";
+	cout << setw(25) << left << "TEN";
+	cout << setw(25) << left << "LOAI";
+	cout << setw(15) << left << "DG";
+	cout << setw(10) << left << "SL.Con";
+	cout << endl;
 	for (int i = 0; i < douong.size(); i++) {
-		cout << douong[i].getMaDoUong() << " ";
-		cout << douong[i].getName() << " ";
-		cout << douong[i].getLoaiDoUong() << " ";
-		cout << douong[i].getGia() << " ";
-		cout << douong[i].getSoLuong();
-		cout << endl;
+		douong[i].xuatThongTinDoUong3(cout);
 	}
-}
-NhanVienPhucVu::NhanVienPhucVu(const string& maNv,const string& hoTen,const string& sdt,
-	const string& TK,const string& MK,const float& hsl) {
-
-	this->maNv = maNv;
-	this->hoTen = hoTen;
-	this->sdt = sdt;
-	this->TK = TK;
-	this->MK = MK;
-	this->hsl = hsl;
 }
 NhanVienPhucVu::NhanVienPhucVu(const string& maNv, const string& hoTen, const string& sdt, const string& MK, const float& hsl)
 {
@@ -104,12 +106,12 @@ NhanVienPhucVu::NhanVienPhucVu() {
 	this->maNv = "";
 	this->hoTen = "";
 	this->sdt = "";
-	this->TK = "";
 	this->MK = "";
 	this->hsl = 0;
 }
-void NhanVienPhucVu::lamDoUong(DuLieu& data, const Vector<DoUong>& dsDoUong, const Vector<int>& sl) {
+void NhanVienPhucVu::lamDoUong(DuLieu& data, Vector<DoUong>& dsDoUong, Vector<int>& sl) {
 	Vector<DoUong>& menu = data.getDoUong();
+
 	for (int i = 0; i < dsDoUong.size(); i++) {
 		int maDoUong = dsDoUong[i].getMaDoUong();
 
@@ -119,14 +121,20 @@ void NhanVienPhucVu::lamDoUong(DuLieu& data, const Vector<DoUong>& dsDoUong, con
 				// ktra thu con so luong hay  k
 				if (soLuongcon < sl[i]) {
 					cout << "Do uong co ma: " << maDoUong << " con lai khong du!" << endl;
+					dsDoUong.erase(i);
+					sl.erase(i);
+					i--;
 				}
 				else {
 					menu[j].setSoLuong(soLuongcon - sl[i]);
 				}
-				break;
 			}
 		}
 	}
+	ofstream f;
+	f.open("Menu.csv", ios::out);
+	data.xuatFileDsDoUong(f);
+	f.close();
 }
 void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, const Vector<int>& sl){
 

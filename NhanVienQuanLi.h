@@ -11,8 +11,6 @@ class NhanVienQuanLi : public NhanVien
 public:
 	// quan li nhan vien
 	NhanVienQuanLi();
-	NhanVienQuanLi(const string& maNv,const string& hoTen,const string& sdt,
-		const string& TK,const string& MK, const float& hsl);
 	NhanVienQuanLi(const string& maNv, const string& hoTen, const string& sdt,
 		const string& MK, const float& hsl);
 	void xemDsNV (DuLieu& data);
