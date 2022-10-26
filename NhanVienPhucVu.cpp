@@ -83,16 +83,25 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 }
 void NhanVienPhucVu::xemDsDoUong(DuLieu& data) {
 	Vector<DoUong>& douong = data.getDoUong();
-	cout << "DANH SACH DO UONG!" << endl;
-	cout << setw(7) << left << "ID";
-	cout << setw(25) << left << "TEN";
-	cout << setw(25) << left << "LOAI";
-	cout << setw(15) << left << "DG";
-	cout << setw(10) << left << "SL.Con";
+	system("cls");
+	Menu a;
+	const int TAB = 1;
+	a.br(2);
+	a.pre(6); cout << "DANH SACH DO UONG" << endl;
+	a.br(1);
+	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+	a.pre(TAB); cout << "| " << setw(7) << left << "ID" << "| ";
+	a.pre(TAB); cout << setw(25) << left << "TEN" << "| ";
+	a.pre(TAB); cout << setw(15) << left << "LOAI" << "| ";
+	a.pre(TAB); cout << setw(10) << left << "DG" << "| ";
+	a.pre(TAB); cout << setw(7) << left << "SL.Con" << "| ";
 	cout << endl;
 	for (int i = 0; i < douong.size(); i++) {
 		douong[i].xuatThongTinDoUong3(cout);
 	}
+	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+	a.br(2);
+	a.pre(5);
 }
 NhanVienPhucVu::NhanVienPhucVu(const string& maNv, const string& hoTen, const string& sdt, const string& MK, const float& hsl)
 {
@@ -137,16 +146,21 @@ void NhanVienPhucVu::lamDoUong(DuLieu& data, Vector<DoUong>& dsDoUong, Vector<in
 	f.close();
 }
 void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, const Vector<int>& sl){
-
+	system("cls");
+	Menu a;
+	const int TAB = 1;
+	
 	time_t now = time(0);
 	string tg = ctime(&now);
+	a.br(2);
+	a.pre(6); 
 	outw << "HOA DON THANH TOAN" << endl;
-	outw <<"Thoi gian: "<< tg << endl;
-	outw << setw(7) << left << "ID";
-	outw << setw(25) << left << "Ten ";
-	outw << setw(5) << left << "SL ";
-	outw << setw(15) << left << "DG ";
-	outw << setw(20) << left << "T.Tien" << endl;
+	a.pre(TAB); outw <<"Thoi gian: "<< tg << endl;
+	a.pre(TAB); outw << setw(7) << left << "ID";
+	a.pre(TAB); outw << setw(25) << left << "Ten ";
+	a.pre(TAB); outw << setw(5) << left << "SL ";
+	a.pre(TAB); outw << setw(15) << left << "DG ";
+	a.pre(TAB); outw << setw(20) << left << "T.Tien" << endl;
 	long double total = 0;
 	int soluong = 0;
 	ofstream order;
@@ -155,20 +169,20 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	order << tg.substr(0,tg.size()-1) << ",";
 	for (int i = 0; i < dsDoUong.size(); i++) {
 		
-		outw << setw(7) << left << dsDoUong[i].getMaDoUong();
+		a.pre(TAB); outw << setw(7) << left << dsDoUong[i].getMaDoUong();
 		order << dsDoUong[i].getMaDoUong() << ",";
 
-		outw << setw(25) << left << dsDoUong[i].getName();
+		a.pre(TAB); outw << setw(25) << left << dsDoUong[i].getName();
 		order << dsDoUong[i].getName() << ",";
 
-		outw << setw(5) << left << sl[i];
+		a.pre(TAB); outw << setw(5) << left << sl[i];
 		order << sl[i] << ",";
 
-		outw << setw(15) << left << setprecision(20) << dsDoUong[i].getGia();
+		a.pre(TAB); outw << setw(15) << left << setprecision(20) << dsDoUong[i].getGia();
 		order << setprecision(20) << dsDoUong[i].getGia() << ",";
 
 		float sum = dsDoUong[i].getGia() * sl[i];
-		outw << setw(10) << left << setprecision(20) << sum << endl;
+		a.pre(TAB); outw << setw(10) << left << setprecision(20) << sum << endl;
 		order << setprecision(20) << sum << endl;
 		if (i != dsDoUong.size() - 1) {
 			order << " " << ",";
@@ -176,15 +190,15 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 		total += sum;
 		soluong += sl[i];
 	}
-	for (int i = 1; i <= 62; i++) outw << "-";
+	a.pre(TAB); for (int i = 1; i <= 70; i++)  outw << "-";
 	outw << endl;
-	outw << setw(7) << left << "T.Cong";
+	a.pre(TAB); outw << setw(7) << left << "T.Cong";
 	order << "T.Tong, , ,";
-	outw << setw(25) << " ";
-	outw << setw(5) <<left<< soluong;
+	a.pre(TAB); outw << setw(25) << " ";
+	a.pre(TAB); outw << setw(5) <<left<< soluong;
 	order << soluong << ", ,";
-	outw << setw(15) << " ";
-	outw << setw(20) <<left<< setprecision(20) << total << endl;
+	a.pre(TAB); outw << setw(15) << " ";
+	a.pre(TAB); outw << setw(20) <<left<< setprecision(20) << total << endl;
 	order << setprecision(20) << total << endl<<endl;
 	// ghi vao lich su order
 	

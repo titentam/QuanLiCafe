@@ -41,6 +41,28 @@ void NhanVienQuanLi::xemDsNV(DuLieu& data) {
 	a.br(2);
 	a.pre(6);
 }
+void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
+	Vector<DoUong>& douong = data.getDoUong();
+	system("cls");
+	Menu a;
+	const int TAB = 1;
+	a.br(2);
+	a.pre(6); cout << "DANH SACH DO UONG" << endl;
+	a.br(1);
+	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+	a.pre(TAB); cout << "| " << setw(7) << left << "ID" << "| ";
+	a.pre(TAB); cout << setw(25) << left << "TEN" << "| ";
+	a.pre(TAB); cout << setw(15) << left << "LOAI" << "| ";
+	a.pre(TAB); cout << setw(10) << left << "DG" << "| ";
+	a.pre(TAB); cout << setw(7) << left << "SL.Con" << "| ";
+	cout << endl;
+	for (int i = 0; i < douong.size(); i++) {
+		douong[i].xuatThongTinDoUong3(cout);
+	}
+	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+	a.br(2);
+	a.pre(5);
+}
 void NhanVienQuanLi::timKiemNV(DuLieu& data)
 {
 	Menu a;
@@ -288,19 +310,7 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 	}
 }
 // quan li menu
-void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
-	Vector<DoUong>& douong = data.getDoUong();
-	cout << "DANH SACH DO UONG!" << endl;
-	cout << setw(7) << left << "ID";
-	cout << setw(25) << left << "TEN";
-	cout << setw(25) << left << "LOAI";
-	cout << setw(15) << left << "DG";
-	cout << setw(10) << left << "SL.Con";
-	cout << endl;
-	for (int i = 0; i < douong.size(); i++) {
-		douong[i].xuatThongTinDoUong3(cout);
-	}
-}
+
 
 void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 {
@@ -321,13 +331,22 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 			for (int i = 0; i < dsDoUong.size(); i++) {
 				if (dsDoUong[i].getMaDoUong() == id) {
 					check = false;
-					cout << "THONG TIN DO UONG: " << endl;
-					cout << setw(7) << left << "ID";
-					cout << setw(25) << left << "TEN";
-					cout << setw(25) << left << "LOAI";
-					cout << setw(15) << left << "DG";
+					Menu a;
+					const int TAB = 1;
+					a.br(2);
+					a.pre(6); cout << "DANH SACH DO UONG" << endl;
+					a.br(1);
+					a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+					a.pre(TAB); cout << "| " << setw(7) << left << "ID" << "| ";
+					a.pre(TAB); cout << setw(25) << left << "TEN" << "| ";
+					a.pre(TAB); cout << setw(15) << left << "LOAI" << "| ";
+					a.pre(TAB); cout << setw(10) << left << "DG" << "| ";
+					a.pre(TAB); cout << setw(7) << left << "SL.Con" << "| ";
 					cout << endl;
-					dsDoUong[i].xuatThongTinDoUong2(cout);
+					dsDoUong[i].xuatThongTinDoUong3(cout);
+					a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+					a.br(2);
+					a.pre(5);
 					system("pause");
 					system("cls");
 					break;
@@ -353,16 +372,24 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 				
 			}
 			else {
-				cout << "DANH SACH DO UONG CAN TIM: " << endl;
-				cout << setw(7) << left << "ID";
-				cout << setw(25) << left << "TEN";
-				cout << setw(25) << left << "LOAI";
-				cout << setw(15) << left << "DG";
-				cout << setw(15) << left << "SL";
+				Menu a;
+				const int TAB = 1;
+				a.br(2);
+				a.pre(6); cout << "DANH SACH DO UONG" << endl;
+				a.br(1);
+				a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+				a.pre(TAB); cout << "| " << setw(7) << left << "ID" << "| ";
+				a.pre(TAB); cout << setw(25) << left << "TEN" << "| ";
+				a.pre(TAB); cout << setw(15) << left << "LOAI" << "| ";
+				a.pre(TAB); cout << setw(10) << left << "DG" << "| ";
+				a.pre(TAB); cout << setw(7) << left << "SL.Con" << "| ";
 				cout << endl;
 				for (int i = 0; i < res.size(); i++) {
 					res[i].xuatThongTinDoUong3(cout);
 				}
+				a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+				a.br(2);
+				a.pre(5);
 			}
 			system("pause");
 			system("cls");

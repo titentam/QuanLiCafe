@@ -1,5 +1,6 @@
 #include "DoUong.h"
 #include<iomanip>
+#include"menu.h"
 
 
 
@@ -78,10 +79,13 @@ void DoUong::xuatThongTinDoUong2(ostream& outw)
 
 void DoUong::xuatThongTinDoUong3(ostream& outw)
 {
-	outw << setw(7) << left << maDoUong;
-	outw << setw(25) << left << tenDoUong;
-	outw << setw(25) << left << loaiDoUong;
-	outw << setw(15) << left << gia;
-	outw << setw(10) << left << soLuong;
+	Menu a;
+	const int TAB = 1;
+	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+	a.pre(TAB); outw << "| " << setw(7) << left << maDoUong << "| ";
+	a.pre(TAB); outw << setw(25) << left << tenDoUong << "| ";
+	a.pre(TAB); outw << setw(15) << left << loaiDoUong << "| ";
+	a.pre(TAB); outw << setw(10) << left << gia << "| ";
+	a.pre(TAB); outw << setw(7) << left << soLuong << "| ";
 	outw << endl;
 }
