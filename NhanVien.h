@@ -33,6 +33,8 @@ public:
 	virtual void nhapThongTin();
 	virtual void xuatThongTin() const;
 	virtual void xuatThongTin2() const;
+
+	virtual float getLuong() = 0;
 };
 
 

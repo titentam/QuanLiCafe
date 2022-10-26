@@ -20,7 +20,7 @@ public:
 	void xemDsDoUong(DuLieu& data);
 	void lamDoUong(DuLieu &data,Vector<DoUong>& dsDoUong,Vector<int>& sl);
 	void xuatBill(ostream& out, const Vector<DoUong>& dsDoUong, const Vector<int>& sl);
-	float getLuong(const int&);
 	void menuPhucvu(DuLieu& data);
+	float getLuong();
 };
 

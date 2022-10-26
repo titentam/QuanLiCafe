@@ -100,8 +100,14 @@ void DuLieu::thongKe() {
 		long long res = 0;
 		m.menu_thongke();
 		int choice;
-		cin >> choice;
-
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			choice = -1;
+		}
+		else {
+			choice = (int)(s[0] - 48);
+		}
 		switch (choice)
 		{
 		case 1: {

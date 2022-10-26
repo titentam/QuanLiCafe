@@ -3,7 +3,7 @@
 #include"menu.h"
 #include<iomanip>
 using namespace std;
-
+#define LUONG 6000000
 NhanVienQuanLi::NhanVienQuanLi(const string& maNv, const string& hoTen, const string& sdt, const string& MK, const float& hsl)
 {
 	this->maNv = maNv;
@@ -75,7 +75,15 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 		cout << "2. Tim kiem theo tu khoa(Ho ten)" << endl;
 		cout << "0. Tro ve" << endl;
 		cout << "Nhap lua chon: ";
-		int opt; cin >> opt;
+		int opt;
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			opt = -1;
+		}
+		else {
+			opt = (int)(s[0] - 48);
+		}
 		switch (opt) {
 		case 1: {
 			Vector<NhanVienPhucVu> res;
@@ -246,7 +254,7 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 		Menu m;
 		bool tryAgain = true;
 		while (tryAgain) {
-			int choise;
+			int choice;
 			const int SLEEP = 50;
 			system("cls");
 			m.br(5); m.pre(6); cout << ">> CHINH SUA THONG TIN NHAN VIEN <<"; Sleep(SLEEP);
@@ -254,9 +262,17 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 			m.br(2); m.pre(6); cout << ">> 2. Chinh sua sdt"; Sleep(SLEEP);
 			m.br(2); m.pre(6); cout << ">> 3. Chinh sua he so luong"; Sleep(SLEEP);
 			m.br(2); m.pre(6); cout << ">> 0. Tro ve";  Sleep(400);
-			m.br(2); m.pre(6); cout << ">> Nhap lua chon: "; cin >> choise;
+			m.br(2); m.pre(6); cout << ">> Nhap lua chon: ";
+			string s;
+			cin >> s;
+			if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+				choice = -1;
+			}
+			else {
+				choice = (int)(s[0] - 48);
+			}
 			cin.ignore();
-			switch (choise)
+			switch (choice)
 			{
 			case 1: {
 				string tenMoi;
@@ -322,7 +338,15 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 		cout << "2. Tim kiem theo tu khoa(Ten do uong)" << endl;
 		cout << "0. Tro ve" << endl;
 		cout << "Nhap lua chon: ";
-		int opt; cin >> opt;
+		int opt;
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			opt = -1;
+		}
+		else {
+			opt = (int)(s[0] - 48);
+		}
 		switch (opt) {
 		case 1: {
 			cout << "Nhap ma do uong can tim: ";
@@ -466,7 +490,14 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 		Menu a;
 		a.menu_quanliNV();
 		int choice;
-		cin >> choice;
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			choice = -1;
+		}
+		else {
+			choice = (int)(s[0] - 48);
+		}
 		switch (choice)
 		{
 		case 1: {
@@ -521,6 +552,12 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 			//system("pause");
 			break;
 		}
+		case 6: {
+			system("cls");
+			tinhLuongNV(data);
+			system("pause");
+			break;
+		}
 		case 0: {
 			check = false;
 			break;
@@ -536,7 +573,14 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 		Menu a;
 		a.menu_quanliDoUong();
 		int choice;
-		cin >> choice;
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			choice = -1;
+		}
+		else {
+			choice = (int)(s[0] - 48);
+		}
 		switch (choice){
 			case 1: {
 			xemDsDoUong(data);
@@ -622,7 +666,14 @@ void NhanVienQuanLi::menuQuanLi(DuLieu& data) {
 		Menu a;
 		a.menu_quanli();
 		int choice;
-		cin >> choice;
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			choice = -1;
+		}
+		else {
+			choice = (int)(s[0] - 48);
+		}
 		switch (choice)
 		{
 		case 1: {
@@ -651,5 +702,20 @@ void NhanVienQuanLi::nhapThongTin() {
 }
 void NhanVienQuanLi::xuatThongTin() {
 	NhanVien::xuatThongTin();
+}
+
+float NhanVienQuanLi::getLuong()
+{
+	return hsl * LUONG;
+}
+
+void NhanVienQuanLi::tinhLuongNV(DuLieu& data)
+{
+	Vector<NhanVienPhucVu> nvpv = data.getNvPhucVu();
+	cout << "DANH SACH LUONG NHAN VIEN PHUC VU" << endl;
+	cout << setw(20) << left << "MANV" << setw(20) << left << "LUONG" << endl;
+	for (int i = 0; i < nvpv.size(); i++) {
+		cout << setw(20) << left << nvpv[i].getMaNv() << setw(20) << setprecision(20) << left << nvpv[i].getLuong() << endl;
+	}
 }
 

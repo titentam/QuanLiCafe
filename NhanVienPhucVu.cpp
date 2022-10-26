@@ -7,15 +7,22 @@
 
 
 using namespace std;
-#define LUONG 15000
+#define LUONG 3000000
 void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 	bool check = true;
 	while (check) {
 		Menu a;
 		a.menu_phucvu();
-		int choise;
-		cin >> choise;
-		switch (choise)
+		int choice;
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			choice = -1;
+		}
+		else {
+			choice = (int)(s[0] - 48);
+		}
+		switch (choice)
 		{
 
 		case 1:
@@ -80,6 +87,10 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 	}
 		
 
+}
+float NhanVienPhucVu::getLuong()
+{
+	return hsl*LUONG;
 }
 void NhanVienPhucVu::xemDsDoUong(DuLieu& data) {
 	Vector<DoUong>& douong = data.getDoUong();
@@ -166,6 +177,7 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	ofstream order;
 	
 	order.open("Order.csv", ios::app);
+	order << "Ma nhan vien" << "," << getMaNv() << endl;
 	order << tg.substr(0,tg.size()-1) << ",";
 	for (int i = 0; i < dsDoUong.size(); i++) {
 		
@@ -216,7 +228,4 @@ void NhanVienPhucVu::xuatBill(ostream& outw, const Vector<DoUong>& dsDoUong, con
 	f.close();
 }
 
-float NhanVienPhucVu::getLuong(const int& soGioLam) {
-	return soGioLam * hsl* LUONG;
-}
 

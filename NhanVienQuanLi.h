@@ -30,4 +30,7 @@ public:
 	void menuQuanLiDoUong(DuLieu& data);
 	void nhapThongTin();
 	void xuatThongTin();
+	
+	float getLuong();
+	void tinhLuongNV(DuLieu& data);
 };

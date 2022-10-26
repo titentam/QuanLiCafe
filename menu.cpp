@@ -85,6 +85,7 @@ void Menu::menu_quanliNV() {
 	br(2); pre(TAB); cout << ">> 3.  Them nhan vien phuc vu"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 4.  Xoa nhan vien phuc vu"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 5.  Chinh sua thong tin nhan vien phuc vu"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 6.  Danh sach luong nhan vien phuc vu"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
 	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
 
@@ -159,10 +160,18 @@ void Menu::main_menu(DuLieu& data) {
 		br(2); pre(6); cout << ">> 1. Nhan vien quan li"; Sleep(SLEEP);
 		br(2); pre(6); cout << ">> 2. Nhan vien phuc vu"; Sleep(SLEEP);
 		br(2); pre(6); cout << ">> 0. Thoat";  Sleep(SLEEP);
-		int choise;
-		br(2); pre(6); cout << ">> Nhap lua chon: "; cin >> choise;
+		int choice;
+		br(2); pre(6); cout << ">> Nhap lua chon: ";
+		string s;
+		cin >> s;
+		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+			choice = -1;
+		}
+		else {
+			choice = (int)(s[0] - 48);
+		}
 		cin.ignore();
-		switch (choise)
+		switch (choice)
 		{
 		case 1: {
 			string tk, mk;

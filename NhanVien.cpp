@@ -81,7 +81,7 @@ void NhanVien::xuatThongTin2() const
 	a.pre(TAB); cout << "| " << setw(10) << left << maNv << "| ";
 	a.pre(TAB); cout << setw(25) << left << hoTen << "| ";
 	a.pre(1); cout << setw(15) << left << sdt << "| ";
-	a.pre(1); cout << setw(5) << left << hsl<<" |";
+	a.pre(1); cout << setw(5) << left<<setprecision(4) << hsl << " |";
 	
 	cout << endl;
 }
