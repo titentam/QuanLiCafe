@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include"Nhanvien.h"
+#include"menu.h"
 
 using namespace std;
 
@@ -74,10 +75,13 @@ void NhanVien::xuatThongTin2() const
 	cout << setw(30) << left << "TEN";
 	cout << setw(15) << left << "sdt";
 	cout << setw(5) << left << "hsl";*/
-
-	cout << setw(10) << left << maNv;
-	cout << setw(30) << left << hoTen;
-	cout << setw(15) << left << sdt;
-	cout << setw(5) << left << hsl;
+	Menu a;
+	const int TAB = 2;
+	a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+	a.pre(TAB); cout << "| " << setw(10) << left << maNv << "| ";
+	a.pre(TAB); cout << setw(25) << left << hoTen << "| ";
+	a.pre(1); cout << setw(15) << left << sdt << "| ";
+	a.pre(1); cout << setw(5) << left << hsl<<" |";
+	
 	cout << endl;
 }

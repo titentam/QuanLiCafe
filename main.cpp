@@ -15,10 +15,6 @@ int main() {
 	DuLieu data;
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
-
-	//data.thongKe();
-	/*NhanVienQuanLi a = (data.getNvQuanLi())[0];
-	a.timKiemNV(data);*/
 	Menu m;
 	m.main_menu(data);
 

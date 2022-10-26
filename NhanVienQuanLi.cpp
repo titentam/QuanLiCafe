@@ -21,18 +21,30 @@ NhanVienQuanLi::NhanVienQuanLi() {
 }
 void NhanVienQuanLi::xemDsNV(DuLieu& data) {
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
-	cout << "\nDANH SACH NHAN VIEN PHUC VU!" << endl;
-	cout << setw(10) << left << "MANV";
-	cout << setw(30) << left << "TEN";
-	cout << setw(15) << left << "SDT";
-	cout << setw(5) << left << "HSL";
+	system("cls");
+	Menu a;
+	const int TAB = 2;
+	 a.br(2);
+	 a.pre(6); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
+	 a.br(1);
+	 a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+	 a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
+	 a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+	 a.pre(1); cout << setw(15) << left << " SDT" << "|";
+	 a.pre(1); cout << setw(5) << left << "HSL" << " |";
+	
 	cout << endl;
 	for (int i = 0; i < nvpv.size(); i++) {
-		nvpv[i].xuatThongTin2();
+		 nvpv[i].xuatThongTin2(); 
 	}
+	a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+	a.br(2);
+	a.pre(6);
 }
 void NhanVienQuanLi::timKiemNV(DuLieu& data)
 {
+	Menu a;
+	const int TAB = 2;
 	Vector<NhanVienPhucVu> nvpv = data.getNvPhucVu();
 	bool tryAgain = true;
 	while (tryAgain) {
@@ -61,16 +73,21 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 				system("pause");
 			}
 			else {
-				cout << "\nDANH SACH NHAN VIEN CAN TIM: " << endl;
-				cout << endl;
-				cout << setw(10) << left << "MANV";
-				cout << setw(30) << left << "TEN";
-				cout << setw(15) << left << "SDT";
-				cout << setw(5) << left << "HSL";
+				a.br(2);
+				a.pre(6); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
+				a.br(1);
+				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+				a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
+				a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+				a.pre(1); cout << setw(15) << left << " SDT" << "|";
+				a.pre(1); cout << setw(5) << left << "HSL" << " |";
 				cout << endl;
 				for (int i = 0; i < res.size(); i++) {
 					res[i].xuatThongTin2();
 				}
+				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+				a.br(2);
+				a.pre(6);
 				system("pause");
 			}
 			break;
@@ -93,16 +110,21 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 				system("pause");
 			}
 			else {
-				cout << "\nDANH SACH NHAN VIEN CAN TIM: " << endl;
-				cout << endl;
-				cout << setw(10) << left << "MANV";
-				cout << setw(30) << left << "TEN";
-				cout << setw(15) << left << "SDT";
-				cout << setw(5) << left << "HSL";
+				a.br(2);
+				a.pre(6); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
+				a.br(1);
+				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+				a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
+				a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+				a.pre(1); cout << setw(15) << left << " SDT" << "|";
+				a.pre(1); cout << setw(5) << left << "HSL" << " |";
 				cout << endl;
 				for (int i = 0; i < res.size(); i++) {
 					res[i].xuatThongTin2();
 				}
+				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+				a.br(2);
+				a.pre(6);
 				system("pause");
 			}
 			break;
@@ -143,12 +165,12 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 		if (nvpv[i].getMaNv() == maNv) {
 			check = false;
 			nvpv.erase(i);
-			cout << "Da xoa nhan vien phuc vu co maNV " << maNv << endl;
+			cout << "Da xoa nhan vien phuc vu co ma NV " << maNv << endl;
 			system("pause");
 		}
 	}
 	if (check) {
-		cout << "Khong tim thay nhan vien phuc vu co maNv: " << maNv << endl;
+		cout << "Khong tim thay nhan vien phuc vu co ma Nv: " << maNv << endl;
 		system("pause");
 	}
 	else {
@@ -195,7 +217,7 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 		}
 	}
 	if (check) {
-		cout << "Khong tim thay nhan vien phuc vu co maNv: " << maNv << endl;
+		cout << "Khong tim thay nhan vien phuc vu co ma Nv: " << maNv << endl;
 		system("pause");
 	}
 	else {
@@ -441,7 +463,7 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 				for (int i = 0; i < dsNvPV.size(); i++) {
 					if (nvpv.getMaNv() == dsNvPV[i].getMaNv()) {
 						cout << "Ma nhan vien phuc vu nay da ton tai!" << endl;
-						cout << "Vui long nhap lai(Ma nv): ";
+						cout << "Vui long nhap lai Ma nv: ";
 						string id;
 						cin >> id;
 						nvpv.setMaNv(id);
