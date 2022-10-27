@@ -712,10 +712,15 @@ float NhanVienQuanLi::getLuong()
 void NhanVienQuanLi::tinhLuongNV(DuLieu& data)
 {
 	Vector<NhanVienPhucVu> nvpv = data.getNvPhucVu();
-	cout << "DANH SACH LUONG NHAN VIEN PHUC VU" << endl;
-	cout << setw(20) << left << "MANV" << setw(20) << left << "LUONG" << endl;
+	Menu a;
+	const int TAB = 2;
+	a.br(2);
+	a.pre(5); cout << "DANH SACH LUONG NHAN VIEN PHUC VU" << endl;
+	a.br(1);
+	a.pre(4); cout << setw(20) << left << "MA NHAN VIEN" << setw(20) << left << "TEN NHAN VIEN" << setw(20) << left << "LUONG" << endl;
 	for (int i = 0; i < nvpv.size(); i++) {
-		cout << setw(20) << left << nvpv[i].getMaNv() << setw(20) << setprecision(20) << left << nvpv[i].getLuong() << endl;
+		a.pre(4); cout << setw(20) << left << nvpv[i].getMaNv() << setw(20) << left << nvpv[i].getName() << setw(20) << setprecision(20) << left << nvpv[i].getLuong() << endl;
 	}
+	a.br(1); a.pre(5);
 }
 
