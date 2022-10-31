@@ -16,9 +16,9 @@ int main() {
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
 	Menu m;
-	m.loadingbar();
 	m.wellcome();
+	m.loadingbar();
+	//system("pause");
 	m.main_menu(data);
-
 	return 0;
 }

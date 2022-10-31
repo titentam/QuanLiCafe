@@ -51,7 +51,7 @@ void DuLieu::docFileDsNhanVien() {
 			break;
 		}
 		default:
-			cout << "Nhap nhan vien khong thanh cong!" << endl;
+			//cout << "Nhap nhan vien khong thanh cong!" << endl;
 			break;
 		}	
 	}

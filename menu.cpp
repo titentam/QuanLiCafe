@@ -22,10 +22,10 @@ void Menu::loadingbar() {
 		system("cls");
 
 		cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t";
-		cout << i << " %% Loading...\n\n\t\t";
-		Sleep(60);
+		cout << i << " % Loading...\n\n\t\t";
+		Sleep(15);
 		if (i == 90 || i == 50 || i == 96 || i == 83) {
-			Sleep(100);
+			Sleep(45);
 		}
 
 	}
@@ -36,16 +36,17 @@ void Menu::wellcome() {
 	cout << "\n\n\n\t\t\t\t\t\t";
 	for (int i = 0; i < s1.size(); i++) {
 		cout << s1[i];
-		Sleep(50);
+		Sleep(30);
 	}
 
 	cout << "\n\n\t\t\t\t\t\t   ";
 	for (int i = 0; i < s2.size(); i++) {
 
 		cout << s2[i];
-		Sleep(50);
+		Sleep(30);
 	}
 	cout << "\n\n";
+	Sleep(100);
 }
 
 void Menu::menu_quanli() {
@@ -111,13 +112,13 @@ string Menu::nhapmk() {
 	do
 	{
 		c = _getch();
-		if (c == 8) {
+		if (c == 8&&res.size()!=0) {
 			cout << "\b \b";
 			if (res == "") continue;
 			res = res.substr(0, res.size() - 1);
 
 		}
-		else if (c != 13) {
+		else if (c != 13&&c!=8) {
 			cout << "*";
 			res += c;
 		}

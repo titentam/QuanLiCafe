@@ -182,7 +182,6 @@ void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 	cout << "Them thanh cong!" << endl;
 	system("pause");
 	nvpv.push_back(nv);
-	data.xuatFileDsNhanvien(cout);
 	ofstream f;
 	f.open("NhanVien.csv", ios::out);
 	data.xuatFileDsNhanvien(f);
@@ -194,9 +193,36 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 	for (int i = 0; i < nvpv.size(); i++) {
 		if (nvpv[i].getMaNv() == maNv) {
 			check = false;
-			nvpv.erase(i);
-			cout << "Da xoa nhan vien phuc vu co ma NV " << maNv << endl;
-			system("pause");
+			Menu a;
+			system("cls");
+			const int TAB = 2;
+			a.br(2);
+			a.pre(5); cout << "   THONG TIN NHAN VIEN " << endl;
+			a.br(1);
+			a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+			a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
+			a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+			a.pre(1); cout << setw(15) << left << " SDT" << "|";
+			a.pre(1); cout << setw(5) << left << "HSL" << " |";
+			cout << endl;
+			nvpv[i].xuatThongTin2();
+			a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+			a.br(2);
+			cout << "Xac nhan xoa nhan vien nay? (y/n): ";
+			nhaplai3:
+			string s;
+			cin >> s;
+			if (s.size() != 1) {
+				cout << "Nhap sai! Vui long nhap lai lua chon: ";
+				goto nhaplai3;
+			}
+			else if (s[0] == 'y') {
+				nvpv.erase(i);
+				cout << "Da xoa nhan vien phuc vu co ma NV " << maNv << endl;
+				system("pause");
+			}
+			else if (s[0] == 'n') return;
+			else goto nhaplai3;	
 		}
 	}
 	if (check) {
@@ -204,7 +230,6 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 		system("pause");
 	}
 	else {
-		data.xuatFileDsNhanvien(cout);
 		ofstream f;
 		f.open("NhanVien.csv", ios::out);
 		data.xuatFileDsNhanvien(f);
@@ -217,10 +242,37 @@ void NhanVienQuanLi::xoaMon(DuLieu& data, const int& maDoUong) {
 	for (int i = 0; i < doUong.size(); i++) {
 		if (doUong[i].getMaDoUong() == maDoUong) {
 			check = false;
-			doUong.erase(i);
-			cout << "Da xoa do uong nay khoi MENU" << endl;
-			system("pause");
-
+			system("cls");
+			Menu a;
+			const int TAB = 1;
+			a.br(2);
+			a.pre(6); cout << "THONG TIN DO UONG" << endl;
+			a.br(1);
+			a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+			a.pre(TAB); cout << "| " << setw(7) << left << "ID" << "| ";
+			a.pre(TAB); cout << setw(25) << left << "TEN" << "| ";
+			a.pre(TAB); cout << setw(15) << left << "LOAI" << "| ";
+			a.pre(TAB); cout << setw(10) << left << "DG" << "| ";
+			a.pre(TAB); cout << setw(7) << left << "SL.Con" << "| ";
+			cout << endl;
+			doUong[i].xuatThongTinDoUong3(cout);
+			a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
+			a.br(2);
+			cout << "Xac nhan xoa do uong nay? (y/n): ";
+			nhaplai3:
+			string s;
+			cin >> s;
+			if (s.size() != 1) {
+				cout << "Nhap sai! Vui long nhap lai lua chon: ";
+				goto nhaplai3;
+			}
+			else if (s[0] == 'y') {
+				doUong.erase(i);
+				cout << "Da xoa do uong co ma: " << maDoUong << endl;
+				system("pause");
+			}
+			else if (s[0] == 'n') return;
+			else goto nhaplai3;
 		}
 	}
 	if (check) {
@@ -253,16 +305,31 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 	else {
 		Menu m;
 		bool tryAgain = true;
+		Menu a;
 		while (tryAgain) {
+			
+			system("cls");
+			const int TAB = 2;
+			a.br(2);
+			a.pre(5); cout << "   THONG TIN NHAN VIEN CAN CHINH SUA" << endl;
+			a.br(1);
+			a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
+			a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
+			a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+			a.pre(1); cout << setw(15) << left << " SDT" << "|";
+			a.pre(1); cout << setw(5) << left << "HSL" << " |";
+			cout << endl;
+			nvPhucVu[pos].xuatThongTin2();
+			a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 			int choice;
 			const int SLEEP = 50;
-			system("cls");
-			m.br(5); m.pre(6); cout << ">> CHINH SUA THONG TIN NHAN VIEN <<"; Sleep(SLEEP);
-			m.br(2); m.pre(6); cout << ">> 1. Chinh sua ho ten"; Sleep(SLEEP);
-			m.br(2); m.pre(6); cout << ">> 2. Chinh sua sdt"; Sleep(SLEEP);
-			m.br(2); m.pre(6); cout << ">> 3. Chinh sua he so luong"; Sleep(SLEEP);
-			m.br(2); m.pre(6); cout << ">> 0. Tro ve";  Sleep(400);
-			m.br(2); m.pre(6); cout << ">> Nhap lua chon: ";
+
+			m.br(2); m.pre(5); cout << "  >> CHINH SUA THONG TIN NHAN VIEN <<"; Sleep(SLEEP);
+			m.br(2); m.pre(5); cout << "  >> 1. Chinh sua ho ten"; Sleep(SLEEP);
+			m.br(2); m.pre(5); cout << "  >> 2. Chinh sua sdt"; Sleep(SLEEP);
+			m.br(2); m.pre(5); cout << "  >> 3. Chinh sua he so luong"; Sleep(SLEEP);
+			m.br(2); m.pre(5); cout << "  >> 0. Tro ve";  Sleep(400);
+			m.br(2); m.pre(5); cout << "  >> Nhap lua chon: ";
 			string s;
 			cin >> s;
 			if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
@@ -350,7 +417,14 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 		switch (opt) {
 		case 1: {
 			cout << "Nhap ma do uong can tim: ";
-			int id; cin >> id;
+			int id;
+			cin >> s;
+			if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
+				id = -1;
+			}
+			else {
+				id = (int)(s[0] - 48);
+			}
 			bool check = true;
 			for (int i = 0; i < dsDoUong.size(); i++) {
 				if (dsDoUong[i].getMaDoUong() == id) {
@@ -377,7 +451,7 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 				}
 			}
 			if (check) {
-				cout << "Khong co do uong nao co ma: " << id << endl;
+				cout << "Khong tim thay "<< endl;
 				system("pause");
 			}
 			break;
@@ -501,50 +575,91 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 		switch (choice)
 		{
 		case 1: {
+			system("cls");
 			xemDsNV(data);
 			system("pause");
 			break;
 		}
 		case 2: {
+			system("cls");
 			timKiemNV(data);
 			break;
 		}
 		case 3: {
-			NhanVienPhucVu nvpv;
-			cout << endl;
-			nvpv.nhapThongTin();
-			// ktra co hop le hay khong
-			Vector<NhanVienPhucVu> dsNvPV = data.getNvPhucVu();
-			bool check_c3 = true;
-			while (check_c3) {
-				bool tryAgain = false;
-				for (int i = 0; i < dsNvPV.size(); i++) {
-					if (nvpv.getMaNv() == dsNvPV[i].getMaNv()) {
-						cout << "Ma nhan vien phuc vu nay da ton tai!" << endl;
-						cout << "Vui long nhap lai Ma nv: ";
-						string id;
-						cin >> id;
-						nvpv.setMaNv(id);
-						cout << endl;
-						tryAgain = true;
-						break;
+			bool again = true;
+			while (again) {
+				system("cls");
+				xemDsNV(data);
+				NhanVienPhucVu nvpv;
+				cout << endl;
+				nvpv.nhapThongTin();
+				// ktra co hop le hay khong
+				Vector<NhanVienPhucVu> dsNvPV = data.getNvPhucVu();
+				bool check_c3 = true;
+				while (check_c3) {
+					bool tryAgain = false;
+
+					for (int i = 0; i < dsNvPV.size(); i++) {
+						if (nvpv.getMaNv() == dsNvPV[i].getMaNv()) {
+							cout << "Ma nhan vien phuc vu nay da ton tai!" << endl;
+							cout << "Vui long nhap lai Ma nv: ";
+							string id;
+							cin >> id;
+							nvpv.setMaNv(id);
+							cout << endl;
+							tryAgain = true;
+							break;
+						}
 					}
+					if (!tryAgain) check_c3 = false;
 				}
-				if (!tryAgain) check_c3 = false;
+				themNV(data, nvpv);
+				//system("pause");
+				system("cls");
+				xemDsNV(data);
+				cout << "Ban co muon tiep tuc? (y/n): ";
+				nhaplai:
+				string s;
+				cin >> s;
+				if (s.size() != 1) {
+					cout << "Nhap lai lua chon: ";
+					goto nhaplai;
+				}
+				else if (s[0] == 'y') again = true;
+				else if (s[0] == 'n') again = false;
+				else goto nhaplai;
 			}
-			themNV(data, nvpv);
-			//system("pause");
 			break;
 		}
 		case 4: {
-			string manv;
-			cout << "Nhap ma nhan vien can xoa: ";
-			cin >> manv;
-			xoaNV(data, manv);
-			//system("pause");
+			bool again = true;
+			while (again) {
+				system("cls");
+				xemDsNV(data);
+				string manv;
+				cout << "Nhap ma nhan vien can xoa: ";
+				cin >> manv;
+				xoaNV(data, manv);
+				system("cls");
+				xemDsNV(data);
+				cout << "Ban co muon tiep tuc? (y/n): ";
+				nhaplai2:
+				string s;
+				cin >> s;
+				if (s.size() != 1) {
+					cout << "Nhap lai lua chon: ";
+					goto nhaplai2;
+				}
+				else if (s[0] == 'y') again = true;
+				else if (s[0] == 'n') again = false;
+				else goto nhaplai2;
+			}
+
 			break;
 		}
 		case 5: {
+			system("cls");
+			xemDsNV(data);
 			string manv;
 			cout << "Nhap ma nhan vien can chinh sua: ";
 			cin >> manv;
@@ -594,60 +709,133 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 
 			}
 			case 3: {
-				DoUong douong;
-				cout << endl;
-				douong.nhapThongTinDoUong();
-				// ktra co hop le hay khong
-				Vector<DoUong> dsDoUong = data.getDoUong();
-				bool check_c3 = true;
-				while (check_c3) {
-					bool tryAgain = false;
-					for (int i = 0; i < dsDoUong.size(); i++) {
-						if (douong.getMaDoUong() == dsDoUong[i].getMaDoUong()) {
-							cout << "Ma do uong nay da ton tai!" << endl;
-							cout << "Vui long nhap lai(Ma do uong): ";
-							int id;
-							cin >> id;
-							douong.setMaDoUong(id);
-							cout << endl;
-							tryAgain = true;
-							break;
+
+				bool again = true;
+				while (again) {
+					system("cls");
+					xemDsDoUong(data);
+					DoUong douong;
+					cout << endl;
+					douong.nhapThongTinDoUong();
+					// ktra co hop le hay khong
+					Vector<DoUong> dsDoUong = data.getDoUong();
+					bool check_c3 = true;
+					while (check_c3) {
+						bool tryAgain = false;
+						for (int i = 0; i < dsDoUong.size(); i++) {
+							if (douong.getMaDoUong() == dsDoUong[i].getMaDoUong()) {
+								cout << "Ma do uong nay da ton tai!" << endl;
+								cout << "Vui long nhap lai(Ma do uong): ";
+								int id;
+								cin >> id;
+								douong.setMaDoUong(id);
+								cout << endl;
+								tryAgain = true;
+								break;
+							}
 						}
+						if (!tryAgain) check_c3 = false;
 					}
-					if (!tryAgain) check_c3 = false;
+					themMon(data, douong);
+					//system("pause");
+					system("cls");
+					xemDsDoUong(data);
+					cout << "Ban co muon tiep tuc? (y/n): ";
+					nhaplai:
+					string s;
+					cin >> s;
+					if (s.size() != 1) {
+						cout << "Nhap lai lua chon: ";
+						goto nhaplai;
+					}
+					else if (s[0] == 'y') again = true;
+					else if (s[0] == 'n') again = false;
+					else goto nhaplai;
 				}
-				themMon(data, douong);
-				//system("pause");
 				break;
 			}
 			case 4: {
-				int mamon;
-				cout << "Nhap ma do uong can xoa: ";
-				cin >> mamon;
-				xoaMon(data, mamon);
-				//system("pause");
+
+				bool again = true;
+				while (again) {
+					system("cls");
+					xemDsDoUong(data);
+					int mamon;
+					cout << "Nhap ma do uong can xoa: ";
+					cin >> mamon;
+					xoaMon(data, mamon);
+					system("cls");
+					xemDsDoUong(data);
+					cout << "Ban co muon tiep tuc? (y/n): ";
+					nhaplai2:
+					string s;
+					cin >> s;
+					if (s.size() != 1) {
+						cout << "Nhap lai lua chon: ";
+						goto nhaplai2;
+					}
+					else if (s[0] == 'y') again = true;
+					else if (s[0] == 'n') again = false;
+					else goto nhaplai2;
+				}
 				break;
 			}
 			case 5: {
-				int maDoUong;
-				cout << "Nhap ma do uong: ";
-				cin >> maDoUong;
-				float gia;
-				cout << "Gia moi: ";
-				cin >> gia;
-				Edit_Gia(data, maDoUong, gia);
-				//system("pause");
+
+				bool again = true;
+				while (again) {
+					system("cls");
+					xemDsDoUong(data);
+					int maDoUong;
+					cout << "Nhap ma do uong: ";
+					cin >> maDoUong;
+					float gia;
+					cout << "Gia moi: ";
+					cin >> gia;
+					Edit_Gia(data, maDoUong, gia);
+					system("cls");
+					xemDsDoUong(data);
+					cout << "Ban co muon tiep tuc? (y/n): ";
+					nhaplai4:
+					string s;
+					cin >> s;
+					if (s.size() != 1) {
+						cout << "Nhap lai lua chon: ";
+						goto nhaplai4;
+					}
+					else if (s[0] == 'y') again = true;
+					else if (s[0] == 'n') again = false;
+					else goto nhaplai4;
+				}
 				break;
 			}
 			case 6: {
-				int maDoUong;
-				cout << "Nhap ma do uong: ";
-				cin >> maDoUong;
-				int sl;
-				cout << "So luong: ";
-				cin >> sl;
-				themSLDoUong(data, maDoUong, sl);
-				//system("pause");
+
+				bool again = true;
+				while (again) {
+					system("cls");
+					xemDsDoUong(data);
+					int maDoUong;
+					cout << "Nhap ma do uong: ";
+					cin >> maDoUong;
+					int sl;
+					cout << "So luong: ";
+					cin >> sl;
+					themSLDoUong(data, maDoUong, sl);
+					system("cls");
+					xemDsDoUong(data);
+					cout << "Ban co muon tiep tuc? (y/n): ";
+					nhaplai5:
+					string s;
+					cin >> s;
+					if (s.size() != 1) {
+						cout << "Nhap lai lua chon: ";
+						goto nhaplai5;
+					}
+					else if (s[0] == 'y') again = true;
+					else if (s[0] == 'n') again = false;
+					else goto nhaplai5;
+				}
 				break;
 			}
 			case 0: {
