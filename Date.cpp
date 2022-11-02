@@ -1,8 +1,5 @@
 #include "Date.h"
 
-/// <suthangary>
-/// sua date
-/// </suthangary>
 Date::Date() {
 	ngay = thang = nam = 0;
 }

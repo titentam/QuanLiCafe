@@ -9,7 +9,6 @@ class NhanVienPhucVu;
 class NhanVienQuanLi : public NhanVien
 {
 public:
-	// quan li nhan vien
 	NhanVienQuanLi();
 	NhanVienQuanLi(const string& maNv, const string& hoTen, const string& sdt,
 		const string& MK, const float& hsl);
@@ -18,7 +17,7 @@ public:
 	void themNV(DuLieu& data,const NhanVienPhucVu& nv);
     void xoaNV(DuLieu& data, const string& maNv);
 	void chinhSuaThongTinNv(DuLieu& data, const string& maNv);
-	// quan li menu
+
 	void xemDsDoUong(DuLieu& data);
 	void timKiemDoUong(DuLieu& data);
 	void themMon(DuLieu& data, const DoUong& mon);

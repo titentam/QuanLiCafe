@@ -2,14 +2,6 @@
 #include<iomanip>
 #include"menu.h"
 
-/*
-	string maNv;
-	string hoTen;
-	string sdt;
-	string TK;
-	string MK;
-	float hsl;
-*/
 DuLieu::DuLieu() {
 }
 void DuLieu::docFileDsNhanVien() {
@@ -19,13 +11,11 @@ void DuLieu::docFileDsNhanVien() {
 		string maNv;
 		string hoTen;
 		string sdt;
-		//string TK;
 		string MK;
 		float hsl;
 		getline(f, maNv, ',');
 		getline(f, hoTen, ',');
 		getline(f, sdt, ',');
-		//getline(f, TK, ',');
 		getline(f, MK, ',');
 		f >> hsl;
 		f.ignore(1);
@@ -36,22 +26,18 @@ void DuLieu::docFileDsNhanVien() {
 		{
 		case 0:
 		{
-			//NhanVienQuanLi nv(maNv, hoTen, sdt, TK, MK, hsl);
 			NhanVienQuanLi nv(maNv, hoTen, sdt, MK, hsl);
 			nvql.push_back(nv);
-			//cout << "Nhap nhan vien thanh cong!" << endl;
 			break;
 		}
 		case 1:
 		{
-			//NhanVienPhucVu nv(maNv, hoTen, sdt, TK, MK, hsl);
 			NhanVienPhucVu nv(maNv, hoTen, sdt, MK, hsl);
 			nvpv.push_back(nv);
-			//cout << "Nhap nhan vien thanh cong!" << endl;
+		
 			break;
 		}
 		default:
-			//cout << "Nhap nhan vien khong thanh cong!" << endl;
 			break;
 		}	
 	}
@@ -164,7 +150,6 @@ void DuLieu::thongKe() {
 					getline(f, tg, ',');
 					f >> total;
 					f.ignore(1);
-					//cout << tg << "," << total << endl;
 					size_t found2 = tg.find(month);
 					size_t found3 = tg.find(year);
 

@@ -18,7 +18,6 @@ int main() {
 	Menu m;
 	m.wellcome();
 	m.loadingbar();
-	//system("pause");
 	m.main_menu(data);
 	return 0;
 }

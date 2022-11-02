@@ -392,8 +392,6 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 		}
 	}
 }
-// quan li menu
-
 
 void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 {
@@ -614,7 +612,6 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 					if (!tryAgain) check_c3 = false;
 				}
 				themNV(data, nvpv);
-				//system("pause");
 				system("cls");
 				xemDsNV(data);
 				cout << "Ban co muon tiep tuc? (y/n): ";
@@ -664,7 +661,6 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 			cout << "Nhap ma nhan vien can chinh sua: ";
 			cin >> manv;
 			chinhSuaThongTinNv(data, manv);
-			//system("pause");
 			break;
 		}
 		case 6: {
@@ -704,7 +700,6 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 		}
 			case 2: {
 				timKiemDoUong(data);
-				//system("pause");
 				break;
 
 			}
@@ -737,7 +732,6 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 						if (!tryAgain) check_c3 = false;
 					}
 					themMon(data, douong);
-					//system("pause");
 					system("cls");
 					xemDsDoUong(data);
 					cout << "Ban co muon tiep tuc? (y/n): ";
