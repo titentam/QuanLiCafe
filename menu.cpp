@@ -125,7 +125,7 @@ void Menu::menu_phucvu() {
 
 	DoHoa::textColor(7);
 	br(2); pre(TAB); cout << ">> 1.  Xem danh sach do uong"; Sleep(SLEEP);
-	br(2); pre(TAB); cout << ">> 2.  Lam do uong"; Sleep(SLEEP);
+	br(2); pre(TAB); cout << ">> 2.  Tao don do uong"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
 	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
 }
