@@ -80,6 +80,7 @@ void DuLieu::docFileDsDoUong() {
 }
 void DuLieu::thongKe() {
 	Menu m;
+	const int TAB = 10;
 	bool check = true;
 	while (check) {
 		Date d;
@@ -119,11 +120,15 @@ void DuLieu::thongKe() {
 						res += total;
 					}
 				}
+				DoHoa::textColor(14);
+				m.pre(TAB); 
 				cout << "Doanh thu la: " << res << endl;
 				system("pause");
 				f.close();
 			}
 			else {
+				DoHoa::textColor(12);
+				m.pre(TAB);
 				cout << "Khong co du lieu!" << endl;
 				system("pause");
 			}
@@ -131,10 +136,13 @@ void DuLieu::thongKe() {
 		}
 		case 2: {
 			int tmp;
+			DoHoa::textColor(10);
+			m.pre(TAB);
 			cout << "Moi ban nhap thang: ";
 			cin >> tmp;
 			d.setThang(tmp);
 
+			m.pre(TAB);
 			cout << "Moi ban nhap nam: ";
 			cin >> tmp;
 			d.setNam(tmp);
@@ -157,11 +165,15 @@ void DuLieu::thongKe() {
 						res += total;
 					}
 				}
+				DoHoa::textColor(14);
+				m.pre(TAB);
 				cout << "Doanh thu la: " << res << endl;
 				system("pause");
 				f.close();
 			}
 			else {
+				DoHoa::textColor(12);
+				m.pre(TAB);
 				cout << "Khong co du lieu!" << endl;
 				system("pause");
 			}
@@ -169,6 +181,8 @@ void DuLieu::thongKe() {
 		}
 		case 3: {
 			int nam;
+			DoHoa::textColor(10);
+			m.pre(TAB);
 			cout << "Moi ban nhap nam: ";
 			cin >> nam;
 
@@ -190,11 +204,15 @@ void DuLieu::thongKe() {
 						res += total;
 					}
 				}
+				DoHoa::textColor(14);
+				m.pre(TAB);
 				cout << "Doanh thu la: " << res << endl;
 				system("pause");
 				f.close();
 			}
 			else {
+				DoHoa::textColor(12);
+				m.pre(TAB);
 				cout << "Khong co du lieu!" << endl;
 				system("pause");
 			}
@@ -205,8 +223,9 @@ void DuLieu::thongKe() {
 			break;
 		}
 		default:
-			cout << "KHONG CO LUA CHON NAY TRONG MENU!" << endl;
-			cout << "VUI LONG NHAP LAI!" << endl;
+			DoHoa::textColor(12);
+			m.pre(TAB); cout << "KHONG CO LUA CHON NAY TRONG MENU!" << endl;
+			m.pre(TAB); cout << "VUI LONG NHAP LAI!" << endl;
 			system("pause");
 			break;
 		}

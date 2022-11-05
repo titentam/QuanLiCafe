@@ -216,8 +216,8 @@ void Menu::main_menu(DuLieu& data) {
 				nvql.menuQuanLi(data);
 			}
 			else {
-				cout << endl;
-				cout << "Tai khoan, mat khau sai!" << endl;
+				DoHoa::textColor(12);
+				br(2); pre(TAB); cout << "Tai khoan, mat khau sai!" << endl;
 				system("pause");
 			}
 			break;

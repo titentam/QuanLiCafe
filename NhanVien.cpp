@@ -53,13 +53,16 @@ void NhanVien::setHsl(const float& hsl) {
 }
 
 void NhanVien::nhapThongTin() {
+	const int TAB = 10;
+	Menu m;
 	cin.ignore();
-	cout << "Nhap ma nhan vien: "; cin >> maNv;
+	DoHoa::textColor(10);
+	m.pre(TAB); cout << "Nhap ma nhan vien: "; cin >> maNv;
 	cin.ignore();
-	cout << "Nhap ho ten: "; getline(cin, hoTen);
-	cout << "Nhap sdt: "; getline(cin, sdt);	
-	cout << "Nhap mat khau: "; cin >> MK;
-	cout << "Nhap he so luong: "; cin >> hsl;
+	m.pre(TAB); cout << "Nhap ho ten: "; getline(cin, hoTen);
+	m.pre(TAB); cout << "Nhap sdt: "; getline(cin, sdt);
+	m.pre(TAB); cout << "Nhap mat khau: "; cin >> MK;
+	m.pre(TAB); cout << "Nhap he so luong: "; cin >> hsl;
 	cin.ignore();
 }
 void NhanVien::xuatThongTin()const {

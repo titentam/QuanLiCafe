@@ -14,7 +14,8 @@ int main() {
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
 	Menu m;
-	NhanVienQuanLi a = (data.getNvQuanLi())[0]; 
-	a.menuQuanLi(data);
+	m.wellcome();
+	m.main_menu(data);
+	
 	return 0;
 }

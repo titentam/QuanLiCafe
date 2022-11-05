@@ -50,12 +50,15 @@ void DoUong::setLoaiDoUong(const string& loaiDoUong) {
 }
 
 void DoUong::nhapThongTinDoUong() {
-	cout << "Nhap ma do uong: "; cin >> maDoUong;
+	Menu a;
+	const int TAB = 10;
+	DoHoa::textColor(10);
+	a.pre(TAB); cout << "Nhap ma do uong: "; cin >> maDoUong;
 	cin.ignore();
-	cout << "Nhap ten do uong: "; getline(cin, tenDoUong);
-	cout << "Nhap gia do uong: "; cin >> gia;
-	cout << "Nhap so luong do uong: "; cin >> soLuong;
-	cout << "Nhap loai do uong: "; cin >> loaiDoUong;
+	a.pre(TAB); cout << "Nhap ten do uong: "; getline(cin, tenDoUong);
+	a.pre(TAB); cout << "Nhap gia do uong: "; cin >> gia;
+	a.pre(TAB); cout << "Nhap so luong do uong: "; cin >> soLuong;
+	a.pre(TAB); cout << "Nhap loai do uong: "; cin >> loaiDoUong;
 
 }
 void DoUong::xuatThongTinDoUong(ostream& out) {
