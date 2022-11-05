@@ -5,6 +5,7 @@
 #include<conio.h>
 #include"DuLieu.h"
 #include<Windows.h>
+#include"DoHoa.h"
 using namespace std;
 
 class Menu

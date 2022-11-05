@@ -6,8 +6,6 @@
 #include<Windows.h>
 #include"menu.h"
 
-
-
 using namespace std;
 
 int main() {
@@ -16,8 +14,7 @@ int main() {
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
 	Menu m;
-	m.wellcome();
-	m.loadingbar();
-	m.main_menu(data);
+	NhanVienQuanLi a = (data.getNvQuanLi())[0]; 
+	a.menuQuanLi(data);
 	return 0;
 }

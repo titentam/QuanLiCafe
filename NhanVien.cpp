@@ -76,10 +76,11 @@ void NhanVien::xuatThongTin2() const
 	cout << setw(15) << left << "sdt";
 	cout << setw(5) << left << "hsl";*/
 	Menu a;
-	const int TAB = 2;
+	const int TAB = 7;
+	DoHoa::textColor(14);
 	a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 	a.pre(TAB); cout << "| " << setw(10) << left << maNv << "| ";
-	a.pre(TAB); cout << setw(25) << left << hoTen << "| ";
+	a.pre(2); cout << setw(25) << left << hoTen << "| ";
 	a.pre(1); cout << setw(15) << left << sdt << "| ";
 	a.pre(1); cout << setw(5) << left<<setprecision(4) << hsl << " |";
 	

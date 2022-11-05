@@ -23,13 +23,16 @@ void NhanVienQuanLi::xemDsNV(DuLieu& data) {
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
 	system("cls");
 	Menu a;
-	const int TAB = 2;
+	const int TAB = 7;
 	 a.br(2);
-	 a.pre(6); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
+	 a.pre(TAB + 3); a.span(3);
+	 DoHoa::textColor(142);
+	 cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
 	 a.br(1);
+	 DoHoa::textColor(11);
 	 a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 	 a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
-	 a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+	 a.pre(2); cout << setw(25) << left << " TEN" << "| ";
 	 a.pre(1); cout << setw(15) << left << " SDT" << "|";
 	 a.pre(1); cout << setw(5) << left << "HSL" << " |";
 	
@@ -37,6 +40,7 @@ void NhanVienQuanLi::xemDsNV(DuLieu& data) {
 	for (int i = 0; i < nvpv.size(); i++) {
 		 nvpv[i].xuatThongTin2(); 
 	}
+	DoHoa::textColor(14);
 	a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 	a.br(2);
 	a.pre(6);
@@ -45,20 +49,25 @@ void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
 	Vector<DoUong>& douong = data.getDoUong();
 	system("cls");
 	Menu a;
-	const int TAB = 1;
+	const int TAB = 7;
 	a.br(2);
-	a.pre(6); cout << "DANH SACH DO UONG" << endl;
+	a.pre(TAB + 5); a.span(1);
+
+	DoHoa::textColor(94);
+	cout << "DANH SACH DO UONG" << endl;
 	a.br(1);
+	DoHoa::textColor(11);
 	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
 	a.pre(TAB); cout << "| " << setw(7) << left << "ID" << "| ";
-	a.pre(TAB); cout << setw(25) << left << "TEN" << "| ";
-	a.pre(TAB); cout << setw(15) << left << "LOAI" << "| ";
-	a.pre(TAB); cout << setw(10) << left << "DG" << "| ";
-	a.pre(TAB); cout << setw(7) << left << "SL.Con" << "| ";
+	a.pre(1); cout << setw(25) << left << "TEN" << "| ";
+	a.pre(1); cout << setw(15) << left << "LOAI" << "| ";
+	a.pre(1); cout << setw(10) << left << "DG" << "| ";
+	a.pre(1); cout << setw(7) << left << "SL.Con" << "| ";
 	cout << endl;
 	for (int i = 0; i < douong.size(); i++) {
 		douong[i].xuatThongTinDoUong3(cout);
 	}
+	DoHoa::textColor(11);
 	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
 	a.br(2);
 	a.pre(5);
@@ -66,15 +75,23 @@ void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
 void NhanVienQuanLi::timKiemNV(DuLieu& data)
 {
 	Menu a;
-	const int TAB = 2;
 	Vector<NhanVienPhucVu> nvpv = data.getNvPhucVu();
 	bool tryAgain = true;
 	while (tryAgain) {
 		system("cls");
-		cout << "1. Tim kiem theo ma" << endl;
-		cout << "2. Tim kiem theo tu khoa(Ho ten)" << endl;
-		cout << "0. Tro ve" << endl;
-		cout << "Nhap lua chon: ";
+		const int TAB = 7;
+		a.br(2);
+		a.pre(TAB + 5); a.span(1);
+
+		DoHoa::textColor(46);
+		cout << "TIM KIEM NHAN VIEN" << endl;
+		a.br(2);
+		DoHoa::textColor(10);
+		a.pre(TAB + 4); a.span(1); cout << "1. Tim kiem theo ma"; a.br(2);
+		a.pre(TAB + 4); a.span(1); cout << "2. Tim kiem theo tu khoa(Ho ten)"; a.br(2);
+		a.pre(TAB + 4); a.span(1); cout << "0. Tro ve"; a.br(2);
+		a.pre(TAB + 4); a.span(1); cout << ">>  Nhap lua chon: ";
+
 		int opt;
 		string s;
 		cin >> s;
@@ -87,7 +104,8 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 		switch (opt) {
 		case 1: {
 			Vector<NhanVienPhucVu> res;
-			cout << "Nhap ma nhan vien can tim: ";
+
+			a.pre(TAB + 4); a.span(1); cout << "Nhap ma nhan vien can tim: ";
 			cin.ignore();
 			string id; cin >> id;
 			size_t found;
@@ -99,16 +117,21 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 
 			}
 			if (res.size() == 0) {
+				DoHoa::textColor(12);
+				a.br(1); a.pre(TAB + 4); a.span(1); 
 				cout << "Khong tim thay!" << endl;
+				a.br(2); a.pre(TAB + 4);
 				system("pause");
 			}
 			else {
+				DoHoa::textColor(135);
 				a.br(2);
-				a.pre(6); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
+				a.pre(TAB+3); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
 				a.br(1);
+				DoHoa::textColor(11);
 				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 				a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
-				a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+				a.pre(2); cout << setw(25) << left << " TEN" << "| ";
 				a.pre(1); cout << setw(15) << left << " SDT" << "|";
 				a.pre(1); cout << setw(5) << left << "HSL" << " |";
 				cout << endl;
@@ -118,13 +141,14 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 				a.br(2);
 				a.pre(6);
+				
 				system("pause");
 			}
 			break;
 		}
 		case 2: {
 			Vector<NhanVienPhucVu> res;
-			cout << "Nhap tu khoa: ";
+			a.pre(TAB + 4); a.span(1); cout << "Nhap tu khoa: ";
 			cin.ignore();
 			string key; cin >> key;
 			size_t found;
@@ -136,16 +160,21 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 	
 			}
 			if (res.size() == 0) {
+				DoHoa::textColor(12);
+				a.br(1); a.pre(TAB + 4); a.span(1);
 				cout << "Khong tim thay!" << endl;
+				a.br(2); a.pre(TAB + 4);
 				system("pause");
 			}
 			else {
 				a.br(2);
-				a.pre(6); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
+				DoHoa::textColor(135);
+				a.pre(TAB+3); cout << "DANH SACH NHAN VIEN PHUC VU" << endl;
 				a.br(1);
+				DoHoa::textColor(11);
 				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 				a.pre(TAB); cout << "| " << setw(10) << left << " MANV" << "| ";
-				a.pre(TAB); cout << setw(25) << left << " TEN" << "| ";
+				a.pre(2); cout << setw(25) << left << " TEN" << "| ";
 				a.pre(1); cout << setw(15) << left << " SDT" << "|";
 				a.pre(1); cout << setw(5) << left << "HSL" << " |";
 				cout << endl;
@@ -163,7 +192,10 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 			tryAgain = false;
 			break;
 		default:
+			DoHoa::textColor(12);
+			a.br(1); a.pre(TAB + 4); a.span(1);
 			cout << "LUA CHON NAY KHONG CO TRONG MENU, VUI LONG NHAP LAI!" << endl;
+			a.br(2); a.pre(TAB + 4);
 			system("pause");
 			system("cls");
 			break;

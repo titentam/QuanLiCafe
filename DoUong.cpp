@@ -80,12 +80,13 @@ void DoUong::xuatThongTinDoUong2(ostream& outw)
 void DoUong::xuatThongTinDoUong3(ostream& outw)
 {
 	Menu a;
-	const int TAB = 1;
+	const int TAB = 7;
+	DoHoa::textColor(11);
 	a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
 	a.pre(TAB); outw << "| " << setw(7) << left << maDoUong << "| ";
-	a.pre(TAB); outw << setw(25) << left << tenDoUong << "| ";
-	a.pre(TAB); outw << setw(15) << left << loaiDoUong << "| ";
-	a.pre(TAB); outw << setw(10) << left << gia << "| ";
-	a.pre(TAB); outw << setw(7) << left << soLuong << "| ";
+	a.pre(1); outw << setw(25) << left << tenDoUong << "| ";
+	a.pre(1); outw << setw(15) << left << loaiDoUong << "| ";
+	a.pre(1); outw << setw(10) << left << gia << "| ";
+	a.pre(1); outw << setw(7) << left << soLuong << "| ";
 	outw << endl;
 }
