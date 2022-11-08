@@ -86,15 +86,7 @@ void DuLieu::thongKe() {
 		Date d;
 		long long res = 0;
 		m.menu_thongke();
-		int choice;
-		string s;
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			choice = -1;
-		}
-		else {
-			choice = (int)(s[0] - 48);
-		}
+		int choice =Menu::getInt();
 		switch (choice)
 		{
 		case 1: {
@@ -139,12 +131,12 @@ void DuLieu::thongKe() {
 			DoHoa::textColor(10);
 			m.pre(TAB);
 			cout << "Moi ban nhap thang: ";
-			cin >> tmp;
+			tmp = Menu::getInt();
 			d.setThang(tmp);
 
 			m.pre(TAB);
 			cout << "Moi ban nhap nam: ";
-			cin >> tmp;
+			tmp = Menu::getInt();
 			d.setNam(tmp);
 			string month = d.convert();
 			string year = to_string(d.getNam());
@@ -184,7 +176,7 @@ void DuLieu::thongKe() {
 			DoHoa::textColor(10);
 			m.pre(TAB);
 			cout << "Moi ban nhap nam: ";
-			cin >> nam;
+			nam = Menu::getInt();
 
 			string year = to_string(nam);
 

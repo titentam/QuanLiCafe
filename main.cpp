@@ -14,6 +14,7 @@ int main() {
 	data.docFileDsNhanVien();
 	Menu m;
 	m.wellcome();
+	system("pause");
 	m.main_menu(data);
 	
 	return 0;

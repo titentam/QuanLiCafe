@@ -53,13 +53,12 @@ void DoUong::nhapThongTinDoUong() {
 	Menu a;
 	const int TAB = 10;
 	DoHoa::textColor(10);
-	a.pre(TAB); cout << "Nhap ma do uong: "; cin >> maDoUong;
-	cin.ignore();
+	a.pre(TAB); cout << "Nhap ma do uong: "; maDoUong=Menu::getInt();
 	a.pre(TAB); cout << "Nhap ten do uong: "; getline(cin, tenDoUong);
-	a.pre(TAB); cout << "Nhap gia do uong: "; cin >> gia;
-	a.pre(TAB); cout << "Nhap so luong do uong: "; cin >> soLuong;
 	a.pre(TAB); cout << "Nhap loai do uong: "; cin >> loaiDoUong;
-
+	a.pre(TAB); cout << "Nhap gia do uong: "; gia = a.getFloat();
+	a.pre(TAB); cout << "Nhap so luong do uong: "; soLuong = a.getInt();
+	
 }
 void DoUong::xuatThongTinDoUong(ostream& out) {
 	out <<setw(10)<<left<< maDoUong << " ";

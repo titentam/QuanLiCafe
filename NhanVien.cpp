@@ -55,15 +55,26 @@ void NhanVien::setHsl(const float& hsl) {
 void NhanVien::nhapThongTin() {
 	const int TAB = 10;
 	Menu m;
-	cin.ignore();
 	DoHoa::textColor(10);
-	m.pre(TAB); cout << "Nhap ma nhan vien: "; cin >> maNv;
+	while (true) {
+		m.pre(TAB); cout << "Ma nhan vien(0YXXXX)\n";
+		m.pre(TAB); cout << "Y = 0 : Nhan vien quan li\n";
+		m.pre(TAB); cout << "Y = 1 : Nhan vien phuc vu\n";
+		m.pre(TAB); cout << "X: ky tu bat ki\n";
+		m.pre(TAB); cout << "Nhap ma nhan vien: ";
+		cin >> maNv;
+		if (checkMaNv(this->maNv)) break;
+		cout << endl;
+	}
 	cin.ignore();
 	m.pre(TAB); cout << "Nhap ho ten: "; getline(cin, hoTen);
-	m.pre(TAB); cout << "Nhap sdt: "; getline(cin, sdt);
+	while (true) {
+		m.pre(TAB); cout << "Nhap sdt: "; getline(cin, sdt);
+		if (checkSdt(this->sdt)) break;
+		cout << endl;
+	}	
 	m.pre(TAB); cout << "Nhap mat khau: "; cin >> MK;
-	m.pre(TAB); cout << "Nhap he so luong: "; cin >> hsl;
-	cin.ignore();
+	m.pre(TAB); cout << "Nhap he so luong: "; hsl =Menu::getFloat();
 }
 void NhanVien::xuatThongTin()const {
 	cout << maNv << " ";
@@ -88,4 +99,20 @@ void NhanVien::xuatThongTin2() const
 	a.pre(1); cout << setw(5) << left<<setprecision(4) << hsl << " |";
 	
 	cout << endl;
+}
+
+bool NhanVien::checkMaNv(string ma)
+{
+	if (ma.size() == 6 && ma[0]=='0') {
+		if (ma[1] == '0' || ma[1] == '1') return true;
+	}
+	return false;
+}
+
+bool NhanVien::checkSdt(string sdt)
+{
+	for (int i = 0; i < sdt.size(); i++) {
+		if (sdt[i] < '0' || sdt[i]>'9') return false;
+	}
+	return true;
 }

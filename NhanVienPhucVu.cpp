@@ -15,15 +15,7 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 	while (check) {
 		Menu a;
 		a.menu_phucvu();
-		int choice;
-		string s;
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			choice = -1;
-		}
-		else {
-			choice = (int)(s[0] - 48);
-		}
+		int choice = a.getInt();
 		switch (choice)
 		{
 
@@ -40,8 +32,7 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 			xemDsDoUong(data);
 			DoHoa::textColor(10);
 			a.pre(TAB); cout << "Nhap so do uong: ";
-			int n;
-			cin >> n;
+			int n = a.getInt();
 			Vector<DoUong> menu = data.getDoUong();
 			Vector<DoUong> dsDoUong;
 
@@ -49,11 +40,9 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 			for (int i = 0; i < n; i++)
 			{
 				a.pre(TAB); cout << "Nhap ma do uong thu " << i + 1 << ": ";
-				int  ma;
-				cin >> ma;
+				int  ma=a.getInt();
 				a.pre(TAB); cout << "Nhap so luong: ";
-				int so;
-				cin >> so;
+				int so = a.getInt();
 				bool error = true;
 				for (int i = 0; i < menu.size(); i++) {
 					if (menu[i].getMaDoUong() == ma) {
