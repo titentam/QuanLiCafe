@@ -16,44 +16,57 @@ void Menu::span(int space) {
 	}
 }
 void Menu::loadingbar() {
+	char a = 219, b = 177;
+	int SLEEP = 100;
+	system("Color 0B");
 
-	for (int i = 15; i <= 100; i += 5) {
+	pre(10); cout << "Loading ";
+	for (int i = 0; i < 30; i++) {
+		cout << b;
 
-		system("cls");
-
-		cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t";
-		cout << i << " % Loading...\n\n\t\t";
-		Sleep(15);
-		if (i == 90 || i == 50 || i == 96 || i == 83) {
-			Sleep(45);
-		}
-
+	}
+	cout << "\r"; pre(11);
+	for (int i = 0; i < 30; i++) {
+		cout << a;
+		Sleep(40);
+		if (a % 10 == 0) Sleep(25);
 	}
 }
 void Menu::wellcome() {
-	string s1 = "PHAN MEM QUAN LI";
-	string s2 = "QUAN CAFE";
-	cout << "\n\n\n\t\t\t\t\t\t";
-	for (int i = 0; i < s1.size(); i++) {
-		cout << s1[i];
-		Sleep(30);
-	}
+	ifstream f;
 
-	cout << "\n\n\t\t\t\t\t\t   ";
-	for (int i = 0; i < s2.size(); i++) {
-
-		cout << s2[i];
-		Sleep(30);
+	f.open("hinhcoffee.txt", ios::in);
+	br(2);
+	while (!f.eof()) {
+		system("Color 0A");
+		string s;
+		getline(f, s);
+		pre(10); span(7); cout << s << endl;
 	}
-	cout << "\n\n";
-	Sleep(100);
+	f.close();
+
+	f.open("quanlicoffee.txt", ios::in);
+	while (!f.eof()) {
+		system("Color 09");
+		Sleep(15);
+		string s;
+		getline(f, s);
+		pre(8); span(5); cout << s << endl;
+	}
+	f.close();
+	loadingbar();
 }
 
 void Menu::menu_quanli() {
 	system("cls");
 	const int SLEEP = 60;
-	const int TAB = 5;
-	br(4); pre(TAB); cout << "    >>  MENU QUAN LI  <<"; Sleep(SLEEP);
+	const int TAB = 11;
+
+	br(10); pre(TAB); span(6); 
+	DoHoa::textColor(224);
+	cout << ">>  MENU QUAN LI  <<"; Sleep(SLEEP);
+
+	DoHoa::textColor(14);
 	br(2); pre(TAB); cout << ">> 1.  MENU QUAN LI NHAN VIEN <<"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 2.  MENU QUAN LI DO UONG  <<"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 3.  MENU THONG KE  <<"; Sleep(SLEEP);
@@ -64,8 +77,12 @@ void Menu::menu_quanli() {
 void Menu::menu_quanliDoUong() {
 	system("cls");
 	const int SLEEP = 60;
-	const int TAB = 5;
-	br(4); pre(TAB); cout << "    >>  MENU QUAN LI DO UONG <<"; Sleep(SLEEP);
+	const int TAB = 11;
+	br(10); pre(TAB); span(6);
+	DoHoa::textColor(240);
+	cout << ">>  MENU QUAN LI DO UONG <<"; Sleep(SLEEP);
+
+	DoHoa::textColor(15);
 	br(2); pre(TAB); cout << ">> 1. Xem danh sach do uong"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 2. Tim kiem do uong"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 3. Them mon"; Sleep(SLEEP);
@@ -79,8 +96,13 @@ void Menu::menu_quanliDoUong() {
 void Menu::menu_quanliNV() {
 	system("cls");
 	const int SLEEP = 60;
-	const int TAB = 5;
-	br(4); pre(TAB); cout << "    >>  MENU QUAN LI NHAN VIEN <<"; Sleep(SLEEP);
+	const int TAB = 11;
+	br(10); pre(TAB); span(6);
+	DoHoa::textColor(176);
+
+	cout << ">>  MENU QUAN LI NHAN VIEN <<"; Sleep(SLEEP);
+
+	DoHoa::textColor(11);
 	br(2); pre(TAB); cout << ">> 1.  Xem danh sach nhan vien phuc vu"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 2.  Tim kiem nhan vien phuc vu"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 3.  Them nhan vien phuc vu"; Sleep(SLEEP);
@@ -90,16 +112,18 @@ void Menu::menu_quanliNV() {
 	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
 	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
 
-
-	
 }
 
 void Menu::menu_phucvu() {
 
 	system("cls");
 	const int SLEEP = 60;
-	const int TAB = 5;
-	br(4); pre(TAB); cout << "    >>  MENU NHAN VIEN PHUC VU <<"; Sleep(SLEEP);
+	const int TAB = 11;
+	br(10); pre(TAB); span(6);
+	DoHoa::textColor(112);
+	cout << ">>  MENU NHAN VIEN PHUC VU <<"; Sleep(SLEEP);
+
+	DoHoa::textColor(7);
 	br(2); pre(TAB); cout << ">> 1.  Xem danh sach do uong"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 2.  Tao don do uong"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
@@ -126,8 +150,11 @@ string Menu::nhapmk() {
 	return res;
 }
 void Menu::danhNhap(string& tk, string& mk) {
+	br(1); pre(10);
+	DoHoa::textColor(10);
 	cout << "Tai khoan: ";
 	cin >> tk;
+	br(1); pre(10);
 	mk = nhapmk();
 }
 int Menu::checkTK(DuLieu& data, const string& tk, const string& mk, const int& opt) {
@@ -155,14 +182,20 @@ int Menu::checkTK(DuLieu& data, const string& tk, const string& mk, const int& o
 void Menu::main_menu(DuLieu& data) {
 	bool check = true;
 	const int SLEEP = 100;
+	const int TAB = 11;
 	while (check) {
 		system("cls");
-		br(5); pre(6); cout << "    >>  DANG NHAP  <<"; Sleep(SLEEP);
-		br(2); pre(6); cout << ">> 1. Nhan vien quan li"; Sleep(SLEEP);
-		br(2); pre(6); cout << ">> 2. Nhan vien phuc vu"; Sleep(SLEEP);
-		br(2); pre(6); cout << ">> 0. Thoat";  Sleep(SLEEP);
+		br(10); pre(TAB); span(6);
+		DoHoa::textColor(94);
+
+		cout << ">>  DANG NHAP  <<"; Sleep(SLEEP);
+
+		DoHoa::textColor(14);
+		br(2); pre(TAB); cout << ">> 1. Nhan vien quan li"; Sleep(SLEEP);
+		br(2); pre(TAB); cout << ">> 2. Nhan vien phuc vu"; Sleep(SLEEP);
+		br(2); pre(TAB); cout << ">> 0. Thoat";  Sleep(SLEEP);
 		int choice;
-		br(2); pre(6); cout << ">> Nhap lua chon: ";
+		br(2); pre(TAB); cout << ">> Nhap lua chon: ";
 		string s;
 		cin >> s;
 		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
@@ -183,8 +216,8 @@ void Menu::main_menu(DuLieu& data) {
 				nvql.menuQuanLi(data);
 			}
 			else {
-				cout << endl;
-				cout << "Tai khoan, mat khau sai!" << endl;
+				DoHoa::textColor(12);
+				br(2); pre(TAB); cout << "Tai khoan, mat khau sai!" << endl;
 				system("pause");
 			}
 			break;
@@ -221,8 +254,13 @@ void Menu::menu_thongke()
 {
 	system("cls");
 	const int SLEEP = 60;
-	const int TAB = 5;
-	br(4); pre(TAB); cout << "    >>  MENU THONG KE <<"; Sleep(SLEEP);
+	const int TAB = 11;
+
+	br(10); pre(TAB); span(6);
+	DoHoa::textColor(30);
+	cout << "    >>  MENU THONG KE <<"; Sleep(SLEEP);
+
+	DoHoa::textColor(14);
 	br(2); pre(TAB); cout << ">> 1. Thong ke theo ngay"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 2. Thong ke theo thang"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 3. Thong ke theo nam"; Sleep(SLEEP);

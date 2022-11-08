@@ -1,8 +1,5 @@
 #include "Date.h"
-
-/// <suthangary>
-/// sua date
-/// </suthangary>
+#include"menu.h"
 Date::Date() {
 	ngay = thang = nam = 0;
 }
@@ -30,16 +27,23 @@ bool Date::check(const int& ngay, const int& thang, const int& nam) {
 	return true;
 }
 void Date::nhap() {
+	Menu a;
+	const int TAB = 10;
 	bool ktra = true;
 	do
 	{
-		cout << "NHAP NGAY THANG NAM:" << endl;
-		cout << "Nhap ngay: "; cin >> ngay;
-		cout << "Nhap thang: "; cin >> thang;
-		cout << "Nhap nam: "; cin >> nam;
+		a.br(3);
+		DoHoa::textColor(30);
+		a.pre(TAB + 1);
+		cout << "NHAP NGAY THANG NAM:"; a.br(3);
+		DoHoa::textColor(10);
+		a.pre(TAB); cout << "Nhap ngay: "; cin >> ngay;
+		a.pre(TAB); cout << "Nhap thang: "; cin >> thang;
+		a.pre(TAB); cout << "Nhap nam: "; cin >> nam;
 		ktra = check(ngay, thang, nam);
 		if (!ktra) {
-			cout << "Ngay thang nam khong hop le, vui long nhap lai !" << endl;
+			DoHoa::textColor(12);
+			a.pre(TAB); cout << "Ngay thang nam khong hop le, vui long nhap lai !" << endl;
 			system("pause");
 		}
 	} while (!ktra);

@@ -53,13 +53,16 @@ void NhanVien::setHsl(const float& hsl) {
 }
 
 void NhanVien::nhapThongTin() {
+	const int TAB = 10;
+	Menu m;
 	cin.ignore();
-	cout << "Nhap ma nhan vien: "; cin >> maNv;
+	DoHoa::textColor(10);
+	m.pre(TAB); cout << "Nhap ma nhan vien: "; cin >> maNv;
 	cin.ignore();
-	cout << "Nhap ho ten: "; getline(cin, hoTen);
-	cout << "Nhap sdt: "; getline(cin, sdt);	
-	cout << "Nhap mat khau: "; cin >> MK;
-	cout << "Nhap he so luong: "; cin >> hsl;
+	m.pre(TAB); cout << "Nhap ho ten: "; getline(cin, hoTen);
+	m.pre(TAB); cout << "Nhap sdt: "; getline(cin, sdt);
+	m.pre(TAB); cout << "Nhap mat khau: "; cin >> MK;
+	m.pre(TAB); cout << "Nhap he so luong: "; cin >> hsl;
 	cin.ignore();
 }
 void NhanVien::xuatThongTin()const {
@@ -76,10 +79,11 @@ void NhanVien::xuatThongTin2() const
 	cout << setw(15) << left << "sdt";
 	cout << setw(5) << left << "hsl";*/
 	Menu a;
-	const int TAB = 2;
+	const int TAB = 7;
+	DoHoa::textColor(14);
 	a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 	a.pre(TAB); cout << "| " << setw(10) << left << maNv << "| ";
-	a.pre(TAB); cout << setw(25) << left << hoTen << "| ";
+	a.pre(2); cout << setw(25) << left << hoTen << "| ";
 	a.pre(1); cout << setw(15) << left << sdt << "| ";
 	a.pre(1); cout << setw(5) << left<<setprecision(4) << hsl << " |";
 	
