@@ -89,22 +89,13 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 		a.pre(TAB + 4); a.span(1); cout << "0. Tro ve"; a.br(2);
 		a.pre(TAB + 4); a.span(1); cout << ">>  Nhap lua chon: ";
 
-		int opt;
-		string s;
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			opt = -1;
-		}
-		else {
-			opt = (int)(s[0] - 48);
-		}
+		int opt = a.getInt();
 		switch (opt) {
 		case 1: {
 			Vector<NhanVienPhucVu> res;
-
+			string id;
 			a.pre(TAB + 4); a.span(1); cout << "Nhap ma nhan vien can tim: ";
-			cin.ignore();
-			string id; cin >> id;
+			cin >> id;
 			size_t found;
 			for (int i = 0; i < nvpv.size(); i++) {
 				found = (nvpv[i].getMaNv()).find(id);
@@ -137,8 +128,7 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 				}
 				a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 				a.br(2);
-				a.pre(6);
-				
+				a.pre(6);		
 				system("pause");
 			}
 			break;
@@ -146,7 +136,6 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 		case 2: {
 			Vector<NhanVienPhucVu> res;
 			a.pre(TAB + 4); a.span(1); cout << "Nhap tu khoa: ";
-			cin.ignore();
 			string key; cin >> key;
 			size_t found;
 			for (int i = 0; i < nvpv.size(); i++) {
@@ -243,23 +232,22 @@ void NhanVienQuanLi::xoaNV(DuLieu& data, const string& maNv) {
 			a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
 			a.br(2);
 			DoHoa::textColor(11);
-			a.pre(11); cout << "Xac nhan xoa nhan vien nay? (y/n): ";
 			nhaplai3:
-			string s;
-			cin >> s;
-			if (s.size() != 1) {
-				DoHoa::textColor(12);
-				a.pre(11); cout << "Nhap sai! Vui long nhap lai lua chon: ";
-				goto nhaplai3;
-			}
-			else if (s[0] == 'y') {
+			a.pre(11); cout << "Xac nhan xoa nhan vien nay? (y/n): ";
+			
+			char c = a.getChar();
+			if (c == 'y') {
 				nvpv.erase(i);
 				DoHoa::textColor(15);
 				a.pre(11); cout << "Da xoa nhan vien phuc vu co ma NV " << maNv << endl;
 				system("pause");
 			}
-			else if (s[0] == 'n') return;
-			else goto nhaplai3;	
+			else if (c == 'n') break;
+			else{
+				DoHoa::textColor(12);
+				a.pre(11); cout << "Nhap sai! Vui long nhap lai lua chon\n ";
+				goto nhaplai3;
+			}
 		}
 	}
 	if (check) {
@@ -299,24 +287,24 @@ void NhanVienQuanLi::xoaMon(DuLieu& data, const int& maDoUong) {
 			doUong[i].xuatThongTinDoUong3(cout);
 			a.pre(TAB); cout << "------------------------------------------------------------------------------------------------\n";
 			a.br(2);
-			DoHoa::textColor(14);
-			a.pre(11); cout << "Xac nhan xoa do uong nay? (y/n): ";
+			DoHoa::textColor(10);
 			nhaplai3:
-			string s;
-			cin >> s;
-			if (s.size() != 1) {
-				DoHoa::textColor(12);
-				a.pre(11); cout << "Nhap sai! Vui long nhap lai lua chon: ";
-				goto nhaplai3;
-			}
-			else if (s[0] == 'y') {
+			a.pre(11); cout << "Xac nhan xoa mon nay? (y/n): ";
+			char c = a.getChar();
+			if (c == 'y') {
 				doUong.erase(i);
-				DoHoa::textColor(10);
-				a.pre(11); cout << "Da xoa do uong co ma: " << maDoUong << endl;
+				DoHoa::textColor(15);
+				a.pre(11); cout << "Da xoa mon co ma " << maDoUong << endl;
 				system("pause");
 			}
-			else if (s[0] == 'n') return;
-			else goto nhaplai3;
+			else if (c == 'n') break;
+			else {
+				DoHoa::textColor(12);
+				a.pre(11); cout << "Nhap sai! Vui long nhap lai lua chon\n ";
+				goto nhaplai3;
+			}
+			
+			
 		}
 	}
 	if (check) {
@@ -351,7 +339,7 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 	}
 	else {	
 		bool tryAgain = true;
-		while (tryAgain) {	
+		while (tryAgain) {
 			system("cls");
 			const int TAB = 7;
 			a.br(2);
@@ -381,15 +369,7 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 			a.br(2); a.pre(TAB + 3); cout << "  >> 0. Tro ve";  Sleep(400);
 			a.br(2); a.pre(TAB + 3); cout << "  >> Nhap lua chon: ";
 			DoHoa::textColor(10);
-			string s;
-			cin >> s;
-			if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-				choice = -1;
-			}
-			else {
-				choice = (int)(s[0] - 48);
-			}
-			cin.ignore();
+			choice = a.getInt();
 			switch (choice)
 			{
 			case 1: {
@@ -410,9 +390,12 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 			}
 			case 2: {
 				string sdtMoi;
-				a.br(1);
-				a.pre(11); cout << "Moi nhap sdt moi: ";
-				getline(cin, sdtMoi);
+				while (true) {
+					a.br(1);
+					a.pre(11); cout << "Moi nhap sdt moi: ";
+					cin >> sdtMoi;
+					if (nvPhucVu[pos].checkSdt(sdtMoi)) break;
+				}
 				nvPhucVu[pos].setSdt(sdtMoi);
 				DoHoa::textColor(15);
 				a.pre(11);
@@ -428,7 +411,7 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 				float hslMoi;
 				a.br(1);
 				a.pre(11); cout << "Moi nhap he so luong moi: ";
-				cin >> hslMoi;
+				hslMoi = a.getFloat();
 				nvPhucVu[pos].setHsl(hslMoi);
 				DoHoa::textColor(15);
 				a.pre(11);
@@ -448,8 +431,7 @@ void NhanVienQuanLi::chinhSuaThongTinNv(DuLieu& data, const string& maNv) {
 				a.pre(11); cout << "LUA CHON NAY KHONG CO TRONG MENU, VUI LONG NHAP LAI!" << endl;
 				system("pause");
 				break;
-			}
-			
+			}	
 		}
 	}
 }
@@ -469,27 +451,14 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 		a.pre(TAB); cout << "2. Tim kiem theo tu khoa(Ten do uong)"; a.br(2);
 		a.pre(TAB); cout << "0. Tro ve"; a.br(2);
 		a.pre(TAB); cout << "Nhap lua chon: ";
-		int opt;
-		string s;
+		
 		DoHoa::textColor(10);
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			opt = -1;
-		}
-		else {
-			opt = (int)(s[0] - 48);
-		}
+		int opt = a.getInt();
+	
 		switch (opt) {
 		case 1: {
 			a.br(1); a.pre(TAB); cout << "Nhap ma do uong can tim: ";
-			int id;
-			cin >> s;
-			if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-				id = -1;
-			}
-			else {
-				id = (int)(s[0] - 48);
-			}
+			int id=a.getInt();
 			bool check = true;
 			for (int i = 0; i < dsDoUong.size(); i++) {
 				if (dsDoUong[i].getMaDoUong() == id) {
@@ -648,15 +617,8 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 	while (check) {
 		Menu a;
 		a.menu_quanliNV();
-		int choice;
-		string s;
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			choice = -1;
-		}
-		else {
-			choice = (int)(s[0] - 48);
-		}
+		int choice = a.getInt();
+		
 		switch (choice)
 		{
 		case 1: {
@@ -671,8 +633,8 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 			break;
 		}
 		case 3: {
-			bool again = true;
-			while (again) {
+			
+			while (true) {
 				const int TAB = 11;
 				system("cls");
 				xemDsNV(data);
@@ -687,11 +649,18 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 					for (int i = 0; i < dsNvPV.size(); i++) {
 						if (nvpv.getMaNv() == dsNvPV[i].getMaNv()) {
 							DoHoa::textColor(12);
-							a.pre(TAB); cout << "Ma nhan vien phuc vu nay da ton tai!" << endl;
-							a.pre(TAB); cout << "Vui long nhap lai Ma nv: ";
+							a.pre(TAB); cout << "Ma nhan vien phuc vu nay da ton tai" << endl;
 							DoHoa::textColor(10);
 							string id;
-							cin >> id;
+							while (true) {	
+								a.pre(TAB); cout << "Ma nhan vien(0YXXXX)\n";
+								a.pre(TAB); cout << "Y = 0 : Nhan vien quan li\n";
+								a.pre(TAB); cout << "Y = 1 : Nhan vien phuc vu\n";
+								a.pre(TAB); cout << "X: ky tu bat ki\n";
+								a.pre(TAB); cout << "Vui long nhap lai Ma nv: ";
+								cin >> id;
+								if(dsNvPV[0].checkMaNv(id)) break;
+							}
 							nvpv.setMaNv(id);
 							cout << endl;
 							tryAgain = true;
@@ -704,24 +673,22 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 				system("cls");
 				xemDsNV(data);
 				DoHoa::textColor(15);
-				a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
 				nhaplai:
-				string s;
-				cin >> s;
-				if (s.size() != 1) {
+				a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";	
+				char c = a.getChar();
+				if (c == 'y');
+				else if (c == 'n') break;
+				else {
 					DoHoa::textColor(12);
-					a.pre(TAB); cout << "Nhap lai lua chon: ";
+					a.pre(TAB); cout << "NHAP LAI LUA CHON!\n\n ";
 					goto nhaplai;
 				}
-				else if (s[0] == 'y') again = true;
-				else if (s[0] == 'n') again = false;
-				else goto nhaplai;
 			}
 			break;
 		}
 		case 4: {
-			bool again = true;
-			while (again) {
+			
+			while (true) {
 				const int TAB = 11;
 				system("cls");
 				xemDsNV(data);
@@ -733,18 +700,16 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 				system("cls");
 				xemDsNV(data);
 				DoHoa::textColor(15);
-				a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
 				nhaplai2:
-				string s;
-				cin >> s;
-				if (s.size() != 1) {
+				a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
+				char c = a.getChar();
+				if (c == 'y');
+				else if (c == 'n') break;
+				else{
 					DoHoa::textColor(12);
-					a.pre(TAB); cout << "Nhap lai lua chon: ";
+					a.pre(TAB); cout << "NHAP LAI LUA CHON!\n\n ";
 					goto nhaplai2;
 				}
-				else if (s[0] == 'y') again = true;
-				else if (s[0] == 'n') again = false;
-				else goto nhaplai2;
 			}
 
 			break;
@@ -779,15 +744,7 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 	while (check) {
 		Menu a;
 		a.menu_quanliDoUong();
-		int choice;
-		string s;
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			choice = -1;
-		}
-		else {
-			choice = (int)(s[0] - 48);
-		}
+		int choice = a.getInt();
 		switch (choice){
 			case 1: {
 			xemDsDoUong(data);
@@ -802,8 +759,8 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 			case 3: {
 				Menu a;
 				const int TAB = 10;
-				bool again = true;
-				while (again) {
+				
+				while (true) {
 					system("cls");
 					xemDsDoUong(data);
 					DoUong douong;
@@ -811,121 +768,115 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 					douong.nhapThongTinDoUong();
 					// ktra co hop le hay khong
 					Vector<DoUong> dsDoUong = data.getDoUong();
-					bool check_c3 = true;
-					while (check_c3) {
+					while (true) {
 						bool tryAgain = false;
 						for (int i = 0; i < dsDoUong.size(); i++) {
 							if (douong.getMaDoUong() == dsDoUong[i].getMaDoUong()) {
 								DoHoa::textColor(12);
 								a.pre(TAB); cout << "Ma do uong nay da ton tai!" << endl;
-								a.pre(TAB); cout << "Vui long nhap lai(Ma do uong): ";
-								int id;
 								DoHoa::textColor(10);
-								cin >> id;
+								int id;
+								a.pre(TAB); cout << "Vui long nhap lai(Ma do uong): ";
+								id = a.getInt();	
 								douong.setMaDoUong(id);
 								cout << endl;
 								tryAgain = true;
 								break;
 							}
 						}
-						if (!tryAgain) check_c3 = false;
+						if (tryAgain) break;
 					}
 					themMon(data, douong);
 					system("cls");
 					xemDsDoUong(data);
 					DoHoa::textColor(14);
-					a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
 					nhaplai:
-					string s;
+					a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
+					char c = a.getChar();
 					DoHoa::textColor(10);
-					cin >> s;
-					if (s.size() != 1) {
+					if (c == 'y');
+					else if (c == 'n') break;
+					else {
 						DoHoa::textColor(12);
-						a.pre(TAB); cout << "Nhap lai lua chon: ";
+						a.pre(TAB); cout << "NHAP LAI LUA CHON!\n\n ";
 						goto nhaplai;
-					}
-					else if (s[0] == 'y') again = true;
-					else if (s[0] == 'n') again = false;
-					else goto nhaplai;
+					}	
+					
 				}
 				break;
 			}
 			case 4: {
 				Menu a;
 				const int TAB = 10;
-				bool again = true;
-				while (again) {
+				
+				while (true) {
 					system("cls");
 					xemDsDoUong(data);
 					int mamon;
 					DoHoa::textColor(10);
-					a.pre(TAB); cout << "Nhap ma do uong can xoa: ";
-					cin >> mamon;
+					a.pre(TAB); cout << "Nhap ma do uong can xoa(so nguyen): ";
+					mamon = a.getInt();
 					xoaMon(data, mamon);
 					system("cls");
 					xemDsDoUong(data);
 					DoHoa::textColor(14);
-					a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
 					nhaplai2:
-					string s;
+					a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
 					DoHoa::textColor(10);
-					cin >> s;
-					if (s.size() != 1) {
+					char c = a.getChar();
+					if (c == 'y');
+					else if (c == 'n') break;
+					else {
 						DoHoa::textColor(12);
-						a.pre(TAB); cout << "Nhap lai lua chon: ";
+						a.pre(TAB); cout << "NHAP LAI LUA CHON!\n\n ";
 						goto nhaplai2;
-					}
-					else if (s[0] == 'y') again = true;
-					else if (s[0] == 'n') again = false;
-					else goto nhaplai2;
+					}	
 				}
 				break;
 			}
 			case 5: {
 				Menu a;
 				const int TAB = 10;
-				bool again = true;
-				while (again) {
+				
+				while (true) {
 					system("cls");
 					xemDsDoUong(data);
 					int maDoUong;
 					DoHoa::textColor(10);
 					a.pre(TAB); cout << "Nhap ma do uong: ";
-					cin >> maDoUong;
+					maDoUong = a.getInt();
 					float gia;
 					a.pre(TAB); cout << "Gia moi: ";
-					cin >> gia;
+					gia = a.getFloat();
 					Edit_Gia(data, maDoUong, gia);
 					system("cls");
 					xemDsDoUong(data);
 					DoHoa::textColor(14);
+					nhaplai3:
 					a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
-					nhaplai4:
-					string s;
 					DoHoa::textColor(10);
-					cin >> s;
-					if (s.size() != 1) {
+					char c = a.getChar();
+					if (c == 'y');
+					else if (c == 'n') break;
+					else {
 						DoHoa::textColor(12);
-						a.pre(TAB); cout << "Nhap lai lua chon: ";
-						goto nhaplai4;
+						a.pre(TAB); cout << "NHAP LAI LUA CHON!\n\n ";
+						goto nhaplai3;
 					}
-					else if (s[0] == 'y') again = true;
-					else if (s[0] == 'n') again = false;
-					else goto nhaplai4;
 				}
 				break;
 			}
 			case 6: {
 				Menu a;
 				const int TAB = 10;
-				bool again = true;
-				while (again) {
+				
+				while (true) {
 					system("cls");
 					xemDsDoUong(data);
 					int maDoUong;
 					DoHoa::textColor(10);
-					a.pre(TAB); cout << "Nhap ma do uong: ";
-					cin >> maDoUong;
+					a.pre(TAB); cout << "Nhap ma do uong(so nguyen): ";
+					maDoUong = a.getInt();
 					int sl;
 					a.pre(TAB); cout << "So luong: ";
 					cin >> sl;
@@ -933,19 +884,17 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 					system("cls");
 					xemDsDoUong(data);
 					DoHoa::textColor(14);
+					nhaplai4:
 					a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";
-					nhaplai5:
-					string s;
 					DoHoa::textColor(10);
-					cin >> s;
-					if (s.size() != 1) {
+					char c = a.getChar();
+					if (c == 'y');
+					else if (c == 'n') break;
+					else {
 						DoHoa::textColor(12);
-						a.pre(TAB); cout << "Nhap lai lua chon: ";
-						goto nhaplai5;
+						a.pre(TAB); cout << "NHAP LAI LUA CHON!\n\n ";
+						goto nhaplai4;
 					}
-					else if (s[0] == 'y') again = true;
-					else if (s[0] == 'n') again = false;
-					else goto nhaplai5;
 				}
 				break;
 			}

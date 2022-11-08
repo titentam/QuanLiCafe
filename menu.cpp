@@ -1,5 +1,10 @@
 #include"menu.h"
 
+void Menu::ignoreLine()
+{
+	std::cin.ignore(100, '\n');
+}
+
 void Menu::br(int line) {
 	for (int i = 0; i < line; i++) {
 		cout << "\n";
@@ -32,6 +37,7 @@ void Menu::loadingbar() {
 		if (a % 10 == 0) Sleep(25);
 	}
 }
+
 void Menu::wellcome() {
 	ifstream f;
 
@@ -72,7 +78,6 @@ void Menu::menu_quanli() {
 	br(2); pre(TAB); cout << ">> 3.  MENU THONG KE  <<"; Sleep(SLEEP);
 	br(2); pre(TAB); cout << ">> 0.  Tro ve";  Sleep(SLEEP);
 	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
-
 }
 void Menu::menu_quanliDoUong() {
 	system("cls");
@@ -194,21 +199,14 @@ void Menu::main_menu(DuLieu& data) {
 		br(2); pre(TAB); cout << ">> 1. Nhan vien quan li"; Sleep(SLEEP);
 		br(2); pre(TAB); cout << ">> 2. Nhan vien phuc vu"; Sleep(SLEEP);
 		br(2); pre(TAB); cout << ">> 0. Thoat";  Sleep(SLEEP);
-		int choice;
+		
 		br(2); pre(TAB); cout << ">> Nhap lua chon: ";
-		string s;
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			choice = -1;
-		}
-		else {
-			choice = (int)(s[0] - 48);
-		}
-		cin.ignore();
+		int choice = Menu::getInt();
 		switch (choice)
 		{
 		case 1: {
 			string tk, mk;
+			dangnhapQL:
 			danhNhap(tk, mk);
 			int pos = checkTK(data, tk, mk, 0);
 			if (pos != -1) {
@@ -217,8 +215,10 @@ void Menu::main_menu(DuLieu& data) {
 			}
 			else {
 				DoHoa::textColor(12);
-				br(2); pre(TAB); cout << "Tai khoan, mat khau sai!" << endl;
+				br(2); pre(TAB); cout << "TAI KHOAN, MAT KHAU SAI!" << endl;
+				br(1); pre(TAB); cout << "VUI LONG NHAP LAI!" << endl;
 				system("pause");
+				
 			}
 			break;
 		}
@@ -231,8 +231,9 @@ void Menu::main_menu(DuLieu& data) {
 				nvpv.menuPhucvu(data);
 			}
 			else {
-				cout << endl;
-				cout << "Tai khoan, mat khau sai!" << endl;
+				DoHoa::textColor(12);
+				br(2); pre(TAB); cout << "TAI KHOAN, MAT KHAU SAI!";
+				br(2); pre(TAB); cout << "VUI LONG NHAP LAI!" << endl;
 				system("pause");
 			}
 			break;
@@ -242,8 +243,9 @@ void Menu::main_menu(DuLieu& data) {
 			break;
 		}
 		default:
-			cout << endl;
-			cout << "Lua chon khong co trong menu, vui long nhap lai!" << endl;
+			DoHoa::textColor(12);
+			br(2); pre(TAB-1);
+			cout << "LUA CHON KHONG CO TRONG MENU! VUI LONG NHAP LAI!";
 			system("pause");
 			break;
 		}
@@ -267,3 +269,52 @@ void Menu::menu_thongke()
 	br(2); pre(TAB); cout << ">> 0. Tro ve";  Sleep(SLEEP);
 	br(2); pre(TAB); cout << "->> Nhap lua chon: ";  Sleep(SLEEP);
 }
+
+int Menu::getInt()
+{
+	while (true) {
+		int choice;
+		cin >> choice;
+		if (!cin) {
+			cin.clear();
+			ignoreLine();
+		}
+		else {
+			ignoreLine();
+			return choice;
+		}
+	}
+}
+
+float Menu::getFloat()
+{
+	while (true) {
+		float n;
+		cin >> n;
+		if (!cin) {
+			cin.clear();
+			ignoreLine();
+		}
+		else {
+			ignoreLine();
+			return n;
+		}
+	}
+}
+
+char Menu::getChar()
+{
+	while (true) {
+		char c;
+		cin >> c;
+		if (!cin) {
+			cin.clear();
+			ignoreLine();
+		}
+		else {
+			ignoreLine();
+			return c;
+		}
+	}
+}
+

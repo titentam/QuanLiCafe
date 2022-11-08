@@ -37,9 +37,9 @@ void Date::nhap() {
 		a.pre(TAB + 1);
 		cout << "NHAP NGAY THANG NAM:"; a.br(3);
 		DoHoa::textColor(10);
-		a.pre(TAB); cout << "Nhap ngay: "; cin >> ngay;
-		a.pre(TAB); cout << "Nhap thang: "; cin >> thang;
-		a.pre(TAB); cout << "Nhap nam: "; cin >> nam;
+		a.pre(TAB); cout << "Nhap ngay: "; ngay=Menu::getInt();
+		a.pre(TAB); cout << "Nhap thang: "; thang = Menu::getInt();
+		a.pre(TAB); cout << "Nhap nam: "; nam = Menu::getInt();
 		ktra = check(ngay, thang, nam);
 		if (!ktra) {
 			DoHoa::textColor(12);

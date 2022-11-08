@@ -35,6 +35,8 @@ public:
 	virtual void xuatThongTin2() const;
 
 	virtual float getLuong() = 0;
+	bool checkMaNv(string);
+	bool checkSdt(string);
 };
 
 
