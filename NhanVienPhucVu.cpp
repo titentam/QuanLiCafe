@@ -16,14 +16,6 @@ void NhanVienPhucVu::menuPhucvu(DuLieu& data) {
 		Menu a;
 		a.menu_phucvu();
 		int choice;
-		string s;
-		cin >> s;
-		if (s[0] < '0' || s[0]>'9' || s.size() > 1) {
-			choice = -1;
-		}
-		else {
-			choice = (int)(s[0] - 48);
-		}
 		switch (choice)
 		{
 
