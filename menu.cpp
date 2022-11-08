@@ -218,7 +218,9 @@ void Menu::main_menu(DuLieu& data) {
 			else {
 				DoHoa::textColor(12);
 				br(2); pre(TAB); cout << "Tai khoan, mat khau sai!" << endl;
+				br(2); pre(TAB);
 				system("pause");
+				
 			}
 			break;
 		}
