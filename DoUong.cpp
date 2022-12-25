@@ -55,7 +55,7 @@ void DoUong::nhapThongTinDoUong() {
 	DoHoa::textColor(10);
 	a.pre(TAB); cout << "Nhap ma do uong: "; maDoUong=Menu::getInt();
 	a.pre(TAB); cout << "Nhap ten do uong: "; getline(cin, tenDoUong);
-	a.pre(TAB); cout << "Nhap loai do uong: "; cin >> loaiDoUong;
+	a.pre(TAB); cout << "Nhap loai do uong: "; getline(cin, loaiDoUong);
 	a.pre(TAB); cout << "Nhap gia do uong: "; gia = a.getFloat();
 	a.pre(TAB); cout << "Nhap so luong do uong: "; soLuong = a.getInt();
 	
@@ -88,7 +88,7 @@ void DoUong::xuatThongTinDoUong3(ostream& outw)
 	a.pre(TAB); outw << "| " << setw(7) << left << maDoUong << "| ";
 	a.pre(1); outw << setw(25) << left << tenDoUong << "| ";
 	a.pre(1); outw << setw(15) << left << loaiDoUong << "| ";
-	a.pre(1); outw << setw(10) << left << gia << "| ";
+	a.pre(1); outw << setw(10) << left << (size_t)gia << "| ";
 	a.pre(1); outw << setw(7) << left << soLuong << "| ";
 	outw << endl;
 }

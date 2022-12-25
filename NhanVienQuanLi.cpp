@@ -42,7 +42,7 @@ void NhanVienQuanLi::xemDsNV(DuLieu& data) {
 	}
 	DoHoa::textColor(14);
 	a.pre(TAB); cout << "---------------------------------------------------------------------------------------\n";
-	a.br(2);
+	a.br(2); a.pre(TAB);
 }
 void NhanVienQuanLi::xemDsDoUong(DuLieu& data) {
 	Vector<DoUong>& douong = data.getDoUong();
@@ -189,6 +189,8 @@ void NhanVienQuanLi::timKiemNV(DuLieu& data)
 	}
 }
 void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
+	Menu a;
+	DoHoa b;
 	Vector<NhanVienPhucVu>& nvpv = data.getNvPhucVu();
 	for (int i = 0; i < nvpv.size(); i++) {
 		if (nv.getMaNv() == nvpv[i].getMaNv()) {
@@ -197,8 +199,9 @@ void NhanVienQuanLi::themNV(DuLieu& data, const NhanVienPhucVu& nv) {
 			return;
 		}
 	}
-	cout << "Them thanh cong!" << endl;
-	system("pause");
+	b.textColor(5);
+	a.pre(10); cout << "Them thanh cong!" << endl;
+	a.pre(10); system("pause");
 	nvpv.push_back(nv);
 	ofstream f;
 	f.open("NhanVien.csv", ios::out);
@@ -497,7 +500,7 @@ void NhanVienQuanLi::timKiemDoUong(DuLieu& data)
 			Vector<DoUong> res;
 			DoHoa::textColor(10);
 			a.br(1); a.pre(TAB); cout << "Nhap tu khoa: ";
-			string key; cin >> key;
+			string key; getline(cin,key);
 			size_t found;
 			for (int i = 0; i < dsDoUong.size(); i++) {
 				found = (dsDoUong[i].getName()).find(key);
@@ -674,7 +677,7 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 				xemDsNV(data);
 				DoHoa::textColor(15);
 				nhaplai:
-				a.pre(TAB); cout << "Ban co muon tiep tuc? (y/n): ";	
+				a.pre(3); cout << "Ban co muon tiep tuc? (y/n): ";	
 				char c = a.getChar();
 				if (c == 'y');
 				else if (c == 'n') break;
@@ -689,7 +692,7 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 		case 4: {
 			
 			while (true) {
-				const int TAB = 11;
+				const int TAB = 5;
 				system("cls");
 				xemDsNV(data);
 				string manv;
@@ -719,7 +722,7 @@ void NhanVienQuanLi::menuQuanLiNV(DuLieu& data) {
 			xemDsNV(data);
 			string manv;
 			DoHoa::textColor(10);
-			a.pre(11); cout << "Nhap ma nhan vien can chinh sua: ";
+			a.pre(4); cout << "Nhap ma nhan vien can chinh sua: ";
 			cin >> manv;
 			chinhSuaThongTinNv(data, manv);
 			break;
@@ -769,7 +772,7 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 					// ktra co hop le hay khong
 					Vector<DoUong> dsDoUong = data.getDoUong();
 					while (true) {
-						bool tryAgain = false;
+						bool tryAgain = true;
 						for (int i = 0; i < dsDoUong.size(); i++) {
 							if (douong.getMaDoUong() == dsDoUong[i].getMaDoUong()) {
 								DoHoa::textColor(12);
@@ -780,7 +783,7 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 								id = a.getInt();	
 								douong.setMaDoUong(id);
 								cout << endl;
-								tryAgain = true;
+								tryAgain = false;
 								break;
 							}
 						}
@@ -879,7 +882,7 @@ void NhanVienQuanLi::menuQuanLiDoUong(DuLieu& data) {
 					maDoUong = a.getInt();
 					int sl;
 					a.pre(TAB); cout << "So luong: ";
-					cin >> sl;
+					sl = a.getInt();
 					themSLDoUong(data, maDoUong, sl);
 					system("cls");
 					xemDsDoUong(data);

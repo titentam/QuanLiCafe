@@ -125,6 +125,8 @@ NhanVienPhucVu::NhanVienPhucVu() {
 	this->hsl = 0;
 }
 void NhanVienPhucVu::lamDoUong(DuLieu& data, Vector<DoUong>& dsDoUong, Vector<int>& sl) {
+	Menu a;
+	const int TAB = 7;
 	Vector<DoUong>& menu = data.getDoUong();
 
 	for (int i = 0; i < dsDoUong.size(); i++) {
@@ -135,7 +137,8 @@ void NhanVienPhucVu::lamDoUong(DuLieu& data, Vector<DoUong>& dsDoUong, Vector<in
 				int soLuongcon = menu[j].getSoLuong();
 				// ktra thu con so luong hay  k
 				if (soLuongcon < sl[i]) {
-					cout << "Do uong co ma: " << maDoUong << " con lai khong du!" << endl;
+					a.pre(TAB); cout << "Do uong co ma: " << maDoUong << " con lai khong du!" << endl;
+					a.pre(TAB); system("pause");
 					dsDoUong.erase(i);
 					sl.erase(i);
 					i--;

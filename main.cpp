@@ -10,12 +10,15 @@ using namespace std;
 
 int main() {
 	DuLieu data;
+	Menu a;
 	data.docFileDsDoUong();
 	data.docFileDsNhanVien();
 	Menu m;
 	m.wellcome();
-	system("pause");
+	a.br(1);
+	a.pre(10);
 	m.main_menu(data);
+	
 	
 	return 0;
 }
